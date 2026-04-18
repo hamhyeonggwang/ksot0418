@@ -3021,58 +3021,6 @@ a.conf-card {
 }
 .conf-countdown-cta:hover { background: var(--teal-light); transform: translateY(-2px); box-shadow: 0 12px 36px rgba(0,0,0,0.35); }
 
-/* ---- 08. IMPACT STATS ---- */
-.impact-section {
-  padding: 70px 0;
-  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 55%, var(--teal) 100%);
-  position: relative;
-  overflow: hidden;
-}
-.impact-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-}
-.impact-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  position: relative;
-}
-.impact-item {
-  text-align: center;
-  padding: 24px 32px;
-  border-right: 1px solid rgba(255,255,255,0.12);
-}
-.impact-item:last-child { border-right: none; }
-.impact-num {
-  font-family: var(--font-en);
-  font-size: 54px;
-  font-weight: 800;
-  color: #fff;
-  line-height: 1;
-  margin-bottom: 10px;
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-  gap: 2px;
-}
-.impact-suffix {
-  font-size: 24px;
-  color: var(--teal-light);
-}
-.impact-label strong {
-  display: block;
-  font-size: 15px;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 2px;
-}
-.impact-label span {
-  font-size: 12px;
-  color: rgba(255,255,255,0.55);
-}
-
 /* ============================================================
    RESPONSIVE — NEW SECTIONS
 ============================================================ */
@@ -3094,7 +3042,6 @@ a.conf-card {
   .tv-layout { grid-template-columns: 1fr; }
   .tv-grid { grid-template-columns: repeat(4, 1fr); }
   .js-grid { grid-template-columns: repeat(2, 1fr); }
-  .impact-grid { grid-template-columns: repeat(4, 1fr); }
   .hp-stats-strip { flex-wrap: wrap; }
   .hp-stat-item { padding: 12px 24px; }
   .hp-stat-divider { display: none; }
@@ -3137,12 +3084,6 @@ a.conf-card {
   .conf-countdown-section { padding: 70px 0; }
   .countdown-unit { padding: 0 12px; }
   .conf-countdown-details { flex-direction: column; gap: 10px; }
-
-  .impact-grid { grid-template-columns: repeat(2, 1fr); }
-  .impact-item { border-bottom: 1px solid rgba(255,255,255,0.08); }
-  .impact-item:nth-child(even) { border-right: none; }
-  .impact-item:nth-last-child(-n+2) { border-bottom: none; }
-  .impact-num { font-size: 40px; }
 }
 
 @media (max-width: 480px) {
@@ -3154,7 +3095,6 @@ a.conf-card {
   .countdown-num { font-size: 40px; letter-spacing: -1px; }
   .countdown-sep { font-size: 28px; }
   .countdown-unit { padding: 0 8px; }
-  .impact-num { font-size: 36px; }
 }
 
 /* === RESPONSIVE === */

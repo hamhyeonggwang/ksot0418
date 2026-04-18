@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>커뮤니티 | 대한작업치료학회</title>
+  <link rel="stylesheet" href="../css/main.css" /><link rel="stylesheet" href="../css/pages.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .write-btn { display:inline-flex; align-items:center; gap:8px; background:var(--primary); color:#fff; font-size:13.5px; font-weight:600; padding:9px 18px; border-radius:8px; transition:var(--transition-fast); }
+    .write-btn:hover { background:var(--primary-dark); }
+    .board-item-wrap:hover { background:rgba(0,63,125,0.02); }
+  </style>
+</head>
+<body>
+<div class="topbar"><div class="container-wide"><div class="topbar-left"><span><i class="fa-solid fa-envelope"></i> 보수교육 문의 ksotoffice@nate.com</span><span><i class="fa-solid fa-envelope"></i> 투고 문의 ksot.editor@gmail.com</span></div><div class="topbar-right"><a href="member.html">회원가입</a><span class="divider">|</span><a href="member.html" class="btn-login"><i class="fa-solid fa-user"></i> 로그인</a></div></div></div>
+<header id="header"><div class="container-wide"><div class="header-inner"><a href="../index.html" class="logo"><img src="../images/logo.png" alt="대한작업치료학회" class="logo-img" /></a><nav class="gnb"><ul><li><a href="about.html">학회소개 <i class="fa-solid fa-chevron-down arrow"></i></a><ul class="dropdown"><li><a href="about.html#intro">인사말</a></li></ul></li><li><a href="journal.html">학회지 <i class="fa-solid fa-chevron-down arrow"></i></a><ul class="dropdown"><li><a href="journal.html#about">학회지 안내</a></li><li><a href="journal.html#archive">학회지 검색</a></li></ul></li><li><a href="submission.html">논문투고 <i class="fa-solid fa-chevron-down arrow"></i></a></li><li><a href="education.html">교육·연수 <i class="fa-solid fa-chevron-down arrow"></i></a><ul class="dropdown"><li><a href="education.html#ce-schedule">보수교육</a></li></ul></li><li><a href="community.html" class="active">커뮤니티 <i class="fa-solid fa-chevron-down arrow"></i></a><ul class="dropdown"><li><a href="community.html#notice">공지사항</a></li><li><a href="community.html#resources">자료실</a></li><li><a href="community.html#gallery">학회 갤러리</a></li></ul></li><li><a href="member.html">회원광장 <i class="fa-solid fa-chevron-down arrow"></i></a></li><li class="gnb-item--conference"><a href="conference.html">학술대회 <i class="fa-solid fa-chevron-down arrow"></i></a></li></ul></nav><div class="header-right"><button class="btn-search" data-action="search"><i class="fa-solid fa-magnifying-glass"></i></button><a href="member.html" class="btn-member"><i class="fa-solid fa-user"></i> 로그인</a><button class="btn-hamburger" id="btnHamburger"><span></span><span></span><span></span></button></div></div></div></header>
+
+<section class="page-banner">
+  <div class="container-wide"><div class="page-banner-inner">
+    <nav class="breadcrumb"><a href="../index.html"><i class="fa-solid fa-house"></i></a><span class="sep"><i class="fa-solid fa-chevron-right"></i></span><span class="current">커뮤니티</span></nav>
+    <h1>학회 <em>커뮤니티</em></h1>
+    <p>작업치료사들이 지식을 나누고 함께 성장하는 열린 소통 공간</p>
+    <div class="page-banner-meta">
+      <span><i class="fa-solid fa-comments"></i> 오늘 새 글 24건</span>
+      <span><i class="fa-solid fa-users"></i> 활동 회원 1,240명</span>
+    </div>
+  </div></div>
+</section>
+
+<div class="container-wide">
+  <div class="page-layout">
+    <aside class="sidebar">
+      <nav class="sidebar-nav">
+        <div class="sidebar-nav-title"><i class="fa-solid fa-comments"></i> 커뮤니티</div>
+        <ul>
+          <li><a href="#forum" class="active"><i class="fa-solid fa-message"></i> 자유게시판</a></li>
+          <li><a href="#case"><i class="fa-solid fa-file-medical"></i> 증례 공유</a></li>
+          <li><a href="#jobs"><i class="fa-solid fa-briefcase"></i> 취업정보</a></li>
+          <li><a href="#resources"><i class="fa-solid fa-folder-open"></i> 자료실</a></li>
+          <li><a href="#qna"><i class="fa-solid fa-circle-question"></i> Q&A</a></li>
+        </ul>
+      </nav>
+      <div class="sidebar-card">
+        <h5>✍️ 글쓰기</h5>
+        <p>커뮤니티 게시글 작성은 회원만 가능합니다.</p>
+        <a href="member.html"><i class="fa-solid fa-pen-to-square"></i> 로그인 후 작성</a>
+      </div>
+      <!-- 인기 태그 -->
+      <div style="background:#fff;border:1px solid var(--border-light);border-radius:var(--radius-md);padding:18px 16px;margin-top:16px;">
+        <div style="font-size:13px;font-weight:700;color:var(--text-dark);margin-bottom:12px;"><i class="fa-solid fa-hashtag" style="color:var(--primary);margin-right:6px;"></i>인기 태그</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <span class="tag tag-teal">#인지재활</span>
+          <span class="tag tag-primary">#뇌졸중</span>
+          <span class="tag tag-gold">#취업정보</span>
+          <span class="tag tag-teal">#감각통합</span>
+          <span class="tag tag-primary">#소아OT</span>
+          <span class="tag tag-gold">#보수교육</span>
+          <span class="tag tag-teal">#학술대회</span>
+          <span class="tag tag-primary">#신규치료사</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="page-content">
+      <!-- 자유게시판 -->
+      <section class="content-section" id="forum">
+        <div class="content-header">
+          <h2><i class="fa-solid fa-message"></i> 자유게시판</h2>
+          <div class="content-actions">
+            <a href="member.html" class="write-btn"><i class="fa-solid fa-pen-to-square"></i> 글쓰기</a>
+          </div>
+        </div>
+        <div class="search-bar">
+          <select><option>제목+내용</option><option>제목</option><option>작성자</option></select>
+          <input type="text" placeholder="검색어를 입력하세요" />
+          <button><i class="fa-solid fa-magnifying-glass"></i> 검색</button>
+        </div>
+        <div class="board-list">
+          <div class="board-item"><div class="board-num">공지</div><span class="board-badge notice-pin">공지</span><span class="board-title">커뮤니티 이용 안내 및 게시물 작성 규칙</span><span class="board-author">관리자</span><span class="board-date">2025.01.02</span><span class="board-views">5,421</span></div>
+          <div class="board-item"><div class="board-num">248</div><span class="board-badge new">NEW</span><span class="board-title">재활병원 vs 요양병원 임상 경험 차이 궁금합니다 (신규 치료사 질문)</span><span class="board-author">익명</span><span class="board-date">2025.10.15</span><span class="board-views">342</span></div>
+          <div class="board-item"><div class="board-num">247</div><span class="board-badge new">NEW</span><span class="board-title">편마비 환자 상지 보조기구 추천 부탁드립니다</span><span class="board-author">작업치료사A</span><span class="board-date">2025.10.14</span><span class="board-views">218</span></div>
+          <div class="board-item"><div class="board-num">246</div><span class="board-badge"></span><span class="board-title">신규 작업치료사가 꼭 읽어야 할 책 추천 부탁드려요 (리스트 업데이트)</span><span class="board-author">10년차OT</span><span class="board-date">2025.10.13</span><span class="board-views">1,024</span></div>
+          <div class="board-item"><div class="board-num">245</div><span class="board-badge"></span><span class="board-title">2025 추계학술대회 사전등록 같이 하실 분 계신가요?</span><span class="board-author">OT학생</span><span class="board-date">2025.10.12</span><span class="board-views">156</span></div>
+          <div class="board-item"><div class="board-num">244</div><span class="board-badge"></span><span class="board-title">작업치료사 연봉 협상 경험 공유해주세요 (익명)</span><span class="board-author">익명</span><span class="board-date">2025.10.11</span><span class="board-views">2,341</span></div>
+          <div class="board-item"><div class="board-num">243</div><span class="board-badge"></span><span class="board-title">보수교육 온라인 강의 추천 부탁드립니다 (8시간 채우기)</span><span class="board-author">신규치료사B</span><span class="board-date">2025.10.10</span><span class="board-views">892</span></div>
+          <div class="board-item"><div class="board-num">242</div><span class="board-badge"></span><span class="board-title">감각처리 장애 아동 부모 교육 자료 공유합니다</span><span class="board-author">소아OT전문가</span><span class="board-date">2025.10.09</span><span class="board-views">734</span></div>
+          <div class="board-item"><div class="board-num">241</div><span class="board-badge"></span><span class="board-title">AI 도구 사용하여 치료 계획서 작성하는 분 계신가요?</span><span class="board-author">혁신OT</span><span class="board-date">2025.10.08</span><span class="board-views">1,567</span></div>
+          <div class="board-item"><div class="board-num">240</div><span class="board-badge"></span><span class="board-title">지역사회 방문 작업치료 실제 업무 경험 나눔</span><span class="board-author">지역사회OT</span><span class="board-date">2025.10.07</span><span class="board-views">445</span></div>
+        </div>
+        <div class="pagination">
+          <button class="page-btn arrow"><i class="fa-solid fa-chevron-left"></i></button>
+          <button class="page-btn active">1</button><button class="page-btn">2</button><button class="page-btn">3</button><button class="page-btn">4</button><button class="page-btn">5</button>
+          <button class="page-btn arrow"><i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+      </section>
+
+      <!-- 증례 공유 -->
+      <section class="content-section" id="case">
+        <div class="content-header"><h2><i class="fa-solid fa-file-medical"></i> 증례 공유</h2><a href="member.html" class="write-btn"><i class="fa-solid fa-pen-to-square"></i> 증례 등록</a></div>
+        <div class="info-box info-box-teal" style="margin-bottom:20px;">
+          <i class="fa-solid fa-shield-halved"></i>
+          <div class="info-box-content"><h5>개인정보 보호 안내</h5><p>증례 공유 시 환자 식별 가능 정보는 반드시 익명화 처리해 주세요. 개인정보가 포함된 게시물은 관리자에 의해 삭제될 수 있습니다.</p></div>
+        </div>
+        <div class="board-list">
+          <div class="board-item"><div class="board-num">공지</div><span class="board-badge notice-pin">공지</span><span class="board-title">증례 공유 양식 및 작성 가이드라인 (필독)</span><span class="board-author">편집위원회</span><span class="board-date">2025.03.01</span><span class="board-views">3,241</span></div>
+          <div class="board-item"><div class="board-num">86</div><span class="board-badge new">NEW</span><span class="board-title">[뇌졸중·신경계] 우측 편마비 환자의 ADL 훈련 단계별 접근법 및 경과 보고</span><span class="board-author">신경계OT</span><span class="board-date">2025.10.14</span><span class="board-views">287</span></div>
+          <div class="board-item"><div class="board-num">85</div><span class="board-badge new">NEW</span><span class="board-title">[소아·발달] ASD 아동 감각통합 중재 6개월 경과 보고 (VABS 변화 포함)</span><span class="board-author">소아OT전문</span><span class="board-date">2025.10.12</span><span class="board-views">445</span></div>
+          <div class="board-item"><div class="board-num">84</div><span class="board-badge"></span><span class="board-title">[노인·인지] 치매 초기 환자 COPM 적용 및 인지치료 프로토콜 제안</span><span class="board-author">노인OT전문</span><span class="board-date">2025.10.09</span><span class="board-views">612</span></div>
+          <div class="board-item"><div class="board-num">83</div><span class="board-badge"></span><span class="board-title">[정신건강] 조현병 환자의 직업재활 성공 사례: 6개월 추적 관찰</span><span class="board-author">정신건강OT</span><span class="board-date">2025.10.07</span><span class="board-views">389</span></div>
+          <div class="board-item"><div class="board-num">82</div><span class="board-badge"></span><span class="board-title">[손·상지] 수근관 증후군 보존적 치료 후 작업치료 접근: 증례 3건 비교</span><span class="board-author">상지전문OT</span><span class="board-date">2025.10.04</span><span class="board-views">523</span></div>
+        </div>
+      </section>
+
+      <!-- 취업정보 -->
+      <section class="content-section" id="jobs">
+        <div class="content-header"><h2><i class="fa-solid fa-briefcase"></i> 취업정보</h2><a href="member.html" class="write-btn"><i class="fa-solid fa-plus"></i> 구인 등록</a></div>
+        <div class="search-bar">
+          <select><option>전체 지역</option><option>서울</option><option>경기</option><option>인천</option><option>부산</option><option>대구</option><option>광주</option><option>대전</option></select>
+          <select><option>전체 기관</option><option>대학병원</option><option>재활병원</option><option>요양병원</option><option>장애인복지관</option><option>학교</option></select>
+          <input type="text" placeholder="기관명 또는 키워드 검색" />
+          <button><i class="fa-solid fa-magnifying-glass"></i> 검색</button>
+        </div>
+        <div style="display:flex;flex-direction:column;">
+          <div class="job-card">
+            <div class="job-logo">🏥</div>
+            <div class="job-info"><div class="job-title">작업치료사 채용 (경력·신규 가능)</div><div class="job-meta"><span><i class="fa-solid fa-location-dot"></i> 서울 서대문구</span><span><i class="fa-solid fa-building"></i> 세브란스병원 재활의학과</span><span><i class="fa-solid fa-user-tie"></i> 경력 무관</span></span></div></div>
+            <div class="job-badge"><span class="job-deadline">~2025.10.31</span></div>
+          </div>
+          <div class="job-card">
+            <div class="job-logo">🏥</div>
+            <div class="job-info"><div class="job-title">작업치료팀 경력직 모집 (3년 이상)</div><div class="job-meta"><span><i class="fa-solid fa-location-dot"></i> 경기 성남시</span><span><i class="fa-solid fa-building"></i> 분당서울대학교병원</span><span><i class="fa-solid fa-user-tie"></i> 경력 3년 이상</span></div></div>
+            <div class="job-badge"><span class="job-deadline">~2025.10.25</span></div>
+          </div>
+          <div class="job-card">
+            <div class="job-logo">🏨</div>
+            <div class="job-info"><div class="job-title">작업치료사 모집 (신규 환영)</div><div class="job-meta"><span><i class="fa-solid fa-location-dot"></i> 부산 연제구</span><span><i class="fa-solid fa-building"></i> 부산대학교병원 재활센터</span><span><i class="fa-solid fa-user-tie"></i> 신규 환영</span></div></div>
+            <div class="job-badge"><span class="job-deadline">~2025.11.15</span></div>
+          </div>
+          <div class="job-card">
+            <div class="job-logo">🏫</div>
+            <div class="job-info"><div class="job-title">특수학교 작업치료 전문인력 채용</div><div class="job-meta"><span><i class="fa-solid fa-location-dot"></i> 서울 강서구</span><span><i class="fa-solid fa-building"></i> 서울특수학교</span><span><i class="fa-solid fa-user-tie"></i> 소아 경력 우대</span></div></div>
+            <div class="job-badge"><span class="job-deadline urgent">~2025.10.18 마감임박</span></div>
+          </div>
+          <div class="job-card">
+            <div class="job-logo">🏢</div>
+            <div class="job-info"><div class="job-title">장애인복지관 작업치료사 (정규직)</div><div class="job-meta"><span><i class="fa-solid fa-location-dot"></i> 인천 남동구</span><span><i class="fa-solid fa-building"></i> 인천○○장애인복지관</span><span><i class="fa-solid fa-user-tie"></i> 경력 무관</span></div></div>
+            <div class="job-badge"><span class="job-deadline">~2025.10.31</span></div>
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:16px;"><a href="member.html" class="btn-outline"><i class="fa-solid fa-list"></i> 구인 공고 전체 보기 (총 47건)</a></div>
+      </section>
+
+      <!-- 자료실 -->
+      <section class="content-section" id="resources">
+        <div class="content-header"><h2><i class="fa-solid fa-folder-open"></i> 자료실</h2><a href="member.html" class="write-btn"><i class="fa-solid fa-upload"></i> 자료 등록</a></div>
+        <div class="tab-group">
+          <div class="tab-nav">
+            <button class="tab-btn active" onclick="switchTab(this,'r1')">전체</button>
+            <button class="tab-btn" onclick="switchTab(this,'r2')">평가도구</button>
+            <button class="tab-btn" onclick="switchTab(this,'r3')">학술자료</button>
+            <button class="tab-btn" onclick="switchTab(this,'r4')">임상 가이드</button>
+          </div>
+          <div id="r1" class="tab-panel active" style="margin-top:16px;">
+            <table class="data-table">
+              <thead><tr><th>분류</th><th>제목</th><th>등록일</th><th>다운로드</th></tr></thead>
+              <tbody>
+                <tr><td><span class="tag tag-primary">학술자료</span></td><td><a href="#">2025 추계학술대회 발표자료 모음집 (PDF)</a></td><td>2025.10.14</td><td><i class="fa-solid fa-download" style="color:var(--primary);"></i> 2,341</td></tr>
+                <tr><td><span class="tag tag-teal">평가도구</span></td><td><a href="#">MBI (수정바델지수) 한국어 표준화 평가지 및 채점 기준</a></td><td>2025.09.10</td><td><i class="fa-solid fa-download" style="color:var(--primary);"></i> 5,672</td></tr>
+                <tr><td><span class="tag tag-gold">가이드</span></td><td><a href="#">작업치료 임상실습 교육 가이드라인 2025 개정판</a></td><td>2025.08.20</td><td><i class="fa-solid fa-download" style="color:var(--primary);"></i> 3,104</td></tr>
+                <tr><td><span class="tag tag-teal">평가도구</span></td><td><a href="#">COPM (캐나다 작업수행 측정) 한국판 평가 매뉴얼</a></td><td>2025.07.15</td><td><i class="fa-solid fa-download" style="color:var(--primary);"></i> 4,892</td></tr>
+                <tr><td><span class="tag tag-primary">학술자료</span></td><td><a href="#">2024 작업치료사 임금 실태 조사 보고서</a></td><td>2025.06.01</td><td><i class="fa-solid fa-download" style="color:var(--primary);"></i> 6,723</td></tr>
+                <tr><td><span class="tag tag-teal">평가도구</span></td><td><a href="#">FIM (기능적 독립 척도) 평가 워크시트</a></td><td>2025.05.10</td><td><i class="fa-solid fa-download" style="color:var(--primary);"></i> 3,456</td></tr>
+                <tr><td><span class="tag tag-gold">가이드</span></td><td><a href="#">원격 작업치료(Telehealth OT) 실천 가이드</a></td><td>2025.04.20</td><td><i class="fa-solid fa-download" style="color:var(--primary);"></i> 1,892</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div id="r2" class="tab-panel" style="margin-top:16px;"><div class="empty-state"><i class="fa-solid fa-clipboard-check"></i><p>평가도구 자료를 불러오는 중입니다</p></div></div>
+          <div id="r3" class="tab-panel" style="margin-top:16px;"><div class="empty-state"><i class="fa-solid fa-file-lines"></i><p>학술자료를 불러오는 중입니다</p></div></div>
+          <div id="r4" class="tab-panel" style="margin-top:16px;"><div class="empty-state"><i class="fa-solid fa-book-medical"></i><p>임상 가이드를 불러오는 중입니다</p></div></div>
+        </div>
+      </section>
+
+      <!-- Q&A -->
+      <section class="content-section" id="qna">
+        <div class="content-header"><h2><i class="fa-solid fa-circle-question"></i> Q&amp;A</h2><a href="member.html" class="write-btn"><i class="fa-solid fa-pen-to-square"></i> 질문하기</a></div>
+        <div class="info-box info-box-blue" style="margin-bottom:16px;">
+          <i class="fa-solid fa-circle-info"></i>
+          <div class="info-box-content"><h5>Q&A 안내</h5><p>작업치료와 관련된 임상적 질문, 제도적 문의 등을 자유롭게 올려주세요. 전문가 회원들이 답변해 드립니다.</p></div>
+        </div>
+        <div class="board-list">
+          <div class="board-item"><div class="board-num">124</div><span class="board-badge new">NEW</span><span class="board-title">[임상] 감각처리장애와 발달지연 아동의 작업치료 차이점이 궁금합니다</span><span class="board-author">신규OT</span><span class="board-date">2025.10.14</span><span class="board-views">답변 3</span></div>
+          <div class="board-item"><div class="board-num">123</div><span class="board-badge new">NEW</span><span class="board-title">[제도] 보험청구 코드 최신 변경사항 작업치료 관련 정리 부탁드려요</span><span class="board-author">재활병원OT</span><span class="board-date">2025.10.12</span><span class="board-views">답변 7</span></div>
+          <div class="board-item"><div class="board-num">122</div><span class="board-badge"></span><span class="board-title">[자격] FIM 측정 교육 이수 후 자격증 취득 방법 알려주세요</span><span class="board-author">OT3년차</span><span class="board-date">2025.10.10</span><span class="board-views">답변 5</span></div>
+          <div class="board-item"><div class="board-num">121</div><span class="board-badge"></span><span class="board-title">[취업] 신규 작업치료사 첫 월급 및 처우 기준 어떻게 되나요?</span><span class="board-author">예비OT</span><span class="board-date">2025.10.08</span><span class="board-views">답변 12</span></div>
+          <div class="board-item"><div class="board-num">120</div><span class="board-badge"></span><span class="board-title">[임상] ADL 훈련 시 가족 교육은 어떻게 진행하시나요?</span><span class="board-author">신규OT</span><span class="board-date">2025.10.05</span><span class="board-views">답변 8</span></div>
+          <div class="board-item"><div class="board-num">119</div><span class="board-badge"></span><span class="board-title">[제도] 작업치료사 해외 취업 (미국/캐나다) WFOT 관련 절차 문의</span><span class="board-author">OT4년차</span><span class="board-date">2025.10.03</span><span class="board-views">답변 6</span></div>
+        </div>
+      </section>
+    </main>
+  </div>
+</div>
+
+<footer id="footer"><div class="footer-top"><div class="container-wide"><div class="footer-grid"><div class="footer-brand"><div class="footer-logo"><div class="footer-logo-icon">K</div><div class="footer-logo-text"><span class="en">KSOT</span><span class="kr">대한작업치료학회</span></div></div><p>작업치료사들의 소통과 성장을 위한 커뮤니티 플랫폼입니다.</p><div class="footer-contact"><div class="footer-contact-item"><i class="fa-solid fa-location-dot"></i><span><strong>대한작업치료학회</strong><br>(54538) 전북특별자치도 익산시 익산대로 460 원광대학교 작업치료학과내 대한작업치료학회</span></div><div class="footer-contact-item"><i class="fa-solid fa-envelope"></i><span>보수교육 문의 <a href="mailto:ksotoffice@nate.com" style="color:inherit;">ksotoffice@nate.com</a><br>투고 관련 문의 <a href="mailto:ksot.editor@gmail.com" style="color:inherit;">ksot.editor@gmail.com</a></span></div></div><div class="footer-social"><a href="#" class="social-btn"><i class="fa-brands fa-youtube"></i></a><a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a></div></div><div class="footer-nav"><h6>커뮤니티</h6><ul><li><a href="#forum">자유게시판</a></li><li><a href="#case">증례 공유</a></li><li><a href="#jobs">취업정보</a></li><li><a href="#resources">자료실</a></li><li><a href="#qna">Q&A</a></li></ul></div><div class="footer-nav"><h6>바로가기</h6><ul><li><a href="education.html">교육·연수</a></li><li><a href="conference.html">학술대회</a></li><li><a href="member.html">마이페이지</a></li></ul></div><div class="footer-newsletter"><h6>뉴스레터</h6><p>커뮤니티 소식을 받아보세요.</p><form id="newsletterForm" class="newsletter-form"><input type="email" placeholder="이메일 주소"/><button type="submit">구독</button></form></div></div></div></div><div class="footer-bottom"><div class="container-wide" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;width:100%;"><p>Copyright © 2025 대한작업치료학회 (KSOT). All Rights Reserved.</p><div class="footer-links"><a href="#">개인정보처리방침</a><a href="#">이용약관</a></div></div></div></footer>
+<button id="scrollTop"><i class="fa-solid fa-chevron-up"></i></button>
+<div class="drawer-overlay" id="drawerOverlay"></div><nav class="mobile-drawer" id="mobileDrawer"><div class="drawer-header"><div class="drawer-logo">KSOT<span>대한작업치료학회</span></div><button class="drawer-close" id="btnDrawerClose"><i class="fa-solid fa-xmark"></i></button></div><div class="drawer-user"><div class="avatar"><i class="fa-solid fa-user"></i></div><div class="info"><p>로그인이 필요합니다</p><a href="member.html">로그인 / 회원가입</a></div></div><div class="drawer-nav"><div class="drawer-nav-item"><a href="about.html" style="color:inherit;">학회소개</a></div><div class="drawer-nav-item"><a href="education.html" style="color:inherit;">교육·연수</a></div><div class="drawer-nav-item">커뮤니티 <i class="fa-solid fa-chevron-down" style="font-size:12px;"></i></div><div class="drawer-sub-nav show"><a href="#forum">자유게시판</a><a href="#case">증례 공유</a><a href="#jobs">취업정보</a><a href="#resources">자료실</a><a href="#qna">Q&A</a></div><div class="drawer-nav-item"><a href="member.html" style="color:inherit;">회원광장</a></div></div></nav>
+<div class="search-overlay" id="searchOverlay"><div class="search-box"><div class="search-inner"><div class="search-input-wrap"><i class="fa-solid fa-magnifying-glass"></i><input type="text" id="searchInput" placeholder="검색어를 입력하세요..." autocomplete="off"/><button class="search-close" id="searchClose">닫기 ESC</button></div><div class="search-suggestions"><h6>추천 검색어</h6><div class="search-tags"><span class="search-tag">취업정보</span><span class="search-tag">증례 공유</span><span class="search-tag">자료실</span></div></div></div></div></div>
+<script>function switchTab(btn,id){document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));btn.classList.add('active');document.getElementById(id).classList.add('active');}</script>
+<script src="../js/main.js"></script>
+</body>
+</html>

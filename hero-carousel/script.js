@@ -416,15 +416,6 @@ function onPointerUp(e) {
 }
 
 /* ============================================================
-   Wheel
-============================================================ */
-function onWheel(e) {
-  e.preventDefault();
-  const dir = e.deltaY > 0 ? 1 : -1;
-  navigateBy(dir);
-}
-
-/* ============================================================
    Keyboard
 ============================================================ */
 function onKeyDown(e) {
@@ -548,8 +539,7 @@ function init() {
   area.addEventListener('touchmove',   onPointerMove, { passive: true });
   area.addEventListener('touchend',    onPointerUp);
 
-  /* Wheel */
-  area.addEventListener('wheel', onWheel, { passive: false });
+  /* Wheel — intentionally omitted to allow page scroll */
 
   /* Keyboard */
   area.addEventListener('keydown', onKeyDown);

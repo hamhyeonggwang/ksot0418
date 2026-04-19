@@ -85,15 +85,6 @@
               <li><a href="https://www.youtube.com/channel/UCx3zw743-w7mZ2jvCjzgrfQ" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i> 유튜브 채널</a></li>
             </ul>
           </li>
-          <li>
-            <a href="pages/member.html">회원광장 <i class="fa-solid fa-chevron-down arrow"></i></a>
-            <ul class="dropdown">
-              <li><a href="pages/member.html#join">회원 가입</a></li>
-              <li><a href="pages/member.html#login">로그인</a></li>
-              <li><a href="pages/member.html#mypage">마이페이지</a></li>
-              <li><a href="pages/member.html#directory">회원 검색</a></li>
-            </ul>
-          </li>
           <li class="gnb-item--conference">
             <a href="pages/conference.html">학술대회 <i class="fa-solid fa-chevron-down arrow"></i></a>
             <ul class="dropdown">
@@ -111,9 +102,12 @@
         <button class="btn-search" data-action="search" aria-label="검색">
           <i class="fa-solid fa-magnifying-glass"></i>
         </button>
-        <a href="pages/member.html" class="btn-member">
-          <i class="fa-solid fa-user"></i> 로그인
-        </a>
+        <div class="header-auth-links">
+          <span class="nav-guest-only">
+            <a href="pages/member.html#login" class="header-auth-link">로그인</a><span class="header-auth-sep" aria-hidden="true">|</span><a href="pages/member.html#join" class="header-auth-link">회원가입</a>
+          </span>
+          <a href="pages/member.html#mypage" class="header-auth-link header-auth-link--primary nav-auth-only"><i class="fa-solid fa-user"></i> 마이페이지</a>
+        </div>
         <button class="btn-hamburger" id="btnHamburger" aria-label="메뉴">
           <span></span><span></span><span></span>
         </button>
@@ -944,8 +938,13 @@
   <div class="drawer-user">
     <div class="avatar"><i class="fa-solid fa-user"></i></div>
     <div class="info">
-      <p>로그인이 필요합니다</p>
-      <a href="pages/member.html">로그인 / 회원가입</a>
+      <p class="nav-guest-only">로그인 후 서비스를 이용할 수 있습니다</p>
+      <p class="nav-auth-only"><a href="pages/member.html#mypage">마이페이지로 이동</a></p>
+      <div class="drawer-auth-inline nav-guest-only">
+        <a href="pages/member.html#login">로그인</a>
+        <span class="header-auth-sep" aria-hidden="true">|</span>
+        <a href="pages/member.html#join">회원가입</a>
+      </div>
     </div>
   </div>
   <div class="drawer-nav">
@@ -982,12 +981,7 @@
       <a href="pages/community.html#gallery">학회 갤러리</a>
       <a href="https://www.youtube.com/channel/UCx3zw743-w7mZ2jvCjzgrfQ" target="_blank" rel="noopener noreferrer">유튜브 채널</a>
     </div>
-    <div class="drawer-nav-item">회원광장 <i class="fa-solid fa-chevron-down" style="font-size:12px;"></i></div>
-    <div class="drawer-sub-nav">
-      <a href="pages/member.html#join">회원 가입</a>
-      <a href="pages/member.html#mypage">마이페이지</a>
-      <a href="pages/member.html#fee">회비 납부</a>
-    </div>
+    <div class="drawer-nav-item"><a href="pages/member.html#fee" style="color:inherit;">회비 납부</a></div>
     <div class="drawer-nav-item drawer-nav-item--conference">학술대회 <i class="fa-solid fa-chevron-down" style="font-size:12px;"></i></div>
     <div class="drawer-sub-nav">
       <a href="pages/conference.html#about" class="conference-submenu-hidden">대회 안내</a>

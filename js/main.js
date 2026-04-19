@@ -503,8 +503,39 @@ function initPopupNotice() {
   setTimeout(() => overlay.classList.add('is-visible'), 400);
 }
 
+/* ---- 회원 세션(데모): 마이페이지 메뉴 노출 ---- */
+const KSOT_MEMBER_SESSION_KEY = 'ksot_member_session';
+
+function syncMemberSessionNav() {
+  document.body.classList.toggle('is-logged-in', localStorage.getItem(KSOT_MEMBER_SESSION_KEY) === '1');
+}
+
+function initMemberSessionNav() {
+  syncMemberSessionNav();
+  window.addEventListener('storage', e => {
+    if (e.key === KSOT_MEMBER_SESSION_KEY) syncMemberSessionNav();
+  });
+
+  const loginBtn = document.getElementById('btnKsotMemberLogin');
+  if (loginBtn) {
+    on(loginBtn, 'click', e => {
+      e.preventDefault();
+      localStorage.setItem(KSOT_MEMBER_SESSION_KEY, '1');
+      const path = window.location.pathname || '';
+      const onMemberPage = /member\.html/i.test(path);
+      if (onMemberPage) {
+        window.location.hash = 'mypage';
+        window.location.reload();
+      } else {
+        window.location.href = path.includes('/pages/') ? 'member.html#mypage' : 'pages/member.html#mypage';
+      }
+    });
+  }
+}
+
 /* ---- Initialize All ---- */
 document.addEventListener('DOMContentLoaded', () => {
+  initMemberSessionNav();
   new HeroSlider();
   initHeader();
   initDrawer();

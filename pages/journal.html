@@ -122,41 +122,86 @@
       <!-- 학회지 검색 -->
       <section class="content-section" id="archive">
         <div class="content-header"><h2><i class="fa-solid fa-magnifying-glass"></i> 학회지 검색</h2></div>
-        <div class="search-bar">
-          <select class="form-select" style="width:auto;flex-shrink:0;">
-            <option>전체</option><option>제목</option><option>저자</option><option>키워드</option><option>초록</option>
-          </select>
-          <input type="text" placeholder="검색어를 입력하세요 (예: 인지재활, 뇌졸중, 감각통합)" />
-          <select class="form-select" style="width:auto;flex-shrink:0;">
-            <option>전체 연도</option><option>2025</option><option>2024</option><option>2023</option><option>2022</option><option>2021</option>
-          </select>
-          <button><i class="fa-solid fa-magnifying-glass"></i> 검색</button>
+
+        <!-- 검색 폼 -->
+        <table class="data-table" style="margin-bottom:16px;">
+          <tbody>
+            <tr>
+              <th style="width:120px;white-space:nowrap;">간행물</th>
+              <td>
+                <select class="form-select" style="width:220px;">
+                  <option>대한작업치료학회지</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <th>권/호</th>
+              <td>
+                <select class="form-select" style="width:220px;">
+                  <option>제34권 제1호</option>
+                  <option>제33권 제4호</option>
+                  <option>제33권 제3호</option>
+                  <option>제33권 제2호</option>
+                  <option>제33권 제1호</option>
+                  <option>-전체-</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <th>간행물 내 검색</th>
+              <td>
+                <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+                  <select class="form-select" style="width:100px;">
+                    <option>논문명</option><option>저자</option><option>키워드</option><option>초록</option>
+                  </select>
+                  <input type="text" class="form-input" placeholder="입력해주세요" style="flex:1;min-width:200px;max-width:360px;" />
+                  <select class="form-select" style="width:90px;">
+                    <option>포함</option><option>일치</option>
+                  </select>
+                </div>
+                <p style="font-size:12.5px;color:var(--text-mid);margin:8px 0 0;">* 간행물 또는 권/호를 "-전체-" 선택하시면 통합 검색이 가능합니다.</p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="display:flex;justify-content:flex-end;margin-bottom:24px;">
+          <button class="btn-primary" style="padding:12px 32px;font-size:15px;"><i class="fa-solid fa-magnifying-glass"></i> 검색</button>
         </div>
-        <!-- 권호 목록 -->
-        <div style="margin-bottom:20px;">
-          <div style="font-size:13.5px;font-weight:600;color:var(--text-dark);margin-bottom:12px;">권호별 검색</div>
-          <div style="display:flex;flex-wrap:wrap;gap:8px;">
-            <span style="padding:6px 14px;background:var(--primary);color:#fff;border-radius:20px;font-size:12.5px;font-weight:600;cursor:pointer;">33권 (2025)</span>
-            <span style="padding:6px 14px;background:var(--bg);border:1px solid var(--border);border-radius:20px;font-size:12.5px;color:var(--text-mid);cursor:pointer;">32권 (2024)</span>
-            <span style="padding:6px 14px;background:var(--bg);border:1px solid var(--border);border-radius:20px;font-size:12.5px;color:var(--text-mid);cursor:pointer;">31권 (2023)</span>
-            <span style="padding:6px 14px;background:var(--bg);border:1px solid var(--border);border-radius:20px;font-size:12.5px;color:var(--text-mid);cursor:pointer;">30권 (2022)</span>
-            <span style="padding:6px 14px;background:var(--bg);border:1px solid var(--border);border-radius:20px;font-size:12.5px;color:var(--text-mid);cursor:pointer;">이전 권호 ▼</span>
+
+        <!-- 학술지 정보 카드 -->
+        <div style="display:flex;gap:20px;align-items:flex-start;padding:20px;background:#fff;border:1px solid var(--border-light);border-radius:var(--radius-md);margin-bottom:24px;">
+          <img src="../images/kjot-cover.png" alt="대한작업치료학회지 표지" style="width:120px;height:164px;object-fit:contain;border:1px solid var(--border-light);border-radius:4px;flex-shrink:0;" />
+          <div style="font-size:14px;line-height:1.85;color:var(--text);">
+            <div style="display:flex;gap:8px;margin-bottom:10px;">
+              <span style="padding:3px 10px;background:#e8f5e9;color:#2e7d32;border-radius:20px;font-size:12px;font-weight:700;">KCI등재</span>
+              <span style="padding:3px 10px;background:#e3f2fd;color:#1565c0;border-radius:20px;font-size:12px;font-weight:700;">학술저널</span>
+            </div>
+            <p style="font-size:18px;font-weight:700;color:var(--text-dark);margin-bottom:4px;">대한작업치료학회지</p>
+            <p style="font-size:13.5px;color:var(--text-mid);margin-bottom:12px;">Korean Journal of Occupational Therapy</p>
+            <p style="margin-bottom:2px;">발행기관 : 대한작업치료학회</p>
+            <p style="margin-bottom:2px;">발행주기 : 계간 (3, 6, 9, 12)</p>
+            <p style="margin-bottom:2px;">pISSN : 1226-0134</p>
+            <p style="margin-bottom:2px;">eISSN : 2671-4450</p>
+            <p style="margin-bottom:0;">등재여부 : KCI등재</p>
           </div>
         </div>
-        <div class="stats-row" style="grid-template-columns:repeat(3,1fr);">
-          <div class="stat-card"><div class="stat-card-icon" style="background:linear-gradient(135deg,#e8f0fe,#c2d4fb);color:#3b5bdb;"><i class="fa-solid fa-file-lines"></i></div><div><div class="num">1,247</div><div class="label">총 게재 논문</div></div></div>
-          <div class="stat-card"><div class="stat-card-icon" style="background:linear-gradient(135deg,#e0faf5,#b2f0e3);color:#0ca678;"><i class="fa-solid fa-book"></i></div><div><div class="num">33</div><div class="label">발행 권수</div></div></div>
-          <div class="stat-card"><div class="stat-card-icon" style="background:linear-gradient(135deg,#fce4ec,#f8bbd0);color:#e91e63;"><i class="fa-solid fa-eye"></i></div><div><div class="num">45,200+</div><div class="label">총 누적 조회수</div></div></div>
+
+        <!-- 통계 -->
+        <div class="stats-row" style="grid-template-columns:repeat(2,1fr);margin-bottom:20px;">
+          <div class="stat-card"><div class="stat-card-icon" style="background:linear-gradient(135deg,#e8f0fe,#c2d4fb);color:#3b5bdb;"><i class="fa-solid fa-file-lines"></i></div><div><div class="num">943</div><div class="label">총 게재 논문</div></div></div>
+          <div class="stat-card"><div class="stat-card-icon" style="background:linear-gradient(135deg,#e0faf5,#b2f0e3);color:#0ca678;"><i class="fa-solid fa-book"></i></div><div><div class="num">34</div><div class="label">발행 권수</div></div></div>
         </div>
         <table class="data-table" style="margin-top:4px;">
-          <thead><tr><th>분류</th><th>논문 제목</th><th>저자</th><th>권호</th><th>조회</th></tr></thead>
+          <thead><tr><th>분류</th><th>논문 제목</th><th>저자</th><th>권호</th><th>PDF</th></tr></thead>
           <tbody>
-            <tr><td><span class="tag tag-primary">원저</span></td><td><a href="#">인지재활 프로그램이 경도인지장애 노인의 인지기능에 미치는 효과</a></td><td>김지현 외</td><td>33(3)</td><td>1,248</td></tr>
-            <tr><td><span class="tag tag-teal">체계적 문헌고찰</span></td><td><a href="#">뇌졸중 환자 가상현실 기반 작업치료 메타분석</a></td><td>최수진 외</td><td>33(3)</td><td>986</td></tr>
-            <tr><td><span class="tag tag-primary">원저</span></td><td><a href="#">자폐스펙트럼장애 아동의 감각처리 특성과 학교적응</a></td><td>이소현 외</td><td>33(3)</td><td>742</td></tr>
-            <tr><td><span class="tag tag-primary">원저</span></td><td><a href="#">치매 노인의 원예치료 중재 효과 연구</a></td><td>박민수, 정은영</td><td>33(2)</td><td>1,105</td></tr>
-            <tr><td><span class="tag tag-teal">종설</span></td><td><a href="#">인공지능 기반 작업치료 평가 도구 개발 동향</a></td><td>강지훈</td><td>33(2)</td><td>2,341</td></tr>
-            <tr><td><span class="tag tag-primary">원저</span></td><td><a href="#">지역사회 재가 노인의 낙상 예방 작업치료 프로그램 효과</a></td><td>유성민, 한아라</td><td>33(1)</td><td>893</td></tr>
+            <tr><td><span class="tag tag-primary">원저</span></td><td>척수장애인의 여가활동 만족도가 삶의 만족도에 미치는 영향: 자립과 정서적 도움의 다중매개효과</td><td>유승모 외</td><td>34(1)</td><td><a href="../files/journal/34-1/01.pdf" download style="color:var(--primary);font-weight:600;"><i class="fa-solid fa-file-pdf"></i></a></td></tr>
+            <tr><td><span class="tag tag-primary">원저</span></td><td>Sensory Profile-2 Summary and Interpretation (SPSI) ChatBot 프로토타입 개발 및 활용 전망</td><td>박다솔</td><td>34(1)</td><td><a href="../files/journal/34-1/02.pdf" download style="color:var(--primary);font-weight:600;"><i class="fa-solid fa-file-pdf"></i></a></td></tr>
+            <tr><td><span class="tag tag-primary">원저</span></td><td>중국인유학생을 위한 작업역할기반 시간사용중재 프로그램 적용의 효과</td><td>양몽은, 정민예</td><td>34(1)</td><td><a href="../files/journal/34-1/03.pdf" download style="color:var(--primary);font-weight:600;"><i class="fa-solid fa-file-pdf"></i></a></td></tr>
+            <tr><td><span class="tag tag-primary">원저</span></td><td>상호작용식 메트로놈 중재가 뇌졸중 환자의 집중력, 기능적 활동 및 삶의 질에 미치는 영향</td><td>손솔, 김덕주</td><td>34(1)</td><td><a href="../files/journal/34-1/04.pdf" download style="color:var(--primary);font-weight:600;"><i class="fa-solid fa-file-pdf"></i></a></td></tr>
+            <tr><td><span class="tag tag-teal">계량서지학적 분석</span></td><td>중환자실 작업치료의 연구 동향: 계량서지학적 분석</td><td>심혜림, 김수경</td><td>34(1)</td><td><a href="../files/journal/34-1/05.pdf" download style="color:var(--primary);font-weight:600;"><i class="fa-solid fa-file-pdf"></i></a></td></tr>
+            <tr><td><span class="tag tag-teal">범위 문헌고찰</span></td><td>커뮤니티 케어 서비스 대상자 선정기준에 관한 연구: 범위 문헌고찰</td><td>박은지, 홍익표</td><td>34(1)</td><td><a href="../files/journal/34-1/06.pdf" download style="color:var(--primary);font-weight:600;"><i class="fa-solid fa-file-pdf"></i></a></td></tr>
+            <tr><td><span class="tag tag-teal">체계적 고찰 및 메타분석</span></td><td>감각통합기반 중재가 발달지연 및 장애 아동의 운동기능에 미치는 효과: 체계적 고찰 및 메타분석</td><td>임대웅 외</td><td>34(1)</td><td><a href="../files/journal/34-1/07.pdf" download style="color:var(--primary);font-weight:600;"><i class="fa-solid fa-file-pdf"></i></a></td></tr>
+            <tr><td><span class="tag tag-teal">체계적 고찰</span></td><td>휠체어 사용자의 이승(Transfer)에 영향을 미치는 요인에 관한 체계적 고찰</td><td>홍진이 외</td><td>34(1)</td><td><a href="../files/journal/34-1/08.pdf" download style="color:var(--primary);font-weight:600;"><i class="fa-solid fa-file-pdf"></i></a></td></tr>
           </tbody>
         </table>
         <div class="pagination">

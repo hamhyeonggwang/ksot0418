@@ -307,7 +307,10 @@ function initSidebarScrollspy() {
 
   const items = links
     .map(a => ({ link: a, section: document.querySelector(a.getAttribute('href')) }))
-    .filter(item => item.section);
+    .filter(item => {
+      if (!item.section) return false;
+      return getComputedStyle(item.section).display !== 'none';
+    });
 
   if (!items.length) return;
 
@@ -507,7 +510,9 @@ function initPopupNotice() {
 const KSOT_MEMBER_SESSION_KEY = 'ksot_member_session';
 
 function syncMemberSessionNav() {
-  document.body.classList.toggle('is-logged-in', localStorage.getItem(KSOT_MEMBER_SESSION_KEY) === '1');
+  const on = localStorage.getItem(KSOT_MEMBER_SESSION_KEY) === '1';
+  document.documentElement.classList.toggle('ksot-logged-in', on);
+  if (document.body) document.body.classList.toggle('is-logged-in', on);
 }
 
 function initMemberSessionNav() {
@@ -534,6 +539,8 @@ function initMemberSessionNav() {
 }
 
 /* ---- Initialize All ---- */
+if (document.body) syncMemberSessionNav();
+
 document.addEventListener('DOMContentLoaded', () => {
   initMemberSessionNav();
   new HeroSlider();

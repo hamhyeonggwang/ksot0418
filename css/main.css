@@ -168,11 +168,14 @@ input, textarea, select { font-family: inherit; }
 .gnb { display: flex; align-items: center; }
 .gnb > ul { display: flex; align-items: center; gap: 0; }
 .gnb > ul > li { position: relative; }
-/* 마이페이지 등: 로그인 후에만 표시 (js/main.js + body.is-logged-in) */
-body:not(.is-logged-in) .nav-auth-only {
+/* 마이페이지 등: 로그인 후에만 표시
+   - <head> 초기 스크립트가 html.ksot-logged-in 설정(FOUC 방지)
+   - js/main.js가 html·body 클래스 동기 유지 */
+html:not(.ksot-logged-in) .nav-auth-only,
+html:not(.ksot-logged-in) #mypage {
   display: none !important;
 }
-body.is-logged-in .nav-guest-only {
+html.ksot-logged-in .nav-guest-only {
   display: none !important;
 }
 .gnb > ul > li > a {

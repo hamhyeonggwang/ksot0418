@@ -300,6 +300,31 @@ function initSmoothScroll() {
   });
 }
 
+/* ---- Sidebar Scrollspy ---- */
+function initSidebarScrollspy() {
+  const links = $$('.sidebar-nav a[href^="#"]');
+  if (!links.length) return;
+
+  const items = links
+    .map(a => ({ link: a, section: document.querySelector(a.getAttribute('href')) }))
+    .filter(item => item.section);
+
+  if (!items.length) return;
+
+  const update = () => {
+    const threshold = window.scrollY + window.innerHeight * 0.25;
+    let current = items[0];
+    for (const item of items) {
+      if (item.section.offsetTop <= threshold) current = item;
+    }
+    links.forEach(a => a.classList.remove('active'));
+    current.link.classList.add('active');
+  };
+
+  on(window, 'scroll', update, { passive: true });
+  update();
+}
+
 /* ---- Active Nav Highlight ---- */
 function initActiveNav() {
   const path = window.location.pathname.split('/').pop() || 'index.html';
@@ -520,4 +545,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initTVFacade();
   initEduHubDrag();
   initPopupNotice();
+  initSidebarScrollspy();
 });

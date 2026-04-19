@@ -353,26 +353,6 @@ function initTooltips() {
   });
 }
 
-/* ---- Newsletter Form ---- */
-function initNewsletter() {
-  const form = $('#newsletterForm');
-  if (!form) return;
-  on(form, 'submit', e => {
-    e.preventDefault();
-    const input = form.querySelector('input[type="email"]');
-    if (!input?.value) return;
-    const btn = form.querySelector('button');
-    btn.textContent = '구독완료 ✓';
-    btn.style.background = '#0ca678';
-    input.value = '';
-    input.placeholder = '구독해 주셔서 감사합니다!';
-    setTimeout(() => {
-      btn.textContent = '구독하기';
-      btn.style.background = '';
-      input.placeholder = '이메일 주소를 입력하세요';
-    }, 3000);
-  });
-}
 
 /* ---- Partner Track Pause on Hover ---- */
 function initPartnerTrack() {
@@ -537,7 +517,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initSmoothScroll();
   initActiveNav();
   initTooltips();
-  initNewsletter();
   initPartnerTrack();
   initLazyImages();
   initFeedTabs();

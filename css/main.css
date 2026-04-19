@@ -1543,40 +1543,6 @@ a.conf-card {
   transition: var(--transition-fast);
 }
 .footer-nav ul a:hover { color: var(--teal-light); padding-left: 4px; }
-.footer-newsletter h6 {
-  font-size: 13px;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 10px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-.footer-newsletter p { font-size: 13px; margin-bottom: 14px; line-height: 1.6; }
-.newsletter-form { display: flex; gap: 8px; }
-.newsletter-form input {
-  flex: 1;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: var(--radius-sm);
-  padding: 10px 14px;
-  font-size: 13px;
-  color: #fff;
-  outline: none;
-  transition: var(--transition-fast);
-}
-.newsletter-form input::placeholder { color: rgba(255,255,255,0.35); }
-.newsletter-form input:focus { border-color: var(--teal-light); background: rgba(255,255,255,0.12); }
-.newsletter-form button {
-  background: var(--teal);
-  color: #fff;
-  padding: 10px 16px;
-  border-radius: var(--radius-sm);
-  font-size: 13px;
-  font-weight: 600;
-  transition: var(--transition-fast);
-  white-space: nowrap;
-}
-.newsletter-form button:hover { background: var(--teal-light); color: var(--text-dark); }
 .footer-social {
   display: flex;
   gap: 10px;

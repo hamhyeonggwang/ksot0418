@@ -43,7 +43,15 @@ function main() {
     const src = path.join(ROOT, dir);
     const dest = path.join(PUBLIC, dir);
     if (!fs.existsSync(src)) {
-      console.warn(`  skip (missing): ${dir}`);
+      const msg = `  missing: ${dir} (expected at ${src})`;
+      if (process.env.VERCEL || process.env.CI) {
+        console.error(msg);
+        console.error(
+          "  → Vercel: Settings → General → Include source files outside of the Root Directory → ON"
+        );
+        process.exit(1);
+      }
+      console.warn(`  skip${msg}`);
       continue;
     }
     rmrf(dest);

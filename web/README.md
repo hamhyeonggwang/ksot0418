@@ -56,20 +56,15 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Legacy pages (journal, conference, member…)
 
-Existing static HTML lives at repo root (`/pages`, `/css`, `/js`).
+`npm run dev` / `npm run build` 전에 `npm run sync` 가 자동 실행되어  
+루트의 `pages`, `css`, `js`, `images`, `files` → `public/` 로 복사됩니다.  
+로고·홈 링크는 `/` (Next 메인) 로 패치됩니다.
 
-**Option A — same deployment:** copy into Next public folder:
+- `/` — 새 홈 (Hero 등)
+- `/pages/journal.html` — 학술지 (Supabase)
+- `/pages/conference.html` — 학술대회
 
-```bash
-cp -r ../pages ../css ../js ../files ../images public/
-# Fix asset paths in legacy HTML if needed
-```
-
-**Option B — split deploy:** set in `.env.local`:
-
-```
-NEXT_PUBLIC_LEGACY_BASE=https://ksot0418.vercel.app
-```
+프로덕션 배포: 루트 `DEPLOY.md` 참고 (Vercel **Root Directory = `web`**).
 
 ## Production build
 
@@ -96,4 +91,4 @@ npm start
 
 ## Deploy (Vercel)
 
-Root directory: `web`
+**Root Directory:** `web` (필수). 자세한 절차는 저장소 루트 `DEPLOY.md`.

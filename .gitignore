@@ -10,3 +10,10 @@ web/.next/
 web/out/
 web/node_modules/
 *.tsbuildinfo
+
+# web/public: 배포·개발 시 sync 스크립트로 복사 (저장소에 중복하지 않음)
+web/public/pages/
+web/public/css/
+web/public/js/
+web/public/files/
+web/public/images/

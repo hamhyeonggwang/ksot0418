@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "sync": "node ../scripts/sync-public-assets.mjs",
+    "predev": "npm run sync",
     "dev": "next dev",
+    "prebuild": "npm run sync",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"

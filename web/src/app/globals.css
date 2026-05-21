@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-navy: #1a2b4c;
+  --color-navy-light: #243b66;
+  --color-teal: #2dd4bf;
+  --color-teal-dark: #14b8a6;
+  --color-surface: #f8fafc;
+  --font-sans: var(--font-inter), "Pretendard Variable", Pretendard, -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-[#F8FAFC] text-[#1A2B4C] antialiased;
+    font-family: var(--font-sans);
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply border border-white/40 bg-white/70 backdrop-blur-xl;
+  }
+  .glass-dark {
+    @apply border border-white/10 bg-[#1A2B4C]/80 backdrop-blur-xl;
+  }
+  .text-balance {
+    text-wrap: balance;
+  }
+  .bento-shadow {
+    box-shadow: 0 4px 24px rgba(26, 43, 76, 0.06),
+      0 1px 3px rgba(26, 43, 76, 0.04);
+  }
+  .bento-shadow-hover {
+    box-shadow: 0 12px 40px rgba(26, 43, 76, 0.12),
+      0 4px 12px rgba(45, 212, 191, 0.08);
+  }
+}

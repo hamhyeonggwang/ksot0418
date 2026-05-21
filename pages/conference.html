@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script>try{localStorage.getItem("ksot_member_session")==="1"&&document.documentElement.classList.add("ksot-logged-in");}catch(e){}</script>
+  <title>학술대회 | 대한작업치료학회</title>
+  <link rel="stylesheet" href="../css/main.css" /><link rel="stylesheet" href="../css/pages.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    .schedule-row { display:grid; grid-template-columns:120px 1fr; gap:0; border-bottom:1px solid var(--border-light); }
+    .schedule-time { background:var(--bg); padding:14px 16px; font-size:13px; font-weight:700; color:var(--primary); border-right:2px solid var(--primary); display:flex; align-items:flex-start; }
+    .schedule-content { padding:14px 20px; }
+    .schedule-content .title { font-size:14.5px; font-weight:600; color:var(--text-dark); margin-bottom:4px; }
+    .schedule-content .sub { font-size:13px; color:var(--text-mid); line-height:1.6; }
+    .schedule-row.highlight .schedule-content { background:rgba(0,63,125,0.03); }
+    .program-badge { display:inline-block; font-size:11px; font-weight:700; padding:3px 8px; border-radius:4px; margin-right:6px; }
+    .pb-keynote { background:#dbeafe; color:#1e40af; }
+    .pb-ce { background:#e0e7ff; color:#3730a3; }
+    .pb-parallel { background:#d1fae5; color:#065f46; }
+    .pb-break { background:var(--bg); color:var(--text-light); }
+    .pb-ceremony { background:#fef3c7; color:#92400e; }
+    .lecture-block { border-radius:var(--radius-md); overflow:hidden; border:1px solid var(--border-light); margin-bottom:20px; }
+    .lecture-block-header { padding:16px 20px; color:#fff; display:flex; flex-wrap:wrap; align-items:center; gap:12px 20px; }
+    .lecture-block-header h4 { font-size:16px; font-weight:700; margin:0; flex:1 1 200px; }
+    .lecture-block-header .meta { font-size:13px; opacity:0.9; display:flex; flex-wrap:wrap; gap:14px; }
+    .lecture-block-header .meta span { display:inline-flex; align-items:center; gap:6px; }
+    .lecture-block--online .lecture-block-header { background:linear-gradient(135deg,#5b21b6,#7c3aed); }
+    .lecture-block--child .lecture-block-header { background:linear-gradient(135deg,#0369a1,#0ea5e9); }
+    .lecture-block--adult .lecture-block-header { background:linear-gradient(135deg,#047857,#10b981); }
+    .session-split { display:grid; grid-template-columns:1fr 1fr; gap:0; border-top:1px solid var(--border-light); }
+    @media (max-width:768px) { .session-split { grid-template-columns:1fr; } }
+    .session-half { padding:16px 20px; border-right:1px solid var(--border-light); }
+    .session-half:last-child { border-right:none; }
+    @media (max-width:768px) { .session-half { border-right:none; border-bottom:1px solid var(--border-light); } .session-half:last-child { border-bottom:none; } }
+    .session-half h5 { font-size:14px; font-weight:700; color:var(--primary); margin-bottom:10px; }
+    .session-item { font-size:13px; color:var(--text-mid); padding:8px 0; border-bottom:1px dashed var(--border-light); line-height:1.55; }
+    .session-item:last-child { border-bottom:none; }
+    .session-item strong { color:var(--text-dark); display:block; margin-bottom:2px; }
+    .keyword-tags { display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; }
+    .keyword-tag { font-size:12px; padding:6px 12px; background:var(--bg); border:1px solid var(--border-light); border-radius:20px; color:var(--text-mid); }
+    .parallel-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; margin-top:8px; }
+    @media (max-width:640px) { .parallel-grid { grid-template-columns:1fr; } }
+    .parallel-card { background:var(--bg); border-radius:8px; padding:12px 14px; font-size:13px; }
+    .parallel-card h6 { font-size:12px; font-weight:700; color:var(--primary); margin-bottom:6px; }
+  </style>
+</head>
+<body>
+<div class="topbar"><div class="container-wide"><div class="topbar-left"><span><i class="fa-solid fa-envelope"></i> 행정·보수교육 ksotoffice@naver.com</span><span><i class="fa-solid fa-envelope"></i> 학술지·학술대회 ksot.editor@gmail.com</span></div></div></div>
+<header id="header"><div class="container-wide"><div class="header-inner"><a href="../index.html" class="logo"><img src="../images/logo.png" alt="대한작업치료학회" class="logo-img" /></a><nav class="gnb"><ul><li><a href="about.html">학회소개 <i class="fa-solid fa-chevron-down arrow"></i></a><ul class="dropdown"><li><a href="about.html#intro">인사말</a></li></ul></li><li><a href="journal.html">학회지 <i class="fa-solid fa-chevron-down arrow"></i></a><ul class="dropdown"><li><a href="journal.html#about">학회지 안내</a></li><li><a href="journal.html#archive">학회지 검색</a></li></ul></li><li><a href="submission.html">논문투고 <i class="fa-solid fa-chevron-down arrow"></i></a><ul class="dropdown"><li><a href="submission.html#guide">논문투고 안내</a></li><li><a href="submission.html#policy">편집방침과 투고규정</a></li><li><a href="submission.html#editorial-board">편집위원회</a></li><li><a href="submission.html#review">논문 심사기준</a></li><li><a href="submission.html#submit">온라인논문투고</a></li></ul></li><li><a href="education.html">교육·연수 <i class="fa-solid fa-chevron-down arrow"></i></a><ul class="dropdown"><li><a href="education.html#ce-schedule">보수교육</a></li></ul></li><li><a href="community.html">커뮤니티 <i class="fa-solid fa-chevron-down arrow"></i></a><ul class="dropdown"><li><a href="community.html#notice">공지사항</a></li><li><a href="community.html#resources">자료실</a></li><li><a href="community.html#gallery">학회 갤러리</a></li><li><a href="https://www.youtube.com/channel/UCx3zw743-w7mZ2jvCjzgrfQ" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i> 유튜브 채널</a></li></ul></li></ul></nav><div class="header-right"><button class="btn-search" data-action="search"><i class="fa-solid fa-magnifying-glass"></i></button><div class="header-auth-links"><span class="nav-guest-only"><a href="member.html#login" class="header-auth-link">로그인</a><span class="header-auth-sep" aria-hidden="true">|</span><a href="member.html#join" class="header-auth-link">회원가입</a></span><a href="member.html#mypage" class="header-auth-link header-auth-link--primary nav-auth-only"><i class="fa-solid fa-user"></i> 마이페이지</a></div><button class="btn-hamburger" id="btnHamburger"><span></span><span></span><span></span></button></div></div></div></header>
+
+<section class="page-banner">
+  <div class="container-wide"><div class="page-banner-inner">
+    <nav class="breadcrumb"><a href="../index.html"><i class="fa-solid fa-house"></i></a><span class="sep"><i class="fa-solid fa-chevron-right"></i></span><span class="current">학술대회</span></nav>
+    <h1>2026 <em>대한작업치료학회 학술대회</em></h1>
+    <p>OT Beyond Borders: AI와 함께 여는 작업치료의 미래</p>
+    <div class="page-banner-meta">
+      <span><i class="fa-regular fa-calendar"></i> 2026.9.19(토)</span>
+      <span><i class="fa-solid fa-location-dot"></i> 대전보건대학교 대강당</span>
+      <span><i class="fa-solid fa-graduation-cap"></i> 학술주간 9.12~9.20</span>
+    </div>
+  </div></div>
+</section>
+
+<div class="container-wide">
+  <div class="page-layout">
+    <aside class="sidebar">
+      <nav class="sidebar-nav">
+        <div class="sidebar-nav-title"><i class="fa-solid fa-calendar-days"></i> 학술대회</div>
+        <ul>
+          <li><a href="#about" class="active"><i class="fa-solid fa-circle-info"></i> 대회 안내</a></li>
+          <li><a href="#program"><i class="fa-solid fa-list"></i> 프로그램</a></li>
+          <li><a href="#register"><i class="fa-solid fa-ticket"></i> 사전 등록</a></li>
+          <li><a href="#gallery"><i class="fa-solid fa-images"></i> 갤러리</a></li>
+          <li><a href="#archive"><i class="fa-solid fa-clock-rotate-left"></i> 지난 대회</a></li>
+        </ul>
+      </nav>
+      <div class="sidebar-card">
+        <h5>📅 본행사 일정</h5>
+        <p style="font-size:20px;font-weight:800;color:var(--teal-light);text-align:center;margin:8px 0;">2026.9.19</p>
+        <p>학술주간 온·오프라인 강좌는 9월 12일~20일 진행됩니다. 등록 안내는 추후 공지됩니다.</p>
+        <a href="#program"><i class="fa-solid fa-list"></i> 프로그램 보기</a>
+      </div>
+    </aside>
+
+    <main class="page-content">
+      <!-- 대회 안내 -->
+      <section class="content-section" id="about">
+        <div class="content-header"><h2><i class="fa-solid fa-circle-info"></i> 대회 안내</h2></div>
+        <div style="background:linear-gradient(135deg,var(--primary-dark),var(--teal));border-radius:var(--radius-lg);padding:36px;color:white;margin-bottom:24px;position:relative;overflow:hidden;">
+          <div style="position:absolute;top:-60px;right:-60px;width:220px;height:220px;background:rgba(255,255,255,0.06);border-radius:50%;"></div>
+          <div style="position:relative;z-index:2;">
+            <div style="font-size:12px;font-weight:700;letter-spacing:3px;color:rgba(255,255,255,0.6);margin-bottom:8px;">2026 KSOT ANNUAL CONFERENCE</div>
+            <h3 style="font-size:28px;font-weight:800;margin-bottom:6px;line-height:1.3;">2026 대한작업치료학회 학술대회</h3>
+            <p style="font-size:16px;color:var(--teal-light);font-weight:600;margin-bottom:20px;">OT Beyond Borders: AI와 함께 여는 작업치료의 미래</p>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;">
+              <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:10px;padding:14px;text-align:center;"><i class="fa-regular fa-calendar" style="font-size:20px;margin-bottom:6px;display:block;color:var(--teal-light);"></i><div style="font-size:14px;font-weight:700;">2026.9.19(토)</div><div style="font-size:12px;opacity:0.7;">08:00 ~ 17:00</div></div>
+              <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:10px;padding:14px;text-align:center;"><i class="fa-solid fa-location-dot" style="font-size:20px;margin-bottom:6px;display:block;color:var(--teal-light);"></i><div style="font-size:14px;font-weight:700;">대전보건대학교</div><div style="font-size:12px;opacity:0.7;">대강당 (공문 예정)</div></div>
+              <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:10px;padding:14px;text-align:center;"><i class="fa-solid fa-lightbulb" style="font-size:20px;margin-bottom:6px;display:block;color:var(--teal-light);"></i><div style="font-size:14px;font-weight:700;">학술주간</div><div style="font-size:12px;opacity:0.7;">9.12 온라인 · 9.13·9.20 오프라인</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="stats-row">
+          <div class="stat-card"><div class="stat-card-icon" style="background:linear-gradient(135deg,#e8f0fe,#c2d4fb);color:#3b5bdb;"><i class="fa-solid fa-microphone"></i></div><div><div class="num">1</div><div class="label">특별초청강연</div></div></div>
+          <div class="stat-card"><div class="stat-card-icon" style="background:linear-gradient(135deg,#e0e7ff,#c7d2fe);color:#4338ca;"><i class="fa-solid fa-laptop"></i></div><div><div class="num">1</div><div class="label">온라인 강좌</div></div></div>
+          <div class="stat-card"><div class="stat-card-icon" style="background:linear-gradient(135deg,#e0faf5,#b2f0e3);color:#0ca678;"><i class="fa-solid fa-chalkboard-user"></i></div><div><div class="num">4</div><div class="label">오프라인 강좌</div></div></div>
+          <div class="stat-card"><div class="stat-card-icon" style="background:linear-gradient(135deg,#fff3e0,#ffe0b2);color:#f76707;"><i class="fa-solid fa-medal"></i></div><div><div class="num">4</div><div class="label">시상</div></div></div>
+        </div>
+        <div class="info-box info-box-blue" style="margin-top:16px;">
+          <i class="fa-solid fa-circle-info"></i>
+          <div class="info-box-content"><h5>학술주간 안내</h5><p>본 학술대회는 9월 19일 대전에서 개최되며, 학술주간으로 <strong>온라인 강좌(9.12)</strong>와 <strong>오프라인 강좌(9.13 아동, 9.20 성인)</strong>가 함께 운영됩니다. 오프라인 강좌 장소: <strong>국립정신건강센터 오픈강당(서울)</strong></p></div>
+        </div>
+        <div class="keyword-tags" style="margin-top:20px;">
+          <span class="keyword-tag">아동·성인 작업치료</span>
+          <span class="keyword-tag">지역사회 통합돌봄</span>
+          <span class="keyword-tag">재택의료 및 방문재활</span>
+          <span class="keyword-tag">발달장애인 지원사업</span>
+          <span class="keyword-tag">DIR / Floor Time</span>
+          <span class="keyword-tag">OPC Coaching</span>
+          <span class="keyword-tag">지역사회 기반 작업치료</span>
+          <span class="keyword-tag">통합돌봄 실천 사례</span>
+        </div>
+      </section>
+
+      <!-- 프로그램 -->
+      <section class="content-section" id="program">
+        <div class="content-header"><h2><i class="fa-solid fa-list"></i> 프로그램</h2></div>
+        <div class="tab-group">
+          <div class="tab-nav">
+            <button class="tab-btn active" onclick="switchTab(this,'t-main')">본행사 (9.19)</button>
+            <button class="tab-btn" onclick="switchTab(this,'t-online')">온라인 강좌 (9.12)</button>
+            <button class="tab-btn" onclick="switchTab(this,'t-offline')">오프라인 강좌</button>
+          </div>
+
+          <!-- 본행사 -->
+          <div id="t-main" class="tab-panel active" style="margin-top:16px;">
+            <p style="font-size:14px;color:var(--text-mid);margin-bottom:16px;"><i class="fa-solid fa-location-dot" style="color:var(--primary);"></i> 대전보건대학교 대강당 · 2026년 9월 19일(토)</p>
+            <div style="border-radius:var(--radius-md);overflow:hidden;border:1px solid var(--border-light);">
+              <div class="schedule-row"><div class="schedule-time">08:00~09:00</div><div class="schedule-content"><div class="title"><span class="program-badge pb-break">준비</span>준비</div></div></div>
+              <div class="schedule-row"><div class="schedule-time">09:00~10:00</div><div class="schedule-content"><div class="title"><span class="program-badge pb-parallel">포스터</span>포스터 전시</div></div></div>
+              <div class="schedule-row highlight"><div class="schedule-time">10:00~13:00</div><div class="schedule-content">
+                <div class="title"><span class="program-badge pb-parallel">병행</span>병행 세션</div>
+                <div class="parallel-grid">
+                  <div class="parallel-card">
+                    <h6><i class="fa-solid fa-certificate"></i> 보수교육</h6>
+                    <p style="font-weight:600;color:var(--text-dark);margin-bottom:6px;">AI와 함께하는 작업치료 임상 실천과 전문적 소양</p>
+                    <div class="session-item"><strong>1교시 (1h)</strong>AI 시대, 작업치료사에게 필요한 역량과 준비<br>이혜진 교수 (춘해보건대)</div>
+                    <div class="session-item"><strong>2교시 (2h)</strong>Occupation Flow: 참여 중심 작업치료를 위한 AI 워크플로우 설계<br>함형광 선생님 (넥슨 퍼블레나눔재단)</div>
+                  </div>
+                  <div class="parallel-card">
+                    <h6><i class="fa-solid fa-users"></i> 대학원생 워크숍</h6>
+                    <p style="font-weight:600;color:var(--text-dark);">From Connection to Inspiration, Next OT Research Talk</p>
+                    <p style="margin-top:6px;">진행: 장정열</p>
+                  </div>
+                  <div class="parallel-card">
+                    <h6><i class="fa-solid fa-file-lines"></i> 우수 논문 발표</h6>
+                  </div>
+                  <div class="parallel-card">
+                    <h6><i class="fa-solid fa-lightbulb"></i> 캡스톤 디자인 발표</h6>
+                  </div>
+                </div>
+              </div></div>
+              <div class="schedule-row highlight"><div class="schedule-time">13:00~14:00</div><div class="schedule-content"><div class="title"><span class="program-badge pb-break">점심</span>점심식사 (게스트 12:00) / 포스터 관람</div></div></div>
+              <div class="schedule-row highlight"><div class="schedule-time">14:00~14:20</div><div class="schedule-content"><div class="title"><span class="program-badge pb-ceremony">개회</span>개회식</div><div class="sub">국민의례, 내빈소개, 환영사, 축사</div></div></div>
+              <div class="schedule-row"><div class="schedule-time">14:20~15:20</div><div class="schedule-content"><div class="title"><span class="program-badge pb-keynote">특별초청강연</span>AI와 돌봄 (1h)</div><div class="sub">연자: 홍영일 박사</div></div></div>
+              <div class="schedule-row"><div class="schedule-time">15:20~15:40</div><div class="schedule-content"><div class="title"><span class="program-badge pb-break">휴식</span>휴식시간</div></div></div>
+              <div class="schedule-row highlight"><div class="schedule-time">15:40~16:30</div><div class="schedule-content"><div class="title"><span class="program-badge pb-ceremony">시상</span>학술대회 시상식</div><div class="sub">학술상, 우수대학원, 우수논문, 캡스톤</div></div></div>
+              <div class="schedule-row"><div class="schedule-time">16:30~17:00</div><div class="schedule-content"><div class="title"><span class="program-badge pb-parallel">포스터</span>포스터 관람</div></div></div>
+            </div>
+          </div>
+
+          <!-- 온라인 강좌 -->
+          <div id="t-online" class="tab-panel" style="margin-top:16px;">
+            <div class="lecture-block lecture-block--online">
+              <div class="lecture-block-header">
+                <h4>온라인 강좌</h4>
+                <div class="meta">
+                  <span><i class="fa-regular fa-calendar"></i> 2026.9.12(토) 14:00~18:00</span>
+                  <span><i class="fa-solid fa-clock"></i> 4시간</span>
+                  <span><i class="fa-solid fa-users"></i> 100명</span>
+                </div>
+              </div>
+              <div style="padding:16px 20px;background:var(--bg);border-bottom:1px solid var(--border-light);">
+                <strong style="font-size:14px;color:var(--text-dark);">발달장애인 지원사업 이해와 실천</strong>
+              </div>
+              <div style="padding:0;">
+                <div class="schedule-row" style="border-bottom:none;"><div class="schedule-time">1</div><div class="schedule-content"><div class="title">주간활동서비스 및 중증발달장애 통합돌봄 사업</div><div class="sub">박정은 (대전발달장애인지원센터)</div></div></div>
+                <div class="schedule-row" style="border-bottom:none;"><div class="schedule-time">2</div><div class="schedule-content"><div class="title">전문인력 양성 및 맞춤형 돌봄 지원</div><div class="sub">권성애 (동남보건대)</div></div></div>
+                <div class="schedule-row" style="border-bottom:none;"><div class="schedule-time">3</div><div class="schedule-content"><div class="title">스포츠이용권 사업 및 신체활동 참여 지원</div><div class="sub">강은선 (이음감각발달센터)</div></div></div>
+                <div class="schedule-row" style="border-bottom:none;"><div class="schedule-time">4</div><div class="schedule-content"><div class="title">성인 발달장애인 지역사회 투자 서비스 지원</div><div class="sub">김시현 (여울목시설 원장)</div></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 오프라인 강좌 -->
+          <div id="t-offline" class="tab-panel" style="margin-top:16px;">
+            <p style="font-size:14px;color:var(--text-mid);margin-bottom:16px;"><i class="fa-solid fa-location-dot" style="color:var(--primary);"></i> 국립정신건강센터 오픈강당(서울) · 4시간 강좌 4개 운영</p>
+
+            <div class="lecture-block lecture-block--child">
+              <div class="lecture-block-header">
+                <h4>아동 — 2026.9.13(일)</h4>
+                <div class="meta"><span><i class="fa-solid fa-child-reaching"></i> 아동 작업치료</span></div>
+              </div>
+              <div class="session-split">
+                <div class="session-half">
+                  <h5>오전 09:00~13:00</h5>
+                  <p style="font-size:13px;font-weight:600;color:var(--text-dark);margin-bottom:10px;">아동 작업치료에서 치료적 상호작용 전략</p>
+                  <div class="session-item"><strong>아동의 참여를 이끄는 치료적 상호작용</strong>박지훈</div>
+                  <div class="session-item"><strong>아동의 행동을 조율하는 치료적 상호작용</strong>유애리</div>
+                  <div class="session-item"><strong>아동의 활동루틴을 조율하는 치료적 상호작용</strong>정희진</div>
+                  <div class="session-item"><strong>아동의 언어·감각루틴을 조율하는 치료적 상호작용</strong>조혜진</div>
+                </div>
+                <div class="session-half">
+                  <h5>오후 14:00~18:00</h5>
+                  <p style="font-size:13px;font-weight:600;color:var(--text-dark);margin-bottom:10px;">아동 작업치료의 실천</p>
+                  <div class="session-item"><strong>1. DIR / Floor Time 개념과 적용 (2h)</strong>정미양</div>
+                  <div class="session-item"><strong>2. 내담자 중심 작업치료와 OPC (2h)</strong>주유미</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="lecture-block lecture-block--adult">
+              <div class="lecture-block-header">
+                <h4>성인 — 2026.9.20(일)</h4>
+                <div class="meta"><span><i class="fa-solid fa-user-group"></i> 성인 작업치료</span></div>
+              </div>
+              <div class="session-split">
+                <div class="session-half">
+                  <h5>오전 09:00~13:00</h5>
+                  <p style="font-size:13px;font-weight:600;color:var(--text-dark);margin-bottom:10px;">회복기 재활병원에서 재가의료까지</p>
+                  <div class="session-item"><strong>1. 회복기 재활기관 재가의료 시범사업 사례 (2h)</strong>박요안</div>
+                  <div class="session-item"><strong>2. 장기요양 재가의료 시범사업 사례 (2h)</strong>박예슬</div>
+                </div>
+                <div class="session-half">
+                  <h5>오후 14:00~18:00</h5>
+                  <p style="font-size:13px;font-weight:600;color:var(--text-dark);margin-bottom:10px;">지역사회 통합돌봄과 작업치료</p>
+                  <div class="session-item"><strong>부평구 지역사회 통합돌봄 사업 모델</strong>김영훈</div>
+                  <div class="session-item"><strong>대전 지역사회 통합돌봄 사업 모델</strong>유지애</div>
+                  <div class="session-item"><strong>광주 지역사회 통합돌봄 사업 모델</strong>황호성</div>
+                  <div class="session-item"><strong>부산 지역사회 통합돌봄 사업 모델</strong>이영오</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 사전 등록 -->
+      <section class="content-section" id="register">
+        <div class="content-header"><h2><i class="fa-solid fa-ticket"></i> 사전 등록</h2></div>
+        <div class="info-box info-box-yellow" style="margin-bottom:16px;">
+          <i class="fa-solid fa-bullhorn"></i>
+          <div class="info-box-content"><h5>등록 안내</h5><p>2026 학술대회 및 학술주간(온·오프라인 강좌) 사전등록 일정과 참가비는 추후 공지됩니다. 공지사항을 확인해 주세요.</p></div>
+        </div>
+        <div class="info-box info-box-blue" style="margin-bottom:24px;">
+          <i class="fa-solid fa-envelope"></i>
+          <div class="info-box-content"><h5>학술대회 문의</h5><p>학술지 및 학술대회 관련 문의: <a href="mailto:ksot.editor@gmail.com" style="color:inherit;font-weight:600;">ksot.editor@gmail.com</a><br>행정(대표) 및 보수교육 문의: <a href="mailto:ksotoffice@naver.com" style="color:inherit;font-weight:600;">ksotoffice@naver.com</a></p></div>
+        </div>
+        <div style="background:var(--bg);border-radius:var(--radius-lg);padding:32px;text-align:center;border:2px dashed var(--border);">
+          <div style="font-size:52px;margin-bottom:14px;">🎫</div>
+          <h3 style="font-size:20px;font-weight:700;color:var(--text-dark);margin-bottom:8px;">사전등록 준비 중</h3>
+          <p style="font-size:14.5px;color:var(--text-mid);margin-bottom:22px;line-height:1.7;">본행사(9.19) · 온라인 강좌(9.12) · 오프라인 강좌(9.13, 9.20) 등록 안내가<br>확정되는 대로 이 페이지와 공지사항에 안내됩니다.</p>
+          <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+            <a href="community.html#notice" class="btn-primary" style="font-size:15px;padding:13px 28px;"><i class="fa-solid fa-bullhorn"></i> 공지사항 확인</a>
+            <a href="#program" class="btn-secondary" style="font-size:15px;padding:13px 28px;"><i class="fa-solid fa-list"></i> 프로그램 확인</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 갤러리 -->
+      <section class="content-section" id="gallery">
+        <div class="content-header"><h2><i class="fa-solid fa-images"></i> 갤러리</h2><span style="font-size:13px;color:var(--text-light);">지난 학술대회</span></div>
+        <div class="gallery-grid">
+          <div class="gallery-item" style="background:linear-gradient(135deg,#003f7d,#006d77);"><div style="color:rgba(255,255,255,0.5);text-align:center;"><i class="fa-solid fa-image" style="font-size:36px;display:block;margin-bottom:8px;"></i><span style="font-size:13px;">개회식</span></div><div class="overlay"><span>2025 춘계 개회식 현장</span></div></div>
+          <div class="gallery-item" style="background:linear-gradient(135deg,#1a5fa3,#48cae4);"><div style="color:rgba(255,255,255,0.5);text-align:center;"><i class="fa-solid fa-image" style="font-size:36px;display:block;margin-bottom:8px;"></i><span style="font-size:13px;">기조강연</span></div><div class="overlay"><span>기조강연 현장</span></div></div>
+          <div class="gallery-item" style="background:linear-gradient(135deg,#006d77,#83c5be);"><div style="color:rgba(255,255,255,0.5);text-align:center;"><i class="fa-solid fa-image" style="font-size:36px;display:block;margin-bottom:8px;"></i><span style="font-size:13px;">워크숍</span></div><div class="overlay"><span>핸즈온 워크숍</span></div></div>
+          <div class="gallery-item" style="background:linear-gradient(135deg,#3b5bdb,#7048d9);"><div style="color:rgba(255,255,255,0.5);text-align:center;"><i class="fa-solid fa-image" style="font-size:36px;display:block;margin-bottom:8px;"></i><span style="font-size:13px;">구연 발표</span></div><div class="overlay"><span>구연 발표 세션</span></div></div>
+          <div class="gallery-item" style="background:linear-gradient(135deg,#e91e63,#9d174d);"><div style="color:rgba(255,255,255,0.5);text-align:center;"><i class="fa-solid fa-image" style="font-size:36px;display:block;margin-bottom:8px;"></i><span style="font-size:13px;">포스터</span></div><div class="overlay"><span>포스터 발표</span></div></div>
+          <div class="gallery-item" style="background:linear-gradient(135deg,#f76707,#d97706);"><div style="color:rgba(255,255,255,0.5);text-align:center;"><i class="fa-solid fa-image" style="font-size:36px;display:block;margin-bottom:8px;"></i><span style="font-size:13px;">시상식</span></div><div class="overlay"><span>우수논문 시상식</span></div></div>
+        </div>
+      </section>
+
+      <!-- 지난 대회 -->
+      <section class="content-section" id="archive">
+        <div class="content-header"><h2><i class="fa-solid fa-clock-rotate-left"></i> 지난 대회</h2></div>
+        <table class="data-table">
+          <thead><tr><th>연도</th><th>대회명</th><th>주제</th><th>장소</th><th>자료</th></tr></thead>
+          <tbody>
+            <tr><td>2025 추계</td><td>2025 추계학술대회</td><td>작업치료의 미래: AI와 디지털 헬스</td><td>서울 코엑스</td><td><a href="#"><i class="fa-solid fa-download"></i> PDF</a></td></tr>
+            <tr><td>2025 춘계</td><td>제31회 춘계학술대회</td><td>작업치료와 삶의 질</td><td>부산 벡스코</td><td><a href="#"><i class="fa-solid fa-download"></i> PDF</a></td></tr>
+            <tr><td>2024 추계</td><td>제30회 추계학술대회</td><td>지역사회 작업치료의 새 지평</td><td>대전 컨벤션센터</td><td><a href="#"><i class="fa-solid fa-download"></i> PDF</a></td></tr>
+            <tr><td>2024 춘계</td><td>제29회 춘계학술대회</td><td>노인 작업치료의 현재와 미래</td><td>서울 코엑스</td><td><a href="#"><i class="fa-solid fa-download"></i> PDF</a></td></tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+</div>
+
+<footer id="footer"><div class="footer-top"><div class="container-wide"><div class="footer-grid"><div class="footer-brand"><div class="footer-logo"><div class="footer-logo-icon">K</div><div class="footer-logo-text"><span class="en">KSOT</span><span class="kr">대한작업치료학회</span></div></div><p>2026 대한작업치료학회 학술대회 페이지입니다. 학술대회 문의: <a href="mailto:ksot.editor@gmail.com" style="color:inherit;">ksot.editor@gmail.com</a></p><div class="footer-contact"><div class="footer-contact-item"><i class="fa-solid fa-location-dot"></i><span><strong>대한작업치료학회</strong><br>(54538) 전북특별자치도 익산시 익산대로 460 원광대학교 작업치료학과내 대한작업치료학회</span></div><div class="footer-contact-item"><i class="fa-solid fa-envelope"></i><span>행정(대표) 및 보수교육 <a href="mailto:ksotoffice@naver.com" style="color:inherit;">ksotoffice@naver.com</a><br>학술지 및 학술대회 <a href="mailto:ksot.editor@gmail.com" style="color:inherit;">ksot.editor@gmail.com</a></span></div></div><div class="footer-social"><a href="#" class="social-btn"><i class="fa-brands fa-youtube"></i></a><a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a></div></div><div class="footer-nav"><h6>학술대회</h6><ul><li><a href="#about">대회 안내</a></li><li><a href="#program">프로그램</a></li><li><a href="#register">사전 등록</a></li><li><a href="#gallery">갤러리</a></li></ul></div><div class="footer-nav"><h6>바로가기</h6><ul><li><a href="journal.html">학회지</a></li><li><a href="submission.html">논문 투고</a></li><li><a href="member.html">회원가입</a></li></ul></div></div></div></div><div class="footer-bottom"><div class="container-wide" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;width:100%;"><p>Copyright © 2026 대한작업치료학회 (KSOT). All Rights Reserved.</p><div class="footer-links"><a href="terms.html#privacy">개인정보처리방침</a><a href="terms.html#terms">이용약관</a></div></div></div></footer>
+<button id="scrollTop"><i class="fa-solid fa-chevron-up"></i></button>
+<div class="drawer-overlay" id="drawerOverlay"></div><nav class="mobile-drawer" id="mobileDrawer"><div class="drawer-header"><div class="drawer-logo">KSOT<span>대한작업치료학회</span></div><button class="drawer-close" id="btnDrawerClose"><i class="fa-solid fa-xmark"></i></button></div><div class="drawer-user"><div class="avatar"><i class="fa-solid fa-user"></i></div><div class="info"><p class="nav-guest-only">로그인 후 서비스를 이용할 수 있습니다</p><p class="nav-auth-only"><a href="member.html#mypage">마이페이지로 이동</a></p><div class="drawer-auth-inline nav-guest-only"><a href="member.html#login">로그인</a><span class="header-auth-sep" aria-hidden="true">|</span><a href="member.html#join">회원가입</a></div></div></div><div class="drawer-nav"><div class="drawer-nav-item"><a href="about.html" style="color:inherit;">학회소개</a></div><div class="drawer-nav-item"><a href="journal.html" style="color:inherit;">학회지</a></div><div class="drawer-nav-item">학술대회 <i class="fa-solid fa-chevron-down" style="font-size:12px;"></i></div><div class="drawer-sub-nav show"><a href="#about">대회 안내</a><a href="#program">프로그램</a><a href="#register">사전 등록</a><a href="#gallery">갤러리</a><a href="#archive">지난 대회</a></div><div class="drawer-nav-item"><a href="community.html" style="color:inherit;">커뮤니티</a></div></div></nav>
+<div class="search-overlay" id="searchOverlay"><div class="search-box"><div class="search-inner"><div class="search-input-wrap"><i class="fa-solid fa-magnifying-glass"></i><input type="text" id="searchInput" placeholder="검색어를 입력하세요..." autocomplete="off"/><button class="search-close" id="searchClose">닫기 ESC</button></div><div class="search-suggestions"><h6>추천 검색어</h6><div class="search-tags"><span class="search-tag">학술대회</span><span class="search-tag">학술주간</span><span class="search-tag">온라인 강좌</span></div></div></div></div></div>
+<script>
+function switchTab(btn, id) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(id).classList.add('active');
+}
+</script>
+<script src="../js/main.js"></script>
+</body>
+</html>

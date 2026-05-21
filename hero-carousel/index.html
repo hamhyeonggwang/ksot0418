@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KSOT · Knowledge in Motion</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<main class="hero" id="hero">
+
+  <!-- ── Ambient Background ── -->
+  <div class="bg-layer" aria-hidden="true">
+    <canvas id="particleCanvas"></canvas>
+    <div class="bg-glow bg-glow--center"></div>
+    <div class="bg-glow bg-glow--tl"></div>
+    <div class="bg-glow bg-glow--br"></div>
+    <div class="vignette"></div>
+  </div>
+
+  <!-- ── Society Brand (top) ── -->
+  <header class="site-brand">
+    <div class="brand-emblem" aria-hidden="true">
+      <svg class="brand-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="22" cy="22" r="20" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+        <circle cx="15" cy="18" r="5" fill="#2DD4BF"/>
+        <circle cx="29" cy="18" r="5" fill="rgba(255,255,255,0.6)"/>
+        <circle cx="22" cy="30" r="5" fill="#60A5FA"/>
+      </svg>
+    </div>
+    <div class="brand-text">
+      <span class="brand-kr">대한작업치료학회</span>
+      <span class="brand-en">Korean Society of Occupational Therapy</span>
+    </div>
+  </header>
+
+  <!-- ── 3D Book Carousel ── -->
+  <div class="carousel-area" id="carouselArea"
+       role="region" aria-label="학술지 아카이브 캐러셀" tabindex="0">
+    <div class="carousel-scene" id="carouselScene">
+      <div class="carousel-stage" id="carouselStage"></div>
+    </div>
+    <div class="carousel-floor" aria-hidden="true"></div>
+  </div>
+
+  <!-- ── Selected Book Metadata ── -->
+  <div class="book-meta" id="bookMeta" aria-live="polite">
+    <span class="meta-vol"  id="metaVol"></span>
+    <span class="meta-sep"  aria-hidden="true">·</span>
+    <span class="meta-year" id="metaYear"></span>
+    <span class="meta-sep"  aria-hidden="true">·</span>
+    <span class="meta-cat"  id="metaCat"></span>
+  </div>
+
+  <!-- ── Hero Copy ── -->
+  <div class="hero-copy">
+    <h1 class="hero-heading">
+      <span class="h-top">Knowledge</span>
+      <span class="h-main">in Motion</span>
+    </h1>
+    <p class="hero-desc">
+      작업치료학의 축적된 지식을 공간적으로 탐험하는<br>학술 아카이브 경험
+    </p>
+    <div class="hero-ctas">
+      <a href="../pages/journal.html" class="cta-primary">
+        학회지 탐색
+        <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d="M4 10h12M10 4l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <a href="../pages/journal.html#archive" class="cta-ghost">전체 아카이브</a>
+    </div>
+  </div>
+
+  <!-- ── Carousel Navigation ── -->
+  <nav class="carousel-nav" aria-label="캐러셀 탐색">
+    <button class="nav-arrow" id="navPrev" aria-label="이전 학술지">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+    <div class="nav-dots" id="navDots" role="tablist"></div>
+    <button class="nav-arrow" id="navNext" aria-label="다음 학술지">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </button>
+  </nav>
+
+  <!-- ── Interaction Hint ── -->
+  <p class="scroll-hint" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" width="14" height="14">
+      <rect x="9" y="2" width="6" height="12" rx="3" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M12 19v2M5 10a7 7 0 0014 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+    드래그 · 스크롤 · 키보드 방향키로 탐색
+  </p>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

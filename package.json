@@ -1,0 +1,12 @@
+{
+  "name": "ksot-website",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "upload:journal": "node scripts/upload-journal-pdfs.mjs"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.1",
+    "dotenv": "^16.4.7"
+  }
+}

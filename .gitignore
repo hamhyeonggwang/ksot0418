@@ -1,0 +1,12 @@
+.DS_Store
+*.DS_Store
+Thumbs.db
+.env
+.env.*
+!.env.example
+
+node_modules/
+web/.next/
+web/out/
+web/node_modules/
+*.tsbuildinfo

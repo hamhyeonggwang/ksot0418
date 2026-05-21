@@ -38,4 +38,112 @@
     box-shadow: 0 12px 40px rgba(26, 43, 76, 0.12),
       0 4px 12px rgba(45, 212, 191, 0.08);
   }
+
+  /* Premium hero — 3D glass scene */
+  .hero-scene-stage {
+    perspective: 1400px;
+    transform-style: preserve-3d;
+  }
+
+  .hero-scene-orb--teal {
+    position: absolute;
+    right: 5%;
+    top: 15%;
+    height: 55%;
+    width: 50%;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      rgba(45, 212, 191, 0.35) 0%,
+      transparent 70%
+    );
+    filter: blur(40px);
+  }
+
+  .hero-scene-orb--navy {
+    position: absolute;
+    left: 0;
+    bottom: 10%;
+    height: 45%;
+    width: 45%;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      rgba(26, 43, 76, 0.12) 0%,
+      transparent 70%
+    );
+    filter: blur(36px);
+  }
+
+  .hero-scene-grid {
+    position: absolute;
+    inset: 10%;
+    border-radius: 24px;
+    opacity: 0.5;
+    background-image: linear-gradient(
+        rgba(26, 43, 76, 0.04) 1px,
+        transparent 1px
+      ),
+      linear-gradient(90deg, rgba(26, 43, 76, 0.04) 1px, transparent 1px);
+    background-size: 28px 28px;
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black, transparent);
+  }
+
+  .hero-float-card {
+    position: relative;
+    border-radius: 20px;
+    transform-style: preserve-3d;
+    transition: box-shadow 0.4s ease;
+  }
+
+  .hero-float-card-inner {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    background: linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.72) 0%,
+      rgba(255, 255, 255, 0.38) 100%
+    );
+    padding: 1.15rem 1.25rem;
+    box-shadow: 0 4px 6px rgba(26, 43, 76, 0.04),
+      0 20px 50px rgba(26, 43, 76, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(20px) saturate(1.4);
+    -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  }
+
+  .hero-float-card--accent .hero-float-card-inner {
+    border-color: rgba(45, 212, 191, 0.45);
+    box-shadow: 0 4px 6px rgba(45, 212, 191, 0.08),
+      0 24px 56px rgba(26, 43, 76, 0.12),
+      0 0 0 1px rgba(45, 212, 191, 0.12),
+      inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  }
+
+  .hero-float-card:hover .hero-float-card-inner {
+    box-shadow: 0 8px 12px rgba(26, 43, 76, 0.06),
+      0 32px 64px rgba(26, 43, 76, 0.14),
+      0 0 40px rgba(45, 212, 191, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 1);
+  }
+
+  .hero-float-card-shine {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 40%,
+      rgba(255, 255, 255, 0.5) 50%,
+      transparent 60%
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  .hero-float-card:hover .hero-float-card-shine {
+    opacity: 1;
+  }
 }

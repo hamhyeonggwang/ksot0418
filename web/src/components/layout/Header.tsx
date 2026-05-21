@@ -37,7 +37,9 @@ export function Header() {
 
       <header
         className={`sticky top-0 z-50 transition-all duration-300 ${
-          scrolled ? "glass-dark shadow-lg" : "bg-transparent"
+          scrolled
+            ? "border-b border-[#1A2B4C]/8 bg-white/80 shadow-[0_4px_24px_rgba(26,43,76,0.06)] backdrop-blur-xl"
+            : "bg-[#F8FAFC]/0"
         }`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8 lg:py-4">
@@ -47,14 +49,12 @@ export function Header() {
               alt="대한작업치료학회 KSOT"
               width={140}
               height={40}
-              className={`h-9 w-auto object-contain transition-all ${scrolled ? "brightness-0 invert" : ""}`}
+              className="h-9 w-auto object-contain"
               priority
             />
           </Link>
 
-          <nav
-            className={`hidden items-center gap-1 lg:flex ${scrolled ? "text-white" : "text-[#1A2B4C]"}`}
-          >
+          <nav className="hidden items-center gap-1 text-[#1A2B4C] lg:flex">
             {navLinks.map((item) => (
               <div
                 key={item.label}
@@ -100,24 +100,20 @@ export function Header() {
             <button
               type="button"
               aria-label="검색"
-              className={`rounded-full p-2.5 transition-colors ${scrolled ? "text-white hover:bg-white/10" : "text-[#1A2B4C] hover:bg-[#1A2B4C]/5"}`}
+              className="rounded-full p-2.5 text-[#1A2B4C] transition-colors hover:bg-[#1A2B4C]/5"
             >
               <Search className="h-5 w-5" />
             </button>
             <Link
               href={legacyHref(LEGACY.login)}
-              className={`hidden items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold sm:inline-flex ${
-                scrolled
-                  ? "border border-white/30 text-white"
-                  : "bg-[#1A2B4C] text-white"
-              }`}
+              className="hidden items-center gap-2 rounded-full bg-[#1A2B4C] px-4 py-2 text-sm font-semibold text-white sm:inline-flex hover:bg-[#243B66]"
             >
               <User className="h-4 w-4" />
               로그인
             </Link>
             <button
               type="button"
-              className={`rounded-full p-2.5 lg:hidden ${scrolled ? "text-white" : "text-[#1A2B4C]"}`}
+              className="rounded-full p-2.5 text-[#1A2B4C] lg:hidden"
               onClick={() => setDrawerOpen(true)}
               aria-label="메뉴 열기"
             >

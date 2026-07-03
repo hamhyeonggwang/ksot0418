@@ -38,7 +38,7 @@ export function SectionHeader({
           )}
         </h2>
         {description && (
-          <p className="mt-3 text-base leading-relaxed text-[#1A2B4C]/65">
+          <p className="mt-3 text-base leading-relaxed text-muted">
             {description}
           </p>
         )}

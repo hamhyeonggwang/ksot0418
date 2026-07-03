@@ -16,7 +16,7 @@ export function QuickPathSection() {
   return (
     <section className="border-y border-[#1A2B4C]/8 bg-white py-12">
       <Container>
-        <p className="mb-8 text-center text-sm font-bold tracking-widest text-[#1A2B4C]/40 uppercase">
+        <p className="mb-8 text-center text-sm font-bold tracking-widest text-muted uppercase">
           3 clicks to your goal
         </p>
         <div className="grid gap-6 md:grid-cols-3">

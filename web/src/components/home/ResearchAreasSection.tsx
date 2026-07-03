@@ -1,92 +1,108 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
+import { useState, FormEvent } from "react";
+import { Search, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { researchAreas } from "@/lib/data";
-import { legacyHref } from "@/lib/constants";
+import { LEGACY, legacyHref } from "@/lib/constants";
+
+const suggestions = [
+  "감각통합",
+  "뇌졸중 재활",
+  "인지재활",
+  "소아 발달",
+  "일상생활활동",
+  "보조공학",
+  "정신건강",
+  "지역사회 OT",
+  "AI in OT",
+  "척수장애",
+];
 
 export function ResearchAreasSection() {
-  const [active, setActive] = useState(researchAreas[0].id);
-  const current = researchAreas.find((r) => r.id === active) ?? researchAreas[0];
+  const [query, setQuery] = useState("");
+
+  const searchHref = legacyHref(
+    query.trim()
+      ? `/journal?q=${encodeURIComponent(query.trim())}#archive`
+      : LEGACY.journalSearch
+  );
+
+  function handleSubmit(e: FormEvent) {
+    e.preventDefault();
+    window.location.href = searchHref;
+  }
 
   return (
-    <section className="bg-white py-16 sm:py-24" id="research">
+    <section className="bg-[#F8FAFC] py-16 sm:py-24" id="research">
       <Container>
         <SectionHeader
-          label="Explore"
-          title="연구 분야"
-          titleAccent="탐색"
-          description="관심 주제를 선택해 관련 논문·학술대회 콘텐츠로 바로 이동합니다. 탐색형 UX로 메뉴 혼란을 줄입니다."
+          label="Search"
+          title="논문"
+          titleAccent="검색"
+          description="관심 주제·키워드로 학회지 논문을 바로 검색하세요."
         />
 
-        <div className="grid gap-6 lg:grid-cols-2 lg:gap-10">
-          {/* Category cards — touch-friendly */}
-          <div className="grid grid-cols-2 gap-3 sm:gap-4">
-            {researchAreas.map((area, i) => {
-              const Icon = area.icon;
-              const isActive = active === area.id;
-              return (
-                <motion.button
-                  key={area.id}
-                  type="button"
-                  onClick={() => setActive(area.id)}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.05 }}
-                  whileTap={{ scale: 0.97 }}
-                  className={`relative overflow-hidden rounded-2xl border p-4 text-left transition-all sm:p-5 ${
-                    isActive
-                      ? "border-[#2DD4BF] bg-[#2DD4BF]/10 ring-2 ring-[#2DD4BF]/30"
-                      : "border-[#1A2B4C]/8 bg-[#F8FAFC] hover:border-[#2DD4BF]/40"
-                  }`}
-                >
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-br ${area.gradient} opacity-80`}
-                  />
-                  <div className="relative">
-                    <Icon
-                      className={`h-6 w-6 ${isActive ? "text-[#14B8A6]" : "text-[#1A2B4C]/60"}`}
-                    />
-                    <p className="mt-3 font-bold text-[#1A2B4C]">{area.title}</p>
-                    <p className="text-xs text-[#1A2B4C]/50">{area.titleEn}</p>
-                  </div>
-                </motion.button>
-              );
-            })}
+        <motion.form
+          onSubmit={handleSubmit}
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mx-auto max-w-2xl"
+        >
+          <div className="flex items-center gap-3 rounded-2xl border border-[#1A2B4C]/12 bg-white px-5 py-3.5 shadow-sm focus-within:border-[#2DD4BF]/60 focus-within:shadow-md transition-all">
+            <Search className="h-5 w-5 shrink-0 text-muted" />
+            <input
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="논문 제목, 저자, 키워드 검색…"
+              className="flex-1 bg-transparent text-base text-[#1A2B4C] placeholder:text-muted outline-none"
+              aria-label="논문 검색"
+            />
+            <button
+              type="submit"
+              className="inline-flex items-center gap-1.5 rounded-xl bg-[#1A2B4C] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#243B66] active:scale-[0.97]"
+            >
+              검색
+              <ArrowRight className="h-4 w-4" />
+            </button>
           </div>
 
-          {/* Detail panel — encourages exploration */}
-          <motion.div
-            key={current.id}
-            initial={{ opacity: 0, x: 12 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="flex flex-col justify-between rounded-3xl bg-[#1A2B4C] p-8 text-white sm:p-10"
-          >
-            <div>
-              <current.icon className="h-10 w-10 text-[#2DD4BF]" />
-              <h3 className="mt-6 text-3xl font-bold">{current.title}</h3>
-              <p className="mt-1 text-[#2DD4BF]">{current.titleEn}</p>
-              <p className="mt-4 max-w-md text-base leading-relaxed text-white/75">
-                {current.description}
-              </p>
-              <p className="mt-6 text-sm text-white/50">
-                해당 분야 논문·학술 자료를 학회지 검색에서 확인할 수 있습니다.
-              </p>
-            </div>
+          {/* Keyword suggestions */}
+          <div className="mt-5 flex flex-wrap gap-2">
+            {suggestions.map((kw, i) => (
+              <motion.button
+                key={kw}
+                type="button"
+                onClick={() => setQuery(kw)}
+                initial={{ opacity: 0, scale: 0.92 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.03 }}
+                className={`rounded-full border px-3.5 py-1.5 text-sm font-medium transition-all ${
+                  query === kw
+                    ? "border-[#2DD4BF] bg-[#2DD4BF]/15 text-[#14B8A6]"
+                    : "border-[#1A2B4C]/10 bg-white text-muted hover:border-[#2DD4BF]/50 hover:text-[#1A2B4C]"
+                }`}
+              >
+                {kw}
+              </motion.button>
+            ))}
+          </div>
+
+          <p className="mt-6 text-center text-sm text-muted">
+            또는{" "}
             <Link
-              href={legacyHref(current.href)}
-              className="mt-8 inline-flex w-fit items-center gap-2 rounded-xl bg-[#2DD4BF] px-6 py-3.5 text-sm font-bold text-[#1A2B4C]"
+              href={legacyHref(LEGACY.journalSearch)}
+              className="font-semibold text-[#14B8A6] underline-offset-2 hover:underline"
             >
-              논문 검색하기
-              <ArrowUpRight className="h-4 w-4" />
+              전체 논문 아카이브 보기
             </Link>
-          </motion.div>
-        </div>
+          </p>
+        </motion.form>
       </Container>
     </section>
   );

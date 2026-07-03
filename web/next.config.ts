@@ -16,6 +16,16 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  /** 학회지: 정적 페이지에서 Next.js 학회지 라우트로 이관 (PRD Phase 2) */
+  async redirects() {
+    return [
+      {
+        source: "/pages/journal.html",
+        destination: "/journal",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

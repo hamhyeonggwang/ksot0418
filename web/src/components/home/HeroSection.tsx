@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   Search,
@@ -44,32 +43,17 @@ export function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
             >
-              <Link href="/" className="inline-flex items-center gap-3">
-                <Image
-                  src="/images/logo.png"
-                  alt="대한작업치료학회"
-                  width={160}
-                  height={48}
-                  className="h-10 w-auto sm:h-11"
-                  priority
-                />
-              </Link>
-
-              <p className="mt-8 text-xs font-semibold tracking-[0.2em] text-[#1A2B4C]/45 uppercase">
-                Korean Society of Occupational Therapy
-              </p>
-
-              <h1 className="text-balance mt-4 text-[2.35rem] font-bold leading-[1.08] tracking-tight text-[#1A2B4C] sm:text-5xl lg:text-[3.5rem]">
-                Modern OT
-                <br />
-                <span className="bg-gradient-to-r from-[#1A2B4C] via-[#243B66] to-[#14B8A6] bg-clip-text text-transparent">
-                  knowledge platform
+              <h1 className="leading-none">
+                <span className="block text-[4rem] font-black tracking-[-0.04em] text-[#1A2B4C] sm:text-[5rem] lg:text-[5.5rem]">
+                  KSOT
+                </span>
+                <span className="mt-2 block text-[0.78rem] font-semibold tracking-[0.22em] text-muted uppercase sm:text-[0.85rem]">
+                  Korean Society of Occupational Therapy
                 </span>
               </h1>
 
-              <p className="mt-5 max-w-md text-lg leading-relaxed text-[#1A2B4C]/60">
-                논문·학술대회·교육·커뮤니티를 하나의 학술 생태계에서.
-                <span className="text-[#1A2B4C]/80"> 지금 바로 시작하세요.</span>
+              <p className="mt-7 max-w-md text-lg leading-relaxed text-muted">
+                논문투고·학술대회·학회지 발행, 작업치료 학술 커뮤니티의 중심.
               </p>
             </motion.div>
 
@@ -118,7 +102,7 @@ export function HeroSection() {
                   <div className="text-xl font-bold tabular-nums text-[#1A2B4C] sm:text-2xl">
                     {s.value}
                   </div>
-                  <div className="mt-0.5 text-xs font-medium text-[#1A2B4C]/45">
+                  <div className="mt-0.5 text-xs font-medium text-muted">
                     {s.label}
                   </div>
                 </div>

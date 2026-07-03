@@ -9,11 +9,18 @@ import { GlassCard } from "@/components/ui/GlassCard";
 import {
   latestPapers,
   latestEducation,
-  announcements,
+  announcements as staticAnnouncements,
 } from "@/lib/data";
 import { LEGACY, legacyHref } from "@/lib/constants";
+import type { HomeAnnouncement } from "@/lib/board";
 
-export function LatestContentSection() {
+type Props = {
+  announcements?: HomeAnnouncement[];
+};
+
+export function LatestContentSection({ announcements: announcementsProp }: Props = {}) {
+  const announcements =
+    announcementsProp && announcementsProp.length > 0 ? announcementsProp : staticAnnouncements;
   return (
     <section className="py-16 sm:py-24" id="latest">
       <Container>
@@ -63,7 +70,7 @@ export function LatestContentSection() {
                 <p className="line-clamp-2 text-sm font-medium text-[#1A2B4C]">
                   {latestPapers[0].title}
                 </p>
-                <p className="mt-1 text-xs text-[#1A2B4C]/55">
+                <p className="mt-1 text-xs text-muted">
                   {latestPapers[0].authors} · {latestPapers[0].vol}
                 </p>
               </div>
@@ -72,7 +79,7 @@ export function LatestContentSection() {
 
           {/* Papers list */}
           <div className="flex flex-col gap-4 lg:col-span-4">
-            <h3 className="text-sm font-bold text-[#1A2B4C]/50 uppercase tracking-wider">
+            <h3 className="text-sm font-bold text-muted uppercase tracking-wider">
               최신 논문
             </h3>
             {latestPapers.slice(1).map((p, i) => (
@@ -81,7 +88,7 @@ export function LatestContentSection() {
                 <p className="mt-2 line-clamp-2 text-sm font-semibold text-[#1A2B4C]">
                   {p.title}
                 </p>
-                <p className="mt-2 text-xs text-[#1A2B4C]/50">
+                <p className="mt-2 text-xs text-muted">
                   {p.authors} · Vol.{p.vol}
                 </p>
               </GlassCard>
@@ -90,18 +97,18 @@ export function LatestContentSection() {
 
           {/* Education + notices column */}
           <div className="flex flex-col gap-4 lg:col-span-3">
-            <h3 className="flex items-center gap-2 text-sm font-bold text-[#1A2B4C]/50 uppercase tracking-wider">
+            <h3 className="flex items-center gap-2 text-sm font-bold text-muted uppercase tracking-wider">
               <GraduationCap className="h-4 w-4" /> 보수교육
             </h3>
             {latestEducation.map((e, i) => (
               <GlassCard key={e.title} href={legacyHref(e.href)} delay={0.1 * i}>
                 <div className="flex items-start justify-between gap-2">
-                  <span className="text-xs font-mono text-[#1A2B4C]/45">{e.date}</span>
+                  <span className="text-xs font-mono text-muted">{e.date}</span>
                   <span
                     className={`rounded-full px-2 py-0.5 text-[10px] font-bold ${
                       e.status === "open"
                         ? "bg-[#2DD4BF]/20 text-[#14B8A6]"
-                        : "bg-[#1A2B4C]/10 text-[#1A2B4C]/50"
+                        : "bg-[#1A2B4C]/10 text-muted"
                     }`}
                   >
                     {e.status === "open" ? "신청" : "예정"}
@@ -110,18 +117,18 @@ export function LatestContentSection() {
                 <p className="mt-2 text-sm font-semibold leading-snug text-[#1A2B4C]">
                   {e.title}
                 </p>
-                <p className="mt-1 text-xs text-[#1A2B4C]/50">
+                <p className="mt-1 text-xs text-muted">
                   {e.place} · {e.credits}
                 </p>
               </GlassCard>
             ))}
 
-            <h3 className="mt-2 flex items-center gap-2 text-sm font-bold text-[#1A2B4C]/50 uppercase tracking-wider">
+            <h3 className="mt-2 flex items-center gap-2 text-sm font-bold text-muted uppercase tracking-wider">
               <Bell className="h-4 w-4" /> 공지
             </h3>
-            {announcements.map((a, i) => (
+            {announcements.map((a) => (
               <Link
-                key={a.title}
+                key={a.href}
                 href={legacyHref(a.href)}
                 className="block rounded-xl border border-[#1A2B4C]/8 bg-white px-4 py-3 transition hover:border-[#2DD4BF]/40"
               >
@@ -129,7 +136,7 @@ export function LatestContentSection() {
                 <p className="mt-1 line-clamp-2 text-sm font-medium text-[#1A2B4C]">
                   {a.title}
                 </p>
-                <p className="mt-1 text-xs text-[#1A2B4C]/45">{a.date}</p>
+                <p className="mt-1 text-xs text-muted">{a.date}</p>
               </Link>
             ))}
           </div>

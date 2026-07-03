@@ -6,6 +6,8 @@
   --color-teal: #2dd4bf;
   --color-teal-dark: #14b8a6;
   --color-surface: #f8fafc;
+  /* WCAG AA 대비 검증(밝은 배경 기준 7.1:1) — 본문/메타 텍스트는 opacity 변형 대신 이 토큰 사용 */
+  --color-muted: #4a5875;
   --font-sans: var(--font-inter), "Pretendard Variable", Pretendard, -apple-system,
     BlinkMacSystemFont, system-ui, sans-serif;
 }

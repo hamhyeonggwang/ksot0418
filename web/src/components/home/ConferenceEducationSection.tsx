@@ -15,7 +15,7 @@ export function ConferenceEducationSection() {
     <section className="py-16 sm:py-24" id="conference">
       <Container>
         <SectionHeader
-          label="Events"
+          label="학회행사안내"
           title="학술대회 &"
           titleAccent="보수교육"
           description="게시판형 텍스트 대신 포스터·타임라인·스피커 카드로 행동(등록·일정 확인)을 유도합니다."
@@ -89,7 +89,7 @@ export function ConferenceEducationSection() {
                     </div>
                     <div>
                       <p className="font-semibold text-[#1A2B4C]">{s.name}</p>
-                      <p className="text-xs text-[#1A2B4C]/55">{s.role}</p>
+                      <p className="text-xs text-muted">{s.role}</p>
                     </div>
                   </li>
                 ))}
@@ -97,7 +97,7 @@ export function ConferenceEducationSection() {
             </div>
 
             <div className="flex flex-1 flex-col gap-3">
-              <p className="text-sm font-bold text-[#1A2B4C]/50">학술주간 교육</p>
+              <p className="text-sm font-bold text-muted">학술주간 교육</p>
               {latestEducation.slice(0, 2).map((e) => (
                 <Link
                   key={e.title}
@@ -108,7 +108,7 @@ export function ConferenceEducationSection() {
                   <p className="mt-2 font-semibold text-[#1A2B4C] group-hover:text-[#14B8A6]">
                     {e.title}
                   </p>
-                  <p className="mt-1 text-xs text-[#1A2B4C]/50">
+                  <p className="mt-1 text-xs text-muted">
                     {e.place} · {e.credits}
                   </p>
                 </Link>

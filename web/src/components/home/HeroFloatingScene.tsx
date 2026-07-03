@@ -192,7 +192,7 @@ function FloatingCard({ card }: { card: FloatCard }) {
               <p className="text-[15px] font-semibold tracking-tight text-[#1A2B4C]">
                 {card.title}
               </p>
-              <p className="mt-0.5 text-xs text-[#1A2B4C]/50">{card.subtitle}</p>
+              <p className="mt-0.5 text-xs text-muted">{card.subtitle}</p>
               <div className="hero-float-card-shine" aria-hidden />
             </div>
           </motion.div>

@@ -12,8 +12,8 @@ export const COLORS = {
 export const LEGACY = {
   base: process.env.NEXT_PUBLIC_LEGACY_BASE ?? "",
   about: "/pages/about.html",
-  journal: "/pages/journal.html",
-  journalSearch: "/pages/journal.html#archive",
+  journal: "/journal",
+  journalSearch: "/journal#archive",
   submission: "/pages/submission.html",
   education: "/pages/education.html",
   conference: "/pages/conference.html",

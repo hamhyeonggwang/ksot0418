@@ -29,12 +29,6 @@ export const heroCTAs = [
     href: LEGACY.education,
     icon: "education" as const,
   },
-  {
-    label: "회원가입",
-    sub: "학회 회원 혜택",
-    href: LEGACY.join,
-    icon: "user" as const,
-  },
 ];
 
 export const latestPapers = [
@@ -247,7 +241,7 @@ export const navLinks = [
     label: "학회지",
     href: LEGACY.journal,
     children: [
-      { label: "학회지 안내", href: `${LEGACY.journal}#about` },
+      { label: "학회지 안내", href: `${LEGACY.journal}` },
       { label: "논문 검색", href: LEGACY.journalSearch },
     ],
   },

@@ -16,13 +16,37 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-  /** 학회지: 정적 페이지에서 Next.js 학회지 라우트로 이관 (PRD Phase 2) */
-  /** 학술대회: 별도 사이트에서 운영 — /conference 직접 접근 시 외부로 이동 (PRD Phase 4 §4.6, EXTERNAL.conferenceSite와 동일 URL) */
+  /** Legacy HTML → Next.js 라우트 이관 (Phase 3) */
   async redirects() {
+    const legacyPages = [
+      "about",
+      "submission",
+      "education",
+      "community",
+      "guide",
+      "member",
+    ] as const;
+    const htmlRedirects = legacyPages.map((page) => ({
+      source: `/pages/${page}.html`,
+      destination: `/${page}`,
+      permanent: true,
+    }));
+
     return [
+      ...htmlRedirects,
       {
         source: "/pages/journal.html",
         destination: "/journal",
+        permanent: true,
+      },
+      {
+        source: "/pages/notice.html",
+        destination: "/board/notice",
+        permanent: true,
+      },
+      {
+        source: "/pages/terms.html",
+        destination: "/guide",
         permanent: true,
       },
       {

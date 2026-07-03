@@ -64,8 +64,11 @@ export function Footer() {
         <div className="mt-12 flex flex-col gap-4 border-t border-white/10 pt-8 text-xs text-white/50 sm:flex-row sm:justify-between">
           <p>© {new Date().getFullYear()} 대한작업치료학회 (KSOT). All Rights Reserved.</p>
           <div className="flex gap-4">
-            <Link href={legacyHref("/pages/guide.html#privacy")}>개인정보처리방침</Link>
-            <Link href={legacyHref("/pages/guide.html#terms")}>이용약관</Link>
+            <Link href={legacyHref("/guide#privacy")}>개인정보처리방침</Link>
+            <Link href={legacyHref("/guide#terms")}>이용약관</Link>
+            <Link href="/admin" className="text-white/30 hover:text-white/60">
+              관리자
+            </Link>
           </div>
         </div>
       </div>

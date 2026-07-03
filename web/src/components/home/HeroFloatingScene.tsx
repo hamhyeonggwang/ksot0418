@@ -3,12 +3,12 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
-  Sparkles,
-  Users,
+  Landmark,
+  Send,
   BookOpen,
-  FlaskConical,
   Calendar,
-  Activity,
+  FolderOpen,
+  Mail,
   type LucideIcon,
 } from "lucide-react";
 import { LEGACY, legacyHref, isExternalHref } from "@/lib/constants";
@@ -19,116 +19,59 @@ type FloatCard = {
   subtitle: string;
   icon: LucideIcon;
   href: string;
-  /** % position in scene */
-  x: number;
-  y: number;
-  z: number;
-  rotateX: number;
-  rotateY: number;
-  rotateZ: number;
-  scale: number;
-  floatDuration: number;
   floatDelay: number;
   accent?: boolean;
 };
 
 const CARDS: FloatCard[] = [
   {
+    id: "about",
+    title: "학회소개",
+    subtitle: "연혁 · 정관 · 조직도",
+    icon: Landmark,
+    href: LEGACY.about,
+    floatDelay: 0,
+  },
+  {
+    id: "submission",
+    title: "논문투고",
+    subtitle: "투고규정 · 온라인투고",
+    icon: Send,
+    href: LEGACY.submission,
+    floatDelay: 0.12,
+  },
+  {
     id: "journal",
-    title: "Journal",
+    title: "학회지검색",
     subtitle: "KCI · KJOT",
     icon: BookOpen,
     href: LEGACY.journalSearch,
-    x: 42,
-    y: 38,
-    z: 120,
-    rotateX: 6,
-    rotateY: -8,
-    rotateZ: -2,
-    scale: 1.08,
-    floatDuration: 5.5,
-    floatDelay: 0,
+    floatDelay: 0.24,
     accent: true,
   },
   {
-    id: "ai",
-    title: "AI in OT",
-    subtitle: "Digital practice",
-    icon: Sparkles,
-    href: LEGACY.conference,
-    x: 68,
-    y: 12,
-    z: 90,
-    rotateX: 10,
-    rotateY: -22,
-    rotateZ: 3,
-    scale: 1,
-    floatDuration: 6.2,
-    floatDelay: 0.4,
-  },
-  {
-    id: "pediatrics",
-    title: "Pediatrics",
-    subtitle: "Child & family",
-    icon: Users,
-    href: LEGACY.journalSearch,
-    x: 12,
-    y: 28,
-    z: 70,
-    rotateX: 4,
-    rotateY: 18,
-    rotateZ: -4,
-    scale: 0.95,
-    floatDuration: 5.8,
-    floatDelay: 0.8,
-  },
-  {
-    id: "research",
-    title: "Research",
-    subtitle: "Evidence hub",
-    icon: FlaskConical,
-    href: LEGACY.journalSearch,
-    x: 22,
-    y: 58,
-    z: 40,
-    rotateX: 12,
-    rotateY: 12,
-    rotateZ: 2,
-    scale: 0.88,
-    floatDuration: 7,
-    floatDelay: 1.2,
-  },
-  {
     id: "conference",
-    title: "Conference",
-    subtitle: "2026 · 9.19",
+    title: "학술대회신청",
+    subtitle: "2026.9.19 사전등록",
     icon: Calendar,
     href: LEGACY.conferenceRegister,
-    x: 72,
-    y: 52,
-    z: 85,
-    rotateX: 8,
-    rotateY: -14,
-    rotateZ: -1,
-    scale: 0.92,
-    floatDuration: 6.5,
-    floatDelay: 0.6,
+    floatDelay: 0.36,
   },
   {
-    id: "community",
-    title: "Community OT",
-    subtitle: "Integrated care",
-    icon: Activity,
-    href: LEGACY.journalSearch,
-    x: 48,
-    y: 72,
-    z: 55,
-    rotateX: 14,
-    rotateY: 6,
-    rotateZ: 4,
-    scale: 0.9,
-    floatDuration: 5.2,
-    floatDelay: 1,
+    id: "resources",
+    title: "자료실",
+    subtitle: "서식 · 다운로드",
+    icon: FolderOpen,
+    href: "/board/resources",
+    floatDelay: 0.48,
+  },
+  {
+    id: "contact",
+    title: "문의하기",
+    subtitle: "이메일 · 연락처",
+    icon: Mail,
+    href: `${LEGACY.about}#contact`,
+    floatDelay: 0.6,
   },
 ];
 
@@ -137,24 +80,14 @@ function FloatingCard({ card }: { card: FloatCard }) {
 
   return (
     <motion.div
-      className="absolute left-0 top-0 w-[min(100%,200px)] sm:w-[200px]"
-      style={{
-        left: `${card.x}%`,
-        top: `${card.y}%`,
-        zIndex: Math.round(card.z),
-        transform: `translate(-50%, -50%)`,
-      }}
-      initial={{ opacity: 0, scale: 0.85 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.7, delay: card.floatDelay }}
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: card.floatDelay }}
     >
       <motion.div
-        animate={{
-          y: [0, -16, 0],
-          rotateZ: [card.rotateZ, card.rotateZ + 1.5, card.rotateZ],
-        }}
+        animate={{ y: [0, -6, 0] }}
         transition={{
-          duration: card.floatDuration,
+          duration: 4.5,
           repeat: Infinity,
           ease: "easeInOut",
           delay: card.floatDelay,
@@ -168,24 +101,11 @@ function FloatingCard({ card }: { card: FloatCard }) {
           className="block"
         >
           <motion.div
-            whileHover={{
-              scale: 1.06,
-              rotateX: card.rotateX - 4,
-              rotateY: card.rotateY + 4,
-            }}
-            transition={{ type: "spring", stiffness: 260, damping: 22 }}
-            className={`hero-float-card group ${card.accent ? "hero-float-card--accent" : ""}`}
-            style={{
-              transform: `
-                perspective(900px)
-                rotateX(${card.rotateX}deg)
-                rotateY(${card.rotateY}deg)
-                rotateZ(${card.rotateZ}deg)
-                scale(${card.scale})
-              `,
-            }}
+            whileHover={{ scale: 1.03, y: -3 }}
+            transition={{ type: "spring", stiffness: 300, damping: 24 }}
+            className={`hero-float-card group h-full ${card.accent ? "hero-float-card--accent" : ""}`}
           >
-            <div className="hero-float-card-inner">
+            <div className="hero-float-card-inner h-full">
               <div
                 className={`mb-3 flex h-10 w-10 items-center justify-center rounded-xl transition-colors ${
                   card.accent
@@ -210,25 +130,15 @@ function FloatingCard({ card }: { card: FloatCard }) {
 
 export function HeroFloatingScene() {
   return (
-    <div className="hero-scene relative mx-auto w-full max-w-[520px] lg:max-w-none">
+    <div className="hero-scene relative mx-auto w-full max-w-[440px] lg:max-w-none">
       {/* Depth layers — atmosphere only, no imagery */}
       <div className="pointer-events-none absolute inset-0" aria-hidden>
         <div className="hero-scene-orb hero-scene-orb--teal" />
         <div className="hero-scene-orb hero-scene-orb--navy" />
         <div className="hero-scene-grid" />
-        <motion.div
-          className="absolute left-1/2 top-1/2 h-[280px] w-[280px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#2DD4BF]/15"
-          animate={{ scale: [1, 1.08, 1], opacity: [0.4, 0.25, 0.4] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute left-1/2 top-1/2 h-[360px] w-[360px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#1A2B4C]/8"
-          animate={{ scale: [1.05, 1, 1.05], opacity: [0.2, 0.35, 0.2] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        />
       </div>
 
-      <div className="hero-scene-stage relative aspect-[4/5] min-h-[380px] sm:min-h-[440px] lg:aspect-square lg:min-h-[520px]">
+      <div className="relative grid grid-cols-2 gap-4 sm:gap-5">
         {CARDS.map((card) => (
           <FloatingCard key={card.id} card={card} />
         ))}

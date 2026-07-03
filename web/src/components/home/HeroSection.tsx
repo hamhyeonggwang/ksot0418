@@ -6,7 +6,6 @@ import {
   Search,
   Calendar,
   GraduationCap,
-  UserPlus,
   ArrowRight,
 } from "lucide-react";
 import { heroCTAs, platformStats } from "@/lib/data";
@@ -17,7 +16,6 @@ const iconMap = {
   search: Search,
   calendar: Calendar,
   education: GraduationCap,
-  user: UserPlus,
 } as const;
 
 export function HeroSection() {

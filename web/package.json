@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "sync": "node ../scripts/sync-public-assets.mjs",
+    "sync": "node ../scripts/sync-public-assets.mjs && node ../scripts/extract-static-content.mjs",
     "predev": "npm run sync",
     "dev": "next dev",
     "prebuild": "npm run sync",

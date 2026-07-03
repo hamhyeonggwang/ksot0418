@@ -1,70 +1,5 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script>try{localStorage.getItem("ksot_member_session")==="1"&&document.documentElement.classList.add("ksot-logged-in");}catch(e){}</script>
-  <title>학회소개 | 대한작업치료학회</title>
-  <link rel="stylesheet" href="../css/main.css" />
-  <link rel="stylesheet" href="../css/pages.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-</head>
-<body>
-<!-- TOPBAR -->
-<div class="topbar"><div class="container-wide"><div class="topbar-left"><span><i class="fa-solid fa-envelope"></i> 행정·보수교육 ksotoffice@naver.com</span><span><i class="fa-solid fa-envelope"></i> 학술지·학술대회 ksot.editor@gmail.com</span></div></div></div>
-<!-- HEADER -->
-<header id="header"><div class="container-wide"><div class="header-inner"><a href="../index.html" class="logo"><img src="../images/logo.png" alt="대한작업치료학회" class="logo-img" /></a><nav class="gnb"><ul><li><a href="about.html" class="active">학회소개 <i class="fa-solid fa-chevron-down arrow"></i></a><ul class="dropdown"><li><a href="#intro">인사말</a></li><li><a href="#history">연혁</a></li><li><a href="#past-presidents">역대회장단</a></li><li><a href="#annual-plan">연간계획</a></li><li><a href="#executives-org">임원진/조직도</a></li><li><a href="#bylaws">학회 정관</a></li><li><a href="#contact">학회연락처 및 위치</a></li><li><a href="guide.html">이용안내</a></li></ul></li><li><a href="journal.html">학회지 <i class="fa-solid fa-chevron-down arrow"></i></a><ul class="dropdown"><li><a href="journal.html#about">학회지 안내</a></li><li><a href="journal.html#archive">학회지 검색</a></li></ul></li><li><a href="submission.html">논문투고 <i class="fa-solid fa-chevron-down arrow"></i></a><ul class="dropdown"><li><a href="submission.html#guide">논문투고 안내</a></li><li><a href="submission.html#policy">편집방침과 투고규정</a></li><li><a href="submission.html#editorial-board">편집위원회</a></li><li><a href="submission.html#review">논문 심사기준</a></li><li><a href="submission.html#submit">온라인논문투고</a></li></ul></li><li><a href="education.html">교육·연수 <i class="fa-solid fa-chevron-down arrow"></i></a><ul class="dropdown"><li><a href="education.html#ce-schedule">보수교육</a></li></ul></li><li><a href="community.html">커뮤니티 <i class="fa-solid fa-chevron-down arrow"></i></a><ul class="dropdown"><li><a href="/board/notice">공지사항</a></li><li><a href="community.html#gallery">학회 갤러리</a></li><li><a href="https://www.youtube.com/channel/UCx3zw743-w7mZ2jvCjzgrfQ" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i> 유튜브 채널</a></li></ul></li><li class="gnb-item--conference"><a href="conference.html">학술대회 <i class="fa-solid fa-chevron-down arrow"></i></a><ul class="dropdown"><li class="conference-submenu-hidden"><a href="conference.html#about">대회 안내</a></li><li class="conference-submenu-hidden"><a href="conference.html#program">프로그램</a></li><li class="conference-submenu-hidden"><a href="conference.html#register">사전 등록</a></li><li><a href="conference.html#gallery">갤러리</a></li><li><a href="conference.html#archive">지난 대회</a></li></ul></li></ul></nav><div class="header-right"><button class="btn-search" data-action="search"><i class="fa-solid fa-magnifying-glass"></i></button><div class="header-auth-links"><span class="nav-guest-only"><a href="member.html#login" class="header-auth-link">로그인</a><span class="header-auth-sep" aria-hidden="true">|</span><a href="member.html#join" class="header-auth-link">회원가입</a></span><a href="member.html#mypage" class="header-auth-link header-auth-link--primary nav-auth-only"><i class="fa-solid fa-user"></i> 마이페이지</a></div><button class="btn-hamburger" id="btnHamburger"><span></span><span></span><span></span></button></div></div></div></header>
-
-<!-- PAGE BANNER -->
-<section class="page-banner">
-  <div class="container-wide">
-    <div class="page-banner-inner">
-      <nav class="breadcrumb">
-        <a href="../index.html"><i class="fa-solid fa-house"></i></a>
-        <span class="sep"><i class="fa-solid fa-chevron-right"></i></span>
-        <span class="current">학회소개</span>
-      </nav>
-      <h1>인사<em>말</em></h1>
-      <p>대한작업치료학회를 소개합니다</p>
-      <div class="page-banner-meta">
-        <span><i class="fa-solid fa-calendar"></i> 창립: 1993년</span>
-        <span><i class="fa-solid fa-flag"></i> 창립 34주년</span>
-        <span><i class="fa-solid fa-globe"></i> WFOT 정회원</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="container-wide">
-  <div class="page-layout">
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
-      <nav class="sidebar-nav">
-        <div class="sidebar-nav-title"><i class="fa-solid fa-building-columns"></i> 학회소개</div>
-        <ul>
-          <li><a href="#intro" class="active"><i class="fa-solid fa-handshake"></i> 인사말</a></li>
-          <li><a href="#history"><i class="fa-solid fa-clock-rotate-left"></i> 연혁</a></li>
-          <li><a href="#past-presidents"><i class="fa-solid fa-user-tie"></i> 역대회장단</a></li>
-          <li><a href="#annual-plan"><i class="fa-solid fa-calendar-days"></i> 연간계획</a></li>
-          <li><a href="#executives-org"><i class="fa-solid fa-sitemap"></i> 임원진/조직도</a></li>
-          <li><a href="#bylaws"><i class="fa-regular fa-file-lines"></i> 학회 정관</a></li>
-          <li><a href="#contact"><i class="fa-solid fa-location-dot"></i> 학회연락처 및 위치</a></li>
-          <li><a href="guide.html"><i class="fa-solid fa-file-contract"></i> 이용안내</a></li>
-        </ul>
-      </nav>
-      <div class="sidebar-card">
-        <h5>📧 학회 연락처</h5>
-        <p>문의사항은 아래 연락처로 연락 주세요.</p>
-        <p style="font-size:13px;line-height:1.5;margin-bottom:8px;">행정(대표) 및 보수교육<br><a href="mailto:ksotoffice@naver.com">ksotoffice@naver.com</a></p>
-        <p style="font-size:13px;line-height:1.5;margin:0;">학술지 및 학술대회<br><a href="mailto:ksot.editor@gmail.com">ksot.editor@gmail.com</a></p>
-      </div>
-    </aside>
-
-    <!-- CONTENT -->
-    <main class="page-content">
-
-      <!-- 인사말 -->
+/** Auto-generated from pages/about.html — do not edit manually */
+export const html = `<!-- 인사말 -->
       <section class="content-section" id="intro">
         <div class="content-header">
           <h2><i class="fa-solid fa-handshake"></i> 인사말</h2>
@@ -170,7 +105,7 @@
         <div id="annual-plan" class="content-header" style="margin-top:32px;padding-top:24px;border-top:1px solid var(--border-light);scroll-margin-top:88px;">
           <h3 style="font-size:1.25rem;margin:0;display:flex;align-items:center;gap:10px;color:var(--text-dark);"><i class="fa-solid fa-calendar-days" style="color:var(--primary);"></i> 연간계획</h3>
         </div>
-        <p style="font-size:14px;color:var(--text-mid);margin:8px 0 16px;">대한작업치료학회지는 연 4회(3·6·9·12월) 발행하며, 학술대회·보수교육은 아래 시기를 중심으로 운영됩니다. 정확한 일정은 <a href="community.html#notice" style="color:var(--primary);font-weight:600;">공지사항</a>과 <a href="education.html#ce-schedule" style="color:var(--primary);font-weight:600;">보수교육 안내</a>에서 별도 공지합니다.</p>
+        <p style="font-size:14px;color:var(--text-mid);margin:8px 0 16px;">대한작업치료학회지는 연 4회(3·6·9·12월) 발행하며, 학술대회·보수교육은 아래 시기를 중심으로 운영됩니다. 정확한 일정은 <a href="/community#notice" style="color:var(--primary);font-weight:600;">공지사항</a>과 <a href="/education#ce-schedule" style="color:var(--primary);font-weight:600;">보수교육 안내</a>에서 별도 공지합니다.</p>
         <div style="border:1px solid var(--border-light);border-radius:var(--radius-md);overflow:hidden;background:#fff;">
           <div style="display:grid;grid-template-columns:minmax(88px,110px) 1fr;border-bottom:1px solid var(--border-light);">
             <div style="background:var(--bg);padding:16px 14px;display:flex;align-items:flex-start;justify-content:center;font-size:15px;font-weight:700;color:var(--primary);border-right:1px solid var(--border-light);">3월</div>
@@ -483,22 +418,5 @@
             <div style="display:flex;gap:12px;align-items:flex-start;"><strong style="color:var(--text-dark);min-width:10em;flex-shrink:0;">학술지 및 학술대회</strong><span style="color:var(--text-mid);"><a href="mailto:ksot.editor@gmail.com" style="color:var(--primary);">ksot.editor@gmail.com</a></span></div>
           </div>
         </div>
-      </section>
-
-    </main>
-  </div>
-</div>
-
-<!-- FOOTER -->
-<footer id="footer"><div class="footer-top"><div class="container-wide"><div class="footer-grid"><div class="footer-brand"><div class="footer-logo"><div class="footer-logo-icon">K</div><div class="footer-logo-text"><span class="en">KSOT</span><span class="kr">대한작업치료학회</span></div></div><p>대한작업치료학회는 1993년 창립 이래 작업치료의 학문적 발전과 전문직 향상을 위해 끊임없이 노력해 온 대한민국 대표 작업치료 학술 단체입니다.</p><div class="footer-contact"><div class="footer-contact-item"><i class="fa-solid fa-location-dot"></i><span><strong>대한작업치료학회</strong><br>(54538) 전북특별자치도 익산시 익산대로 460 원광대학교 작업치료학과내 대한작업치료학회</span></div><div class="footer-contact-item"><i class="fa-solid fa-envelope"></i><span>행정(대표) 및 보수교육 <a href="mailto:ksotoffice@naver.com" style="color:inherit;">ksotoffice@naver.com</a><br>학술지 및 학술대회 <a href="mailto:ksot.editor@gmail.com" style="color:inherit;">ksot.editor@gmail.com</a></span></div></div><div class="footer-social"><a href="#" class="social-btn"><i class="fa-brands fa-youtube"></i></a><a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a><a href="#" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a></div></div><div class="footer-nav"><h6>학회 안내</h6><ul><li><a href="#intro">인사말</a></li><li><a href="#history">연혁</a></li><li><a href="#past-presidents">역대회장단</a></li><li><a href="#annual-plan">연간계획</a></li><li><a href="#executives-org">임원진/조직도</a></li><li><a href="#contact">학회연락처 및 위치</a></li><li><a href="guide.html">이용안내</a></li></ul></div><div class="footer-nav"><h6>학술 활동</h6><ul><li><a href="journal.html">학회지</a></li><li><a href="submission.html">논문 투고</a></li><li><a href="conference.html">학술대회</a></li><li><a href="education.html#ce-schedule">보수교육</a></li></ul></div></div></div></div><div class="footer-bottom"><div class="container-wide" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;width:100%;"><p>Copyright © 2025 대한작업치료학회 (KSOT). All Rights Reserved.</p><div class="footer-links"><a href="guide.html#terms">이용약관</a><a href="guide.html#privacy">개인정보처리방침</a><a href="guide.html#email-refusal">이메일무단수집거부</a><a href="#">사이트맵</a><a href="/admin" class="footer-admin-link">관리자</a></div></div></div></footer>
-
-<button id="scrollTop"><i class="fa-solid fa-chevron-up"></i></button>
-<!-- Mobile Drawer -->
-<div class="drawer-overlay" id="drawerOverlay"></div>
-<nav class="mobile-drawer" id="mobileDrawer"><div class="drawer-header"><div class="drawer-logo">KSOT<span>대한작업치료학회</span></div><button class="drawer-close" id="btnDrawerClose"><i class="fa-solid fa-xmark"></i></button></div><div class="drawer-user"><div class="avatar"><i class="fa-solid fa-user"></i></div><div class="info"><p class="nav-guest-only">로그인 후 서비스를 이용할 수 있습니다</p><p class="nav-auth-only"><a href="member.html#mypage">마이페이지로 이동</a></p><div class="drawer-auth-inline nav-guest-only"><a href="member.html#login">로그인</a><span class="header-auth-sep" aria-hidden="true">|</span><a href="member.html#join">회원가입</a></div></div></div><div class="drawer-nav"><div class="drawer-nav-item">학회소개 <i class="fa-solid fa-chevron-down" style="font-size:12px;"></i></div><div class="drawer-sub-nav show"><a href="#intro">인사말</a><a href="#history">연혁</a><a href="#past-presidents">역대회장단</a><a href="#annual-plan">연간계획</a><a href="#executives-org">임원진/조직도</a><a href="#contact">학회연락처 및 위치</a><a href="guide.html">이용안내</a></div><div class="drawer-nav-item">학회지 <i class="fa-solid fa-chevron-down" style="font-size:12px;"></i></div><div class="drawer-sub-nav"><a href="journal.html#about">학회지 안내</a><a href="journal.html#archive">학회지 검색</a></div><div class="drawer-nav-item"><a href="conference.html" style="color:inherit;">학술대회</a></div><div class="drawer-nav-item"><a href="community.html" style="color:inherit;">커뮤니티</a></div></div></nav>
-<!-- Search -->
-<div class="search-overlay" id="searchOverlay"><div class="search-box"><div class="search-inner"><div class="search-input-wrap"><i class="fa-solid fa-magnifying-glass"></i><input type="text" id="searchInput" placeholder="검색어를 입력하세요..." autocomplete="off"/><button class="search-close" id="searchClose">닫기 ESC</button></div><div class="search-suggestions"><h6>추천 검색어</h6><div class="search-tags"><span class="search-tag">인지재활</span><span class="search-tag">뇌졸중 작업치료</span><span class="search-tag">감각통합</span><span class="search-tag">소아 발달</span></div></div></div></div></div>
-
-<script src="../js/main.js"></script>
-</body>
-</html>
+      </section>`;
+export const extraCss = ``;

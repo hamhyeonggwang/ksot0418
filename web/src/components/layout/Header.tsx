@@ -4,9 +4,9 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Search, ChevronDown, User } from "lucide-react";
+import { Menu, X, Search, ChevronDown } from "lucide-react";
 import { navLinks } from "@/lib/data";
-import { LEGACY, legacyHref, isExternalHref } from "@/lib/constants";
+import { legacyHref, isExternalHref } from "@/lib/constants";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -107,13 +107,6 @@ export function Header() {
             >
               <Search className="h-5 w-5" />
             </button>
-            <Link
-              href={legacyHref(LEGACY.login)}
-              className="hidden items-center gap-2 rounded-full bg-[#1A2B4C] px-4 py-2 text-sm font-semibold text-white sm:inline-flex hover:bg-[#243B66]"
-            >
-              <User className="h-4 w-4" />
-              로그인
-            </Link>
             <button
               type="button"
               className="rounded-full p-2.5 text-[#1A2B4C] lg:hidden"
@@ -167,14 +160,6 @@ export function Header() {
                     {item.label}
                   </Link>
                 ))}
-                <hr className="my-4 border-[#1A2B4C]/10" />
-                <Link
-                  href={legacyHref(LEGACY.join)}
-                  onClick={() => setDrawerOpen(false)}
-                  className="rounded-xl bg-[#1A2B4C] px-4 py-3.5 text-center font-semibold text-white"
-                >
-                  회원가입
-                </Link>
               </div>
             </motion.nav>
           </>

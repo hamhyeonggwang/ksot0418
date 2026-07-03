@@ -21,8 +21,8 @@
      insert into public.admins (user_id, email)
      values ('<auth.users의 uuid>', '관리자이메일');
      ```
-5. **Storage RLS** (board 버킷 업로드를 관리자만 허용)
-   - Dashboard → Storage → `board` 버킷 → Policies에서 아래 정책 추가:
+5. **Storage RLS** (board·journal 버킷 업로드를 관리자만 허용)
+   - Dashboard → Storage → 각 버킷 → Policies에서 아래 정책 추가:
      ```sql
      create policy "board_public_read" on storage.objects
        for select to anon, authenticated using (bucket_id = 'board');
@@ -30,6 +30,13 @@
        for all to authenticated
        using (bucket_id = 'board' and exists (select 1 from public.admins a where a.user_id = auth.uid()))
        with check (bucket_id = 'board' and exists (select 1 from public.admins a where a.user_id = auth.uid()));
+
+     create policy "journal_public_read" on storage.objects
+       for select to anon, authenticated using (bucket_id = 'journal');
+     create policy "journal_admin_write" on storage.objects
+       for all to authenticated
+       using (bucket_id = 'journal' and exists (select 1 from public.admins a where a.user_id = auth.uid()))
+       with check (bucket_id = 'journal' and exists (select 1 from public.admins a where a.user_id = auth.uid()));
      ```
 
 ## 2. PDF 업로드 (로컬 → Storage)
@@ -94,8 +101,10 @@ PDF 공개 URL:
 
 ## 5. 새 호 추가 방법
 
+**A. 관리자 CMS (권장, Phase 4)**
+`/admin/journal` 에서 관리자 로그인 후 호 생성 → 논문 등록 + PDF 업로드까지 브라우저에서 처리합니다. 코드·SQL 개입이 필요 없습니다.
+
+**B. 스크립트 (초기 시드용)**
 1. `files/journal/34-2/` 등에 PDF 배치
 2. `seed.sql`에 issue·articles INSERT 추가 (또는 Dashboard Table Editor)
 3. `npm run upload:journal` 재실행
-
-> v1 기준 학회지 발행은 개발자가 위 절차로 운영합니다. 사무국 자체 등록용 CMS는 PRD Phase 4(§4.5) 참고.

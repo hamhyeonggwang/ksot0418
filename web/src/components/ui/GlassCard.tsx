@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { isExternalHref } from "@/lib/constants";
 
 type Props = {
   href?: string;
@@ -39,7 +40,11 @@ export function GlassCard({
 
   if (href) {
     return (
-      <Link href={href} className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2DD4BF] rounded-2xl">
+      <Link
+        href={href}
+        {...(isExternalHref(href) ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+        className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2DD4BF] rounded-2xl"
+      >
         {inner}
       </Link>
     );

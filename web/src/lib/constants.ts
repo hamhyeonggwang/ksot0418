@@ -8,6 +8,11 @@ export const COLORS = {
   white: "#FFFFFF",
 } as const;
 
+/** 학회지·홈과 분리 운영되는 외부 사이트 (PRD §4.6) */
+export const EXTERNAL = {
+  conferenceSite: "https://ksot0919.vercel.app/index.html",
+} as const;
+
 /** Deploy: set NEXT_PUBLIC_LEGACY_BASE="" when static pages are served from same origin /pages */
 export const LEGACY = {
   base: process.env.NEXT_PUBLIC_LEGACY_BASE ?? "",
@@ -16,8 +21,9 @@ export const LEGACY = {
   journalSearch: "/journal#archive",
   submission: "/pages/submission.html",
   education: "/pages/education.html",
-  conference: "/pages/conference.html",
-  conferenceRegister: "/pages/conference.html#register",
+  /** 학술대회는 별도 사이트에서 운영 — 새 탭으로 이동 (isExternalHref로 판별) */
+  conference: EXTERNAL.conferenceSite,
+  conferenceRegister: `${EXTERNAL.conferenceSite}#register`,
   community: "/pages/community.html",
   notice: "/pages/community.html#notice",
   member: "/pages/member.html",
@@ -29,4 +35,9 @@ export const LEGACY = {
 export function legacyHref(path: string) {
   const base = LEGACY.base.replace(/\/$/, "");
   return base ? `${base}${path}` : path;
+}
+
+/** 절대 URL(외부 사이트)인지 판별 — Link에 target="_blank" rel="noopener" 부여 여부 결정 */
+export function isExternalHref(href: string) {
+  return /^https?:\/\//.test(href);
 }

@@ -6,7 +6,7 @@ import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Search, ChevronDown, User } from "lucide-react";
 import { navLinks } from "@/lib/data";
-import { LEGACY, legacyHref } from "@/lib/constants";
+import { LEGACY, legacyHref, isExternalHref } from "@/lib/constants";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -64,6 +64,9 @@ export function Header() {
               >
                 <Link
                   href={legacyHref(item.href)}
+                  {...(isExternalHref(item.href)
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
                   className={`flex items-center gap-1 rounded-full px-4 py-2 text-sm font-medium transition-colors hover:bg-white/10 ${
                     "highlight" in item && item.highlight
                       ? "bg-[#2DD4BF] text-[#1A2B4C] hover:bg-[#2DD4BF]/90"
@@ -152,6 +155,9 @@ export function Header() {
                     key={item.label}
                     href={legacyHref(item.href)}
                     onClick={() => setDrawerOpen(false)}
+                    {...(isExternalHref(item.href)
+                      ? { target: "_blank", rel: "noopener noreferrer" }
+                      : {})}
                     className={`rounded-xl px-4 py-3.5 text-base font-medium ${
                       "highlight" in item && item.highlight
                         ? "bg-[#2DD4BF]/15 text-[#14B8A6]"

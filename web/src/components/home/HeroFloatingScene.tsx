@@ -11,7 +11,7 @@ import {
   Activity,
   type LucideIcon,
 } from "lucide-react";
-import { LEGACY, legacyHref } from "@/lib/constants";
+import { LEGACY, legacyHref, isExternalHref } from "@/lib/constants";
 
 type FloatCard = {
   id: string;
@@ -160,7 +160,13 @@ function FloatingCard({ card }: { card: FloatCard }) {
           delay: card.floatDelay,
         }}
       >
-        <Link href={legacyHref(card.href)} className="block">
+        <Link
+          href={legacyHref(card.href)}
+          {...(isExternalHref(card.href)
+            ? { target: "_blank", rel: "noopener noreferrer" }
+            : {})}
+          className="block"
+        >
           <motion.div
             whileHover={{
               scale: 1.06,

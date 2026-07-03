@@ -83,3 +83,41 @@ export async function getJournalArticle(articleId: string): Promise<JournalArtic
   const { articles } = await getJournalData();
   return articles.find((a) => a.id === articleId) ?? null;
 }
+
+/** 관리자 CMS 전용 — 시드 폴백 없이 실 DB만 조회 */
+export async function getJournalIssueAdmin(issueId: string) {
+  const supabase = await createClient();
+  const { data: issue } = await supabase
+    .from("journal_issues")
+    .select("*")
+    .eq("id", issueId)
+    .maybeSingle();
+  if (!issue) return null;
+
+  const { data: articles } = await supabase
+    .from("journal_articles")
+    .select("*")
+    .eq("issue_id", issueId)
+    .order("sort_order", { ascending: true });
+
+  return { issue: issue as JournalIssue, articles: (articles ?? []) as JournalArticle[] };
+}
+
+export async function getJournalArticleAdmin(articleId: string) {
+  const supabase = await createClient();
+  const { data } = await supabase
+    .from("journal_articles")
+    .select("*")
+    .eq("id", articleId)
+    .maybeSingle();
+  return data as JournalArticle | null;
+}
+
+export async function getAllJournalIssuesAdmin(): Promise<JournalIssue[]> {
+  const supabase = await createClient();
+  const { data } = await supabase
+    .from("journal_issues")
+    .select("*")
+    .order("sort_order", { ascending: false });
+  return (data ?? []) as JournalIssue[];
+}

@@ -52,5 +52,18 @@ create policy "journal_articles_public_read"
   to anon, authenticated
   using (true);
 
+-- 학회지 관리 CMS (PRD §4.5) — 관리자만 쓰기 가능 (board_schema.sql의 admins 테이블 필요)
+create policy "journal_issues_admin_write"
+  on public.journal_issues for all
+  to authenticated
+  using (exists (select 1 from public.admins a where a.user_id = auth.uid()))
+  with check (exists (select 1 from public.admins a where a.user_id = auth.uid()));
+
+create policy "journal_articles_admin_write"
+  on public.journal_articles for all
+  to authenticated
+  using (exists (select 1 from public.admins a where a.user_id = auth.uid()))
+  with check (exists (select 1 from public.admins a where a.user_id = auth.uid()));
+
 -- Storage: Dashboard에서 bucket `journal` 생성 (Public bucket)
 -- 경로 예: 34-1/01.pdf

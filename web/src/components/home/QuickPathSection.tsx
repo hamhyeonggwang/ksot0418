@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
-import { LEGACY, legacyHref } from "@/lib/constants";
+import { LEGACY, legacyHref, isExternalHref } from "@/lib/constants";
 
 /** UX: 3-click rule — explicit paths for primary personas */
 const paths = [
@@ -35,6 +35,9 @@ export function QuickPathSection() {
                   <li key={label}>
                     <Link
                       href={legacyHref(p.links[j])}
+                      {...(isExternalHref(p.links[j])
+                        ? { target: "_blank", rel: "noopener noreferrer" }
+                        : {})}
                       className="flex items-center justify-between rounded-lg bg-white px-4 py-3 text-sm font-medium text-[#1A2B4C] shadow-sm transition hover:text-[#14B8A6] hover:shadow-md"
                     >
                       {label}

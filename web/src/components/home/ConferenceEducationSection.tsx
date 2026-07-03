@@ -6,7 +6,7 @@ import { Calendar, MapPin, Mic2, ArrowRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { conferenceHighlights, latestEducation } from "@/lib/data";
-import { LEGACY, legacyHref } from "@/lib/constants";
+import { LEGACY, legacyHref, isExternalHref } from "@/lib/constants";
 
 export function ConferenceEducationSection() {
   const conf = conferenceHighlights;
@@ -48,6 +48,8 @@ export function ConferenceEducationSection() {
             </div>
             <Link
               href={legacyHref(conf.registerHref)}
+              target="_blank"
+              rel="noopener noreferrer"
               className="relative mt-8 inline-flex items-center gap-2 rounded-xl bg-[#2DD4BF] px-6 py-4 font-bold text-[#1A2B4C]"
             >
               지금 등록 안내 보기
@@ -102,6 +104,9 @@ export function ConferenceEducationSection() {
                 <Link
                   key={e.title}
                   href={legacyHref(e.href)}
+                  {...(isExternalHref(e.href)
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
                   className="group rounded-2xl border border-[#2DD4BF]/20 bg-[#2DD4BF]/5 p-5 transition hover:bg-[#2DD4BF]/10"
                 >
                   <span className="text-xs font-mono text-[#14B8A6]">{e.date}</span>

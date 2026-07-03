@@ -10,7 +10,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { heroCTAs, platformStats } from "@/lib/data";
-import { legacyHref } from "@/lib/constants";
+import { legacyHref, isExternalHref } from "@/lib/constants";
 import { HeroFloatingScene } from "./HeroFloatingScene";
 
 const iconMap = {
@@ -66,6 +66,9 @@ export function HeroSection() {
             >
               <Link
                 href={legacyHref(primaryCta.href)}
+                {...(isExternalHref(primaryCta.href)
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
                 className="group inline-flex min-h-[52px] items-center justify-center gap-2.5 rounded-full bg-[#1A2B4C] px-7 py-3.5 text-[15px] font-semibold text-white shadow-[0_12px_40px_rgba(26,43,76,0.22)] transition hover:bg-[#243B66] hover:shadow-[0_16px_48px_rgba(26,43,76,0.28)] active:scale-[0.98]"
               >
                 <PrimaryIcon className="h-[18px] w-[18px] text-[#2DD4BF]" />
@@ -80,6 +83,9 @@ export function HeroSection() {
                     <Link
                       key={cta.label}
                       href={legacyHref(cta.href)}
+                      {...(isExternalHref(cta.href)
+                        ? { target: "_blank", rel: "noopener noreferrer" }
+                        : {})}
                       className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-[#1A2B4C]/10 bg-white/70 px-4 py-2.5 text-sm font-medium text-[#1A2B4C]/85 shadow-sm backdrop-blur-md transition hover:border-[#2DD4BF]/40 hover:bg-white hover:text-[#1A2B4C] active:scale-[0.98]"
                     >
                       <Icon className="h-4 w-4 text-[#2DD4BF]" />

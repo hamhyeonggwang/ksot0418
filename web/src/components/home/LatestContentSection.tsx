@@ -11,7 +11,7 @@ import {
   latestEducation,
   announcements as staticAnnouncements,
 } from "@/lib/data";
-import { LEGACY, legacyHref } from "@/lib/constants";
+import { LEGACY, legacyHref, isExternalHref } from "@/lib/constants";
 import type { HomeAnnouncement } from "@/lib/board";
 
 type Props = {
@@ -130,6 +130,9 @@ export function LatestContentSection({ announcements: announcementsProp }: Props
               <Link
                 key={a.href}
                 href={legacyHref(a.href)}
+                {...(isExternalHref(a.href)
+                  ? { target: "_blank", rel: "noopener noreferrer" }
+                  : {})}
                 className="block rounded-xl border border-[#1A2B4C]/8 bg-white px-4 py-3 transition hover:border-[#2DD4BF]/40"
               >
                 <span className="text-[10px] font-bold text-[#2DD4BF]">{a.type}</span>

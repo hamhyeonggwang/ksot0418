@@ -30,6 +30,12 @@ export default async function AdminLayout({ children }: { children: React.ReactN
           >
             게시글 관리
           </Link>
+          <Link
+            href="/admin/journal"
+            className="rounded-lg px-3 py-2 text-sm font-medium text-[#1A2B4C] hover:bg-[#F8FAFC]"
+          >
+            학회지 관리
+          </Link>
         </nav>
         <div className="mt-8 border-t border-[#1A2B4C]/8 pt-4">
           <p className="truncate text-xs text-muted">{admin.email}</p>

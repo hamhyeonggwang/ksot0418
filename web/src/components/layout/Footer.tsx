@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { LEGACY } from "@/lib/constants";
-import { legacyHref } from "@/lib/constants";
+import { LEGACY, legacyHref, isExternalHref } from "@/lib/constants";
 
 export function Footer() {
   return (
@@ -33,7 +32,12 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href={legacyHref(LEGACY.conference)} className="hover:text-white">
+                <Link
+                  href={legacyHref(LEGACY.conference)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white"
+                >
                   학술대회
                 </Link>
               </li>

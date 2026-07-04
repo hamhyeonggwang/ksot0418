@@ -70,6 +70,20 @@ export default async function JournalPage() {
             titleAccent="아카이브"
             description="권·호를 선택하거나 제목·저자·DOI로 전체 논문을 검색하세요."
           />
+          <div className="mb-8 flex flex-col items-start gap-3 rounded-2xl border border-[#2DD4BF]/25 bg-[#2DD4BF]/8 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-sm leading-relaxed text-[#1A2B4C]">
+              이 홈페이지에서는 <strong className="font-semibold">2024년 이후</strong> 학술지 바로 검색이
+              가능하며, 24년 이전 자료를 포함한 전체 검색은 저널 검색 사이트를 이용해 주세요.
+            </p>
+            <a
+              href="https://ksotjournal.kr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-[#1A2B4C] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#243B66]"
+            >
+              저널 검색 사이트 바로가기 (ksotjournal.kr) →
+            </a>
+          </div>
           <Suspense fallback={null}>
             <JournalArchive issues={issues} articles={articles} />
           </Suspense>

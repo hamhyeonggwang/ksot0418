@@ -25,6 +25,8 @@ export function JournalArchive({ issues, articles }: Props) {
     [issues]
   );
 
+  const hasSearched = issueValue !== "all" || query.trim().length > 0;
+
   const filtered = useMemo(() => {
     let list = [...articles];
 
@@ -79,19 +81,27 @@ export function JournalArchive({ issues, articles }: Props) {
         </select>
       </div>
 
-      <p className="mt-4 text-sm text-muted">
-        검색 결과 <span className="font-semibold text-[#1A2B4C]">{filtered.length}</span>편
-      </p>
-
-      <div className="mt-4 grid gap-4 sm:grid-cols-2">
-        {filtered.length === 0 ? (
-          <p className="col-span-full py-12 text-center text-sm text-muted">
-            검색 결과가 없습니다.
+      {hasSearched ? (
+        <>
+          <p className="mt-4 text-sm text-muted">
+            검색 결과 <span className="font-semibold text-[#1A2B4C]">{filtered.length}</span>편
           </p>
-        ) : (
-          filtered.map((a) => <ArticleCard key={a.id} article={a} />)
-        )}
-      </div>
+
+          <div className="mt-4 grid gap-4 sm:grid-cols-2">
+            {filtered.length === 0 ? (
+              <p className="col-span-full py-12 text-center text-sm text-muted">
+                검색 결과가 없습니다.
+              </p>
+            ) : (
+              filtered.map((a) => <ArticleCard key={a.id} article={a} />)
+            )}
+          </div>
+        </>
+      ) : (
+        <p className="mt-10 py-12 text-center text-sm text-muted">
+          검색어를 입력하거나 권·호를 선택하면 논문 목록이 표시됩니다.
+        </p>
+      )}
     </div>
   );
 }

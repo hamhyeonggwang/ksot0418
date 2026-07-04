@@ -7,7 +7,7 @@
 1. [Supabase](https://supabase.com)에서 프로젝트 생성
 2. **SQL Editor**에서 순서대로 실행:
    - `schema.sql` — 학회지(journal_issues, journal_articles)
-   - `seed.sql` — 34권 1호 시드 데이터
+   - `seed.sql` — 32권 1호~4호, 33권 1호~4호, 34권 1~2호 시드 데이터 (files/journal/KJOT-vXXnY-Z.pdf 원문에서 추출)
    - `board_schema.sql` — 게시판(posts, post_attachments, admins) + RLS + 조회수 RPC
 3. **Storage** → New bucket
    - Name: `journal`
@@ -49,7 +49,7 @@ npm install
 npm run upload:journal
 ```
 
-`files/journal/34-1/01.pdf` → Storage 경로 `34-1/01.pdf`
+`files/journal/KJOT-v34n1-1.pdf` (파일명의 `-1`은 시작 페이지) → 호 내 시작 페이지 순으로 정렬 후 Storage 경로 `34-1/01.pdf`로 업로드됩니다.
 
 ## 3. 프론트엔드 설정
 

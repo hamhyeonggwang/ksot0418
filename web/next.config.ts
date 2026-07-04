@@ -5,7 +5,9 @@ const nextConfig: NextConfig = {
   /** monorepo: 루트의 pages/css 등을 서버 번들 추적에 포함 */
   outputFileTracingRoot: path.join(process.cwd(), ".."),
   images: {
-    remotePatterns: [],
+    remotePatterns: [
+      { protocol: "https", hostname: "*.supabase.co", pathname: "/storage/v1/object/public/**" },
+    ],
   },
   /** Legacy HTML pages: copy repo `pages/`, `css/`, `js/` into `web/public/` for same-origin links */
   async headers() {

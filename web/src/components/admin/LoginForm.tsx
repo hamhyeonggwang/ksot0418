@@ -1,11 +1,10 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { signInWithPassword } from "@/lib/supabase/auth";
 
 export function LoginForm() {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const forbidden = searchParams.get("error") === "forbidden";
 
@@ -19,13 +18,14 @@ export function LoginForm() {
     setPending(true);
     setError(null);
     const { error } = await signInWithPassword(email, password);
-    setPending(false);
     if (error) {
+      setPending(false);
       setError(error);
       return;
     }
-    router.push("/admin");
-    router.refresh();
+    // 로그인 폼이 잠깐 남아 보이는 것을 막기 위해 전체 새로고침으로 전환
+    // (pending 상태는 페이지가 실제로 바뀔 때까지 유지)
+    window.location.href = "/admin";
   }
 
   return (

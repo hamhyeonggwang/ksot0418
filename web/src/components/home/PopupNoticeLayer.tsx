@@ -2,7 +2,6 @@
 
 import { useState, useSyncExternalStore } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import { popupAssetUrl, type PopupNotice } from "@/lib/popup-types";
@@ -40,11 +39,15 @@ export function PopupNoticeLayer({ popups }: Props) {
   const isClient = useSyncExternalStore(noopSubscribe, getClientSnapshot, getServerSnapshot);
   const [closedIds, setClosedIds] = useState<string[]>([]);
 
-  const visiblePopups = isClient
-    ? popups.filter((p) => !closedIds.includes(p.id) && !isDismissedToday(p.id))
-    : [];
+  // 이번 세션에 노출 대상인 팝업(오늘 하루 보지 않기로 숨긴 것 제외) — 진행 표시(1/3 등)의 분모로 사용
+  const eligiblePopups = isClient ? popups.filter((p) => !isDismissedToday(p.id)) : [];
+  const visiblePopups = eligiblePopups.filter((p) => !closedIds.includes(p.id));
 
   if (visiblePopups.length === 0) return null;
+
+  // 여러 팝업이 있어도 한 번에 하나씩 순차 노출 — 닫으면 배열에서 빠지며 다음 팝업이 자연스럽게 이어짐
+  const current = visiblePopups[0];
+  const currentPosition = eligiblePopups.length - visiblePopups.length + 1;
 
   function handleClose(id: string, hideToday: boolean) {
     if (hideToday) dismissForToday(id);
@@ -52,11 +55,19 @@ export function PopupNoticeLayer({ popups }: Props) {
   }
 
   return (
-    <div className="pointer-events-none fixed inset-0 z-[100]" aria-live="polite">
-      <AnimatePresence>
-        {visiblePopups.map((popup, index) => (
-          <PopupCard key={popup.id} popup={popup} index={index} onClose={handleClose} />
-        ))}
+    <div
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-[#0B1220]/55 p-4 backdrop-blur-[2px]"
+      aria-live="polite"
+      onClick={() => handleClose(current.id, false)}
+    >
+      <AnimatePresence mode="wait">
+        <PopupCard
+          key={current.id}
+          popup={current}
+          position={currentPosition}
+          total={eligiblePopups.length}
+          onClose={handleClose}
+        />
       </AnimatePresence>
     </div>
   );
@@ -64,15 +75,16 @@ export function PopupNoticeLayer({ popups }: Props) {
 
 function PopupCard({
   popup,
-  index,
+  position,
+  total,
   onClose,
 }: {
   popup: PopupNotice;
-  index: number;
+  position: number;
+  total: number;
   onClose: (id: string, hideToday: boolean) => void;
 }) {
   const [hideToday, setHideToday] = useState(false);
-  const offset = index * 28;
 
   const mediaUrl = popupAssetUrl(popup.storage_path);
 
@@ -81,19 +93,15 @@ function PopupCard({
       <iframe
         src={`${mediaUrl}#toolbar=0&navpanes=0`}
         title={popup.title}
-        className="h-[380px] w-full rounded-t-2xl bg-white"
+        className="h-[70vh] max-h-[600px] w-[88vw] max-w-[480px] rounded-t-2xl bg-white"
       />
     ) : (
-      <div className="relative h-[320px] w-full overflow-hidden rounded-t-2xl bg-[#F8FAFC]">
-        <Image
-          src={mediaUrl}
-          alt={popup.title}
-          fill
-          unoptimized
-          className="object-contain"
-          sizes="360px"
-        />
-      </div>
+      // eslint-disable-next-line @next/next/no-img-element -- 관리자가 올린 임의 비율의 원본 이미지를 자연 비율 그대로 보여줘야 해서 next/image의 fill 대신 일반 img 사용
+      <img
+        src={mediaUrl}
+        alt={popup.title}
+        className="block max-h-[70vh] w-auto max-w-[88vw] rounded-t-2xl object-contain sm:max-w-[440px] md:max-w-[560px]"
+      />
     );
 
   return (
@@ -101,14 +109,15 @@ function PopupCard({
       initial={{ opacity: 0, y: 16, scale: 0.97 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       exit={{ opacity: 0, scale: 0.96, transition: { duration: 0.15 } }}
-      transition={{ duration: 0.3, delay: index * 0.06 }}
-      style={{
-        top: `calc(6% + ${offset}px)`,
-        left: `calc(5% + ${offset}px)`,
-        zIndex: 100 + index,
-      }}
-      className="pointer-events-auto absolute w-[86vw] max-w-[340px] overflow-hidden rounded-2xl border border-white/50 bg-white/85 shadow-[0_24px_60px_rgba(26,43,76,0.28)] backdrop-blur-md"
+      transition={{ duration: 0.25 }}
+      onClick={(e) => e.stopPropagation()}
+      className="relative flex max-h-[90vh] w-fit min-w-[280px] max-w-[92vw] flex-col overflow-hidden rounded-2xl border border-white/50 bg-white shadow-[0_24px_60px_rgba(11,18,32,0.45)]"
     >
+      {total > 1 && (
+        <span className="absolute left-2 top-2 z-10 rounded-full bg-[#1A2B4C]/70 px-2 py-0.5 text-[11px] font-semibold text-white">
+          {position} / {total}
+        </span>
+      )}
       <button
         type="button"
         onClick={() => onClose(popup.id, hideToday)}
@@ -126,7 +135,7 @@ function PopupCard({
         media
       )}
 
-      <div className="flex items-center justify-between gap-3 border-t border-[#1A2B4C]/8 bg-white/90 px-4 py-2.5">
+      <div className="flex items-center justify-between gap-3 border-t border-[#1A2B4C]/8 bg-white px-4 py-2.5">
         <label className="flex items-center gap-1.5 text-xs font-medium text-[#1A2B4C]/80">
           <input
             type="checkbox"

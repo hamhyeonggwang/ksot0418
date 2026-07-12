@@ -56,8 +56,9 @@ export function Footer() {
           <div>
             <h4 className="mb-4 text-sm font-bold text-[#2DD4BF]">문의</h4>
             <ul className="space-y-2 text-sm text-white/70">
-              <li>행정·보수교육: ksotoffice@naver.com</li>
-              <li>학술지·학술대회: ksot.editor@gmail.com</li>
+              <li>보수교육: ksotoffice@naver.com</li>
+              <li>학회지: ksot.editor@gmail.com</li>
+              <li>학술대회: ksotoffice@nate.com</li>
             </ul>
           </div>
         </div>

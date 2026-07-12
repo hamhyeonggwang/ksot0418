@@ -30,8 +30,11 @@ export function Header() {
     <>
       <div className="hidden border-b border-[#1A2B4C]/5 bg-[#1A2B4C] text-xs text-white/80 lg:block">
         <div className="mx-auto flex max-w-7xl justify-between px-8 py-2">
-          <span>행정·보수교육 ksotoffice@naver.com</span>
-          <span>학술지·학술대회 ksot.editor@gmail.com</span>
+          <span>보수교육 ksotoffice@naver.com</span>
+          <div className="flex gap-6">
+            <span>학회지 ksot.editor@gmail.com</span>
+            <span>학술대회 ksotoffice@nate.com</span>
+          </div>
         </div>
       </div>
 

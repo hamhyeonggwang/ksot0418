@@ -59,7 +59,7 @@ export function SidebarContactCard() {
     <div className="mt-4 rounded-2xl bg-[#1A2B4C] p-5 text-white">
       <h5 className="mb-2 text-sm font-bold text-[#2DD4BF]">문의</h5>
       <p className="text-xs leading-relaxed text-white/70">
-        행정·보수교육
+        보수교육
         <br />
         <a
           href="mailto:ksotoffice@naver.com"
@@ -69,13 +69,23 @@ export function SidebarContactCard() {
         </a>
       </p>
       <p className="mt-3 text-xs leading-relaxed text-white/70">
-        학술지·학술대회
+        학회지
         <br />
         <a
           href="mailto:ksot.editor@gmail.com"
           className="font-medium text-white hover:underline"
         >
           ksot.editor@gmail.com
+        </a>
+      </p>
+      <p className="mt-3 text-xs leading-relaxed text-white/70">
+        학술대회
+        <br />
+        <a
+          href="mailto:ksotoffice@nate.com"
+          className="font-medium text-white hover:underline"
+        >
+          ksotoffice@nate.com
         </a>
       </p>
     </div>

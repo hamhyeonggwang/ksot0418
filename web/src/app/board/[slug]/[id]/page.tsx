@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, Eye, Paperclip } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { MarkdownBody } from "@/components/board/MarkdownBody";
@@ -72,9 +73,31 @@ export default async function BoardDetailPage({ params }: Props) {
           </span>
         </div>
 
+        {slug === "gallery" && attachments.length > 0 && (
+          <div className="mt-6 grid gap-3 sm:grid-cols-2">
+            {attachments.map((a) => (
+              <a
+                key={a.id}
+                href={attachmentUrl(a.storage_path)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative block aspect-[4/3] overflow-hidden rounded-2xl bg-[#1A2B4C]/5"
+              >
+                <Image
+                  src={attachmentUrl(a.storage_path)}
+                  alt={a.file_name}
+                  fill
+                  sizes="(min-width: 640px) 50vw, 100vw"
+                  className="object-cover"
+                />
+              </a>
+            ))}
+          </div>
+        )}
+
         <MarkdownBody body={post.body} />
 
-        {attachments.length > 0 && (
+        {slug !== "gallery" && attachments.length > 0 && (
           <div className="mt-10 border-t border-[#1A2B4C]/8 pt-6">
             <h2 className="text-sm font-bold uppercase tracking-wider text-muted">첨부파일</h2>
             <ul className="mt-3 space-y-2">

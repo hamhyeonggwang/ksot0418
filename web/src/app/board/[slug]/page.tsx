@@ -1,12 +1,18 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { Pin, Paperclip, Calendar, MapPin, Award } from "lucide-react";
+import Image from "next/image";
+import { Pin, Paperclip, Calendar, MapPin, Award, Image as ImageIcon } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { getPosts } from "@/lib/board";
-import { BOARD_LABELS, isBoardSlug, formatDate } from "@/lib/board-types";
-import { createClient } from "@/lib/supabase/server";
+import { getPosts, getAttachmentsForPosts } from "@/lib/board";
+import {
+  BOARD_LABELS,
+  isBoardSlug,
+  formatDate,
+  attachmentUrl,
+  type PostAttachment,
+} from "@/lib/board-types";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -19,16 +25,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return { title: `${BOARD_LABELS[slug]} | KSOT` };
 }
 
-async function getAttachmentPostIds(postIds: string[]): Promise<Set<string>> {
-  if (postIds.length === 0) return new Set();
-  const supabase = await createClient();
-  const { data } = await supabase
-    .from("post_attachments")
-    .select("post_id")
-    .in("post_id", postIds);
-  return new Set((data ?? []).map((a) => a.post_id));
-}
-
 export default async function BoardListPage({ params, searchParams }: Props) {
   const { slug } = await params;
   const { q, page: pageParam } = await searchParams;
@@ -38,10 +34,11 @@ export default async function BoardListPage({ params, searchParams }: Props) {
   const { posts, total, pageSize } = await getPosts(slug, { search: q, page });
   const totalPages = Math.max(1, Math.ceil(total / pageSize));
 
-  const attachmentPostIds =
-    slug === "resources"
-      ? await getAttachmentPostIds(posts.map((p) => p.id))
-      : new Set<string>();
+  const attachmentsByPost =
+    slug === "resources" || slug === "gallery"
+      ? await getAttachmentsForPosts(posts.map((p) => p.id))
+      : new Map<string, PostAttachment[]>();
+  const attachmentPostIds = new Set(attachmentsByPost.keys());
 
   return (
     <section className="py-16 sm:py-20">
@@ -104,6 +101,36 @@ export default async function BoardListPage({ params, searchParams }: Props) {
                 </div>
               </Link>
             ))}
+          </div>
+        ) : slug === "gallery" ? (
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {posts.map((p) => {
+              const thumb = attachmentsByPost.get(p.id)?.[0];
+              return (
+                <Link
+                  key={p.id}
+                  href={`/board/${slug}/${p.id}`}
+                  className="group relative aspect-[4/3] overflow-hidden rounded-2xl bg-[#1A2B4C]/5"
+                >
+                  {thumb ? (
+                    <Image
+                      src={attachmentUrl(thumb.storage_path)}
+                      alt={p.title}
+                      fill
+                      sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                      className="object-cover transition duration-300 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className="flex h-full w-full items-center justify-center text-muted">
+                      <ImageIcon className="h-8 w-8" />
+                    </div>
+                  )}
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-3">
+                    <span className="text-sm font-medium text-white">{p.title}</span>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         ) : (
           <ul className="divide-y divide-[#1A2B4C]/8 rounded-2xl border border-[#1A2B4C]/8 bg-white">

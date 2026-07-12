@@ -154,6 +154,7 @@ export const staticPages: Record<StaticPageSlug, StaticPageConfig> = {
       icon: GraduationCap,
       items: [
         { label: "보수교육", href: "/education#ce-schedule", icon: CalendarDays },
+        { label: "관련 공지", href: "/education#board-education", icon: Megaphone },
       ],
     },
     showContactCard: true,
@@ -184,6 +185,7 @@ export const staticPages: Record<StaticPageSlug, StaticPageConfig> = {
       items: [
         { label: "공지사항", href: "/board/notice", icon: Megaphone },
         { label: "학회 갤러리", href: "/community#gallery", icon: Image },
+        { label: "학술대회 공지", href: "/community#board-conference", icon: CalendarDays },
       ],
     },
     showContactCard: false,

@@ -30,7 +30,14 @@ export type StaticPageConfig = {
   content: { html: string; extraCss?: string };
 };
 
-export function StaticSitePage({ config }: { config: StaticPageConfig }) {
+export function StaticSitePage({
+  config,
+  extra,
+}: {
+  config: StaticPageConfig;
+  /** Supabase posts 등 서버에서 조회한 CMS 섹션 — 정적 content.html 뒤에 이어서 렌더 */
+  extra?: React.ReactNode;
+}) {
   return (
     <>
       <PageHero {...config.hero} />
@@ -45,10 +52,13 @@ export function StaticSitePage({ config }: { config: StaticPageConfig }) {
               />
               {config.showContactCard !== false && <SidebarContactCard />}
             </aside>
-            <StaticPageContent
-              html={config.content.html}
-              extraCss={config.content.extraCss}
-            />
+            <div className="min-w-0">
+              <StaticPageContent
+                html={config.content.html}
+                extraCss={config.content.extraCss}
+              />
+              {extra}
+            </div>
           </div>
         </Container>
       </section>

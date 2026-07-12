@@ -49,6 +49,28 @@ export async function getAttachments(postId: string): Promise<PostAttachment[]> 
   return (data ?? []) as PostAttachment[];
 }
 
+/** postId별 첨부파일 목록 — 갤러리·자료실 목록에서 썸네일/아이콘 표시용 */
+export async function getAttachmentsForPosts(
+  postIds: string[]
+): Promise<Map<string, PostAttachment[]>> {
+  const map = new Map<string, PostAttachment[]>();
+  if (postIds.length === 0) return map;
+
+  const supabase = await createClient();
+  const { data } = await supabase
+    .from("post_attachments")
+    .select("*")
+    .in("post_id", postIds)
+    .order("created_at", { ascending: true });
+
+  for (const a of (data ?? []) as PostAttachment[]) {
+    const list = map.get(a.post_id) ?? [];
+    list.push(a);
+    map.set(a.post_id, list);
+  }
+  return map;
+}
+
 export async function incrementViewCount(id: string): Promise<void> {
   const supabase = await createClient();
   await supabase.rpc("increment_view_count", { post_id: id });

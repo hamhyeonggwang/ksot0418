@@ -2,12 +2,15 @@
 -- Dashboard SQL Editor에서 schema.sql 다음에 실행하거나: supabase db push
 -- 참고: docs/PRD.md §3
 
--- 게시판 종류(4종)
+-- 게시판 종류(5종)
 do $$ begin
-  create type board_slug as enum ('notice', 'resources', 'education', 'conference');
+  create type board_slug as enum ('notice', 'resources', 'education', 'conference', 'gallery');
 exception
   when duplicate_object then null;
 end $$;
+
+-- 기존 DB에 이미 board_slug가 4종으로 생성돼 있다면:
+-- alter type board_slug add value if not exists 'gallery';
 
 -- 게시글
 create table if not exists public.posts (

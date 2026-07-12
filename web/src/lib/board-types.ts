@@ -1,14 +1,21 @@
 /** 게시판 타입 + 순수 헬퍼 — 클라이언트/서버 공용 */
 
-export type BoardSlug = "notice" | "resources" | "education" | "conference";
+export type BoardSlug = "notice" | "resources" | "education" | "conference" | "gallery";
 
-export const BOARD_SLUGS: BoardSlug[] = ["notice", "resources", "education", "conference"];
+export const BOARD_SLUGS: BoardSlug[] = [
+  "notice",
+  "resources",
+  "education",
+  "conference",
+  "gallery",
+];
 
 export const BOARD_LABELS: Record<BoardSlug, string> = {
   notice: "공지사항",
   resources: "자료실",
   education: "보수교육 일정",
   conference: "학술대회 공지",
+  gallery: "학회 갤러리",
 };
 
 export function isBoardSlug(value: string): value is BoardSlug {

@@ -274,14 +274,20 @@ export function PostForm({ initialPost, initialAttachments = [] }: Props) {
             </ul>
             <label className="mt-3 inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-[#1A2B4C]/12 bg-white px-3 py-1.5 text-xs font-semibold text-[#1A2B4C] transition hover:border-[#2DD4BF]/40">
               <Upload className="h-3.5 w-3.5" />
-              {uploading ? "업로드 중…" : "파일 추가"}
+              {uploading ? "업로드 중…" : board === "gallery" ? "사진 추가" : "파일 추가"}
               <input
                 type="file"
+                accept={board === "gallery" ? "image/*" : undefined}
                 className="hidden"
                 onChange={handleFileChange}
                 disabled={uploading}
               />
             </label>
+            {board === "gallery" && (
+              <p className="mt-2 text-xs text-muted">
+                목록에는 첫 번째로 추가한 사진이 대표 이미지로 표시됩니다.
+              </p>
+            )}
           </div>
         ) : (
           <p className="text-xs text-muted">첨부파일은 저장 후 추가할 수 있습니다.</p>

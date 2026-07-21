@@ -33,10 +33,13 @@ export type StaticPageConfig = {
 export function StaticSitePage({
   config,
   extra,
+  extraBefore,
 }: {
   config: StaticPageConfig;
   /** Supabase posts 등 서버에서 조회한 CMS 섹션 — 정적 content.html 뒤에 이어서 렌더 */
   extra?: React.ReactNode;
+  /** 정적 content.html 앞에 렌더할 CMS 섹션 (예: 캘린더보다 먼저 노출할 공지) */
+  extraBefore?: React.ReactNode;
 }) {
   return (
     <>
@@ -53,6 +56,7 @@ export function StaticSitePage({
               {config.showContactCard !== false && <SidebarContactCard />}
             </aside>
             <div className="min-w-0">
+              {extraBefore}
               <StaticPageContent
                 html={config.content.html}
                 extraCss={config.content.extraCss}

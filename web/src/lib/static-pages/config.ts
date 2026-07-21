@@ -70,7 +70,6 @@ export const staticPages: Record<StaticPageSlug, StaticPageConfig> = {
         { label: "인사말", href: "/about#intro", icon: Handshake },
         { label: "연혁", href: "/about#history", icon: History },
         { label: "역대회장단", href: "/about#past-presidents", icon: Users },
-        { label: "연간계획", href: "/about#annual-plan", icon: CalendarDays },
         { label: "임원진/조직도", href: "/about#executives-org", icon: Network },
         { label: "학회 정관", href: "/about#bylaws", icon: ScrollText },
         { label: "학회연락처", href: "/about#contact", icon: MapPin },
@@ -94,7 +93,6 @@ export const staticPages: Record<StaticPageSlug, StaticPageConfig> = {
       description: "대한작업치료학회지에 논문을 투고하는 방법을 안내드립니다",
       breadcrumb: "논문투고",
       meta: [
-        { icon: Mail, text: "ksotoffice@naver.com" },
         { icon: Mail, text: "ksot.editor@gmail.com" },
         { icon: Clock, text: "연중 수시 접수" },
       ],

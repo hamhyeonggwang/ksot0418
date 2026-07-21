@@ -33,7 +33,7 @@ export default async function StaticPageRoute({ params }: Props) {
     return (
       <StaticSitePage
         config={staticPages.education}
-        extra={
+        extraBefore={
           <BoardNoticeSection
             boardSlug="education"
             posts={posts.slice(0, 6)}

@@ -72,6 +72,42 @@
   .cal-event-card { flex-direction: column; }
   .cal-date-badge { flex-direction: row; gap: 8px; width: 100%; height: auto; padding: 8px 0; }
 }
+/* --- CE Schedule: month calendar grid --- */
+.ce-cal-wrap { display: flex; flex-direction: column; gap: 40px; }
+.ce-cal-month { background: #fff; }
+.ce-cal-month-title { text-align: center; font-size: 19px; font-weight: 700; color: var(--text-dark); padding: 4px 0 16px; letter-spacing: 0.2px; }
+.ce-cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); border-top: 1px solid var(--border); border-left: 1px solid var(--border-light); }
+.ce-cal-dow { padding: 10px 12px; text-align: left; font-size: 12.5px; font-weight: 600; color: var(--text-light); border-bottom: 1px solid var(--border); border-right: 1px solid var(--border-light); }
+.ce-cal-dow:last-child { border-right: none; }
+.ce-cal-dow--sun { color: #e8590c; }
+.ce-cal-dow--sat { color: #3b5bdb; }
+.ce-cal-cell { min-height: 108px; padding: 8px 8px 6px; border-right: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); display: flex; flex-direction: column; gap: 3px; background: #fff; }
+.ce-cal-cell:nth-child(7n) { border-right: none; }
+.ce-cal-cell--empty { background: var(--bg); }
+.ce-cal-daynum { font-size: 13px; font-weight: 600; color: var(--text-mid); }
+.ce-cal-cell--sun .ce-cal-daynum { color: #e8590c; }
+.ce-cal-cell--sat .ce-cal-daynum { color: #3b5bdb; }
+.ce-cal-daynum--badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 22px; height: 22px; border-radius: 50%;
+  background: var(--primary); color: #fff !important; font-weight: 700;
+}
+.ce-cal-bar { display: flex; align-items: baseline; gap: 5px; padding: 2px 6px; border-radius: 3px; font-size: 10.5px; line-height: 1.6; overflow: hidden; }
+.ce-cal-bar-time { font-weight: 700; color: var(--text-dark); flex-shrink: 0; }
+.ce-cal-bar-title { color: var(--text-mid); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ce-cal-legend { display: flex; flex-direction: column; gap: 6px; padding: 14px 4px 0; }
+.ce-cal-legend span { font-size: 12.5px; color: var(--text-mid); line-height: 1.6; display: flex; gap: 8px; align-items: flex-start; }
+.ce-cal-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-top: 5px; flex-shrink: 0; }
+.ce-cal-pending { padding: 16px 4px 0; }
+.ce-cal-pending-label { font-size: 12.5px; font-weight: 700; color: var(--text-light); margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+.ce-cal-pending-list { display: flex; flex-direction: column; gap: 10px; }
+.ce-cal-pending-item { display: flex; flex-direction: column; gap: 3px; background: var(--bg); border: 1px solid var(--border-light); border-left: 3px solid; border-radius: 6px; padding: 10px 12px; }
+.ce-cal-pending-item strong { font-size: 13.5px; color: var(--text-dark); }
+.ce-cal-pending-item span { font-size: 12.5px; color: var(--text-mid); }
+@media (max-width: 640px) {
+  .ce-cal-cell { min-height: 64px; }
+  .ce-cal-bar-title { display: none; }
+}
 /* --- Page Content --- */
 .page-content {}
 .content-section {

@@ -38,9 +38,21 @@ export const html = `<!-- 인사말 -->
               </ul>
             </div>
           </div>
-          <div style="display:grid;grid-template-columns:minmax(88px,110px) 1fr;">
+          <div style="display:grid;grid-template-columns:minmax(88px,110px) 1fr;border-bottom:1px solid var(--border-light);">
             <div style="background:var(--bg);padding:16px 14px;display:flex;align-items:flex-start;justify-content:center;font-size:15px;font-weight:700;color:var(--primary);border-right:1px solid var(--border-light);">2023</div>
-            <div style="padding:16px 18px;font-size:14px;color:var(--text-mid);line-height:1.65;">13대 대한작업치료학회 발족</div>
+            <div style="padding:16px 18px;font-size:14px;color:var(--text-mid);">
+              <ul style="margin:0;padding-left:1.2em;line-height:1.7;">
+                <li>13대 대한작업치료학회 발족</li>
+              </ul>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:minmax(88px,110px) 1fr;">
+            <div style="background:var(--bg);padding:16px 14px;display:flex;align-items:flex-start;justify-content:center;font-size:15px;font-weight:700;color:var(--primary);border-right:1px solid var(--border-light);">2026</div>
+            <div style="padding:16px 18px;font-size:14px;color:var(--text-mid);">
+              <ul style="margin:0;padding-left:1.2em;line-height:1.7;">
+                <li>14대 대한작업치료학회 발족</li>
+              </ul>
+            </div>
           </div>
         </div>
 
@@ -96,32 +108,13 @@ export const html = `<!-- 인사말 -->
             <div style="background:var(--bg);padding:14px 12px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:14px;font-weight:700;color:var(--primary);border-right:1px solid var(--border-light);">12대 회장</div>
             <div style="padding:14px 18px;font-size:14px;color:var(--text-dark);">장기연 교수님</div>
           </div>
-          <div style="display:grid;grid-template-columns:minmax(120px,150px) 1fr;">
+          <div style="display:grid;grid-template-columns:minmax(120px,150px) 1fr;border-bottom:1px solid var(--border-light);">
             <div style="background:var(--bg);padding:14px 12px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:14px;font-weight:700;color:var(--primary);border-right:1px solid var(--border-light);">13대 회장</div>
             <div style="padding:14px 18px;font-size:14px;color:var(--text-dark);">최유임 교수님</div>
           </div>
-        </div>
-
-        <div id="annual-plan" class="content-header" style="margin-top:32px;padding-top:24px;border-top:1px solid var(--border-light);scroll-margin-top:88px;">
-          <h3 style="font-size:1.25rem;margin:0;display:flex;align-items:center;gap:10px;color:var(--text-dark);"><i class="fa-solid fa-calendar-days" style="color:var(--primary);"></i> 연간계획</h3>
-        </div>
-        <p style="font-size:14px;color:var(--text-mid);margin:8px 0 16px;">대한작업치료학회지는 연 4회(3·6·9·12월) 발행하며, 학술대회·보수교육은 아래 시기를 중심으로 운영됩니다. 정확한 일정은 <a href="/community#notice" style="color:var(--primary);font-weight:600;">공지사항</a>과 <a href="/education#ce-schedule" style="color:var(--primary);font-weight:600;">보수교육 안내</a>에서 별도 공지합니다.</p>
-        <div style="border:1px solid var(--border-light);border-radius:var(--radius-md);overflow:hidden;background:#fff;">
-          <div style="display:grid;grid-template-columns:minmax(88px,110px) 1fr;border-bottom:1px solid var(--border-light);">
-            <div style="background:var(--bg);padding:16px 14px;display:flex;align-items:flex-start;justify-content:center;font-size:15px;font-weight:700;color:var(--primary);border-right:1px solid var(--border-light);">3월</div>
-            <div style="padding:16px 18px;font-size:14px;color:var(--text-mid);">학회지 발행 · 상반기 보수교육 일정 공지</div>
-          </div>
-          <div style="display:grid;grid-template-columns:minmax(88px,110px) 1fr;border-bottom:1px solid var(--border-light);">
-            <div style="background:var(--bg);padding:16px 14px;display:flex;align-items:flex-start;justify-content:center;font-size:15px;font-weight:700;color:var(--primary);border-right:1px solid var(--border-light);">6월</div>
-            <div style="padding:16px 18px;font-size:14px;color:var(--text-mid);">학회지 발행</div>
-          </div>
-          <div style="display:grid;grid-template-columns:minmax(88px,110px) 1fr;border-bottom:1px solid var(--border-light);">
-            <div style="background:var(--bg);padding:16px 14px;display:flex;align-items:flex-start;justify-content:center;font-size:15px;font-weight:700;color:var(--primary);border-right:1px solid var(--border-light);">9월</div>
-            <div style="padding:16px 18px;font-size:14px;color:var(--text-mid);">정기 학술대회 개최 · 학회지 발행</div>
-          </div>
-          <div style="display:grid;grid-template-columns:minmax(88px,110px) 1fr;">
-            <div style="background:var(--bg);padding:16px 14px;display:flex;align-items:flex-start;justify-content:center;font-size:15px;font-weight:700;color:var(--primary);border-right:1px solid var(--border-light);">12월</div>
-            <div style="padding:16px 18px;font-size:14px;color:var(--text-mid);">학회지 발행 · 하반기 보수교육 일정 공지</div>
+          <div style="display:grid;grid-template-columns:minmax(120px,150px) 1fr;">
+            <div style="background:var(--bg);padding:14px 12px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:14px;font-weight:700;color:var(--primary);border-right:1px solid var(--border-light);">14대 회장</div>
+            <div style="padding:14px 18px;font-size:14px;color:var(--text-dark);">최유임 교수님</div>
           </div>
         </div>
       </section>
@@ -165,7 +158,10 @@ export const html = `<!-- 인사말 -->
           <div style="display:grid;grid-template-columns:minmax(120px,160px) 1fr;border-bottom:1px solid var(--border-light);">
             <div style="background:var(--bg);padding:16px 14px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:14px;font-weight:700;color:var(--text-dark);border-right:1px solid var(--border-light);">학술이사</div>
             <div style="padding:16px 18px;font-size:14px;color:var(--text-mid);">
-              <ul style="margin:0;padding-left:1.2em;line-height:1.65;"><li>유두한(건양대학교)</li><li>임영명(우석대학교)</li></ul>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px 24px;align-items:start;">
+                <ul style="margin:0;padding-left:1.2em;line-height:1.65;"><li>유두한(건양대학교)</li></ul>
+                <ul style="margin:0;padding-left:1.2em;line-height:1.65;"><li>임영명(우석대학교)</li></ul>
+              </div>
             </div>
           </div>
           <div style="display:grid;grid-template-columns:minmax(120px,160px) 1fr;border-bottom:1px solid var(--border-light);">
@@ -186,7 +182,10 @@ export const html = `<!-- 인사말 -->
           <div style="display:grid;grid-template-columns:minmax(120px,160px) 1fr;border-bottom:1px solid var(--border-light);">
             <div style="background:var(--bg);padding:16px 14px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:14px;font-weight:700;color:var(--text-dark);border-right:1px solid var(--border-light);">국제이사</div>
             <div style="padding:16px 18px;font-size:14px;color:var(--text-mid);">
-              <ul style="margin:0;padding-left:0;display:inline-flex;flex-wrap:wrap;gap:8px 36px;line-height:1.65;list-style:none;"><li>강미영(우송대학교)</li><li>박강현(백석대학교)</li></ul>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px 24px;align-items:start;">
+                <ul style="margin:0;padding-left:1.2em;line-height:1.65;"><li>강미영(우송대학교)</li></ul>
+                <ul style="margin:0;padding-left:1.2em;line-height:1.65;"><li>박강현(백석대학교)</li></ul>
+              </div>
             </div>
           </div>
           <div style="display:grid;grid-template-columns:minmax(120px,160px) 1fr;border-bottom:1px solid var(--border-light);">

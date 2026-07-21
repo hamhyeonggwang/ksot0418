@@ -76,7 +76,7 @@ export const html = `<section class="content-section" id="ce-schedule">
             <div class="cal-event-body">
               <h4>제34회 대한작업치료학회 학술대회</h4>
               <ul>
-                <li><strong>장소</strong> 익산</li>
+                <li><strong>장소</strong> 대전</li>
                 <li><strong>학점</strong> 4학점 · <strong>정원</strong> 70명 (선착순 마감)</li>
                 <li><strong>비고</strong> 1개의 보수교육 운영</li>
               </ul>

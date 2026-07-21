@@ -38,11 +38,11 @@ export const html = `<!-- 논문투고 안내 -->
           <table class="data-table">
             <thead><tr><th>구분</th><th>금액</th></tr></thead>
             <tbody>
-              <tr><td>투고비</td><td>무료</td></tr>
+              <tr><td>심사료 및 연회비</td><td>무료</td></tr>
               <tr><td>일반게재료</td><td>35만원</td></tr>
               <tr><td>연구비 수혜논문(사사 표기)</td><td>50만원</td></tr>
-              <tr><td>긴급게재료</td><td>게재료 + 15만원</td></tr>
-              <tr><td>12매 초과시</td><td>1페이지 당 3만원 추가</td></tr>
+              <tr><td>긴급 게재료</td><td>일반게재료 + 15만원</td></tr>
+              <tr><td>매수 제한</td><td>12매 초과시 3만원 (1매당)</td></tr>
             </tbody>
           </table>
           <div style="margin-top:16px;padding:16px 20px;background:var(--bg);border-radius:var(--radius-md);border:1px solid var(--border-light);">
@@ -312,7 +312,7 @@ export const html = `<!-- 논문투고 안내 -->
           </div>
         </div>
         <div style="margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:14px;">
-          <div style="padding:16px 20px;background:var(--bg);border-radius:var(--radius-md);"><div style="font-size:13px;font-weight:700;color:var(--text-dark);margin-bottom:4px;"><i class="fa-solid fa-won-sign" style="color:var(--primary);margin-right:6px;"></i>게재료</div><p style="font-size:13px;color:var(--text-mid);">투고비 무료 / 일반게재료 35만원 / 연구비수혜 50만원</p></div>
+          <div style="padding:16px 20px;background:var(--bg);border-radius:var(--radius-md);"><div style="font-size:13px;font-weight:700;color:var(--text-dark);margin-bottom:4px;"><i class="fa-solid fa-won-sign" style="color:var(--primary);margin-right:6px;"></i>게재료</div><p style="font-size:13px;color:var(--text-mid);">심사료 및 연회비 무료 / 일반게재료 35만원 / 연구비수혜 50만원</p></div>
           <div style="padding:16px 20px;background:var(--bg);border-radius:var(--radius-md);"><div style="font-size:13px;font-weight:700;color:var(--text-dark);margin-bottom:4px;"><i class="fa-solid fa-building-columns" style="color:var(--teal);margin-right:6px;"></i>입금계좌</div><p style="font-size:13px;color:var(--text-mid);">하나은행 907-910328-84207 (대한작업치료학회)</p></div>
         </div>
       </section>`;

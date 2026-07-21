@@ -73,9 +73,18 @@
   .cal-date-badge { flex-direction: row; gap: 8px; width: 100%; height: auto; padding: 8px 0; }
 }
 /* --- CE Schedule: month calendar grid --- */
-.ce-cal-wrap { display: flex; flex-direction: column; gap: 40px; }
 .ce-cal-month { background: #fff; }
-.ce-cal-month-title { text-align: center; font-size: 19px; font-weight: 700; color: var(--text-dark); padding: 4px 0 16px; letter-spacing: 0.2px; }
+.ce-cal-month-header { display: flex; align-items: center; justify-content: center; gap: 18px; padding: 4px 0 16px; }
+.ce-cal-month-title { min-width: 120px; text-align: center; font-size: 19px; font-weight: 700; color: var(--text-dark); letter-spacing: 0.2px; }
+.ce-cal-nav-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; border-radius: 50%;
+  border: 1px solid var(--border-light); background: #fff; color: var(--text-mid);
+  cursor: pointer; transition: var(--transition-fast);
+}
+.ce-cal-nav-btn:hover:not(:disabled) { background: var(--bg); color: var(--primary); border-color: var(--primary); }
+.ce-cal-nav-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+.ce-cal-empty { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 28px 4px; text-align: center; font-size: 13.5px; color: var(--text-light); }
 .ce-cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); border-top: 1px solid var(--border); border-left: 1px solid var(--border-light); }
 .ce-cal-dow { padding: 10px 12px; text-align: left; font-size: 12.5px; font-weight: 600; color: var(--text-light); border-bottom: 1px solid var(--border); border-right: 1px solid var(--border-light); }
 .ce-cal-dow:last-child { border-right: none; }

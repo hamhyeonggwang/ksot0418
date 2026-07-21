@@ -4,6 +4,7 @@ import { CalendarDays, Megaphone } from "lucide-react";
 import { StaticSitePage } from "@/components/pages/StaticSitePage";
 import { BoardNoticeSection } from "@/components/pages/BoardNoticeSection";
 import { GallerySection } from "@/components/pages/GallerySection";
+import { CeScheduleCalendar } from "@/components/pages/CeScheduleCalendar";
 import { getPosts, getAttachmentsForPosts } from "@/lib/board";
 import {
   isStaticPageSlug,
@@ -34,12 +35,15 @@ export default async function StaticPageRoute({ params }: Props) {
       <StaticSitePage
         config={staticPages.education}
         extraBefore={
-          <BoardNoticeSection
-            boardSlug="education"
-            posts={posts.slice(0, 6)}
-            title="보수교육 관련 공지"
-            icon={CalendarDays}
-          />
+          <>
+            <BoardNoticeSection
+              boardSlug="education"
+              posts={posts.slice(0, 6)}
+              title="보수교육 관련 공지"
+              icon={CalendarDays}
+            />
+            <CeScheduleCalendar />
+          </>
         }
       />
     );

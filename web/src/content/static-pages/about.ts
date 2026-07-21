@@ -33,7 +33,7 @@ export const html = `<!-- 인사말 -->
             <div style="background:var(--bg);padding:16px 14px;display:flex;align-items:flex-start;justify-content:center;font-size:15px;font-weight:700;color:var(--primary);border-right:1px solid var(--border-light);">1993</div>
             <div style="padding:16px 18px;font-size:14px;color:var(--text-mid);">
               <ul style="margin:0;padding-left:1.2em;line-height:1.7;">
-                <li>대한신경계작업치료연구회 창립</li>
+                <li>대한작업치료학회 창립</li>
                 <li>학회 정관 수립 및 이후 개정</li>
               </ul>
             </div>

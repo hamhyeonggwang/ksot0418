@@ -50,10 +50,12 @@ export default async function StaticPageRoute({ params }: Props) {
   }
 
   if (slug === "community") {
-    const [{ posts: galleryPosts }, { posts: conferencePosts }] = await Promise.all([
-      getPosts("gallery", { page: 1 }),
-      getPosts("conference", { page: 1 }),
-    ]);
+    const [{ posts: noticePosts }, { posts: galleryPosts }, { posts: conferencePosts }] =
+      await Promise.all([
+        getPosts("notice", { page: 1 }),
+        getPosts("gallery", { page: 1 }),
+        getPosts("conference", { page: 1 }),
+      ]);
     const attachmentsByPost = await getAttachmentsForPosts(
       galleryPosts.slice(0, 6).map((p) => p.id)
     );
@@ -62,6 +64,12 @@ export default async function StaticPageRoute({ params }: Props) {
         config={staticPages.community}
         extra={
           <>
+            <BoardNoticeSection
+              boardSlug="notice"
+              posts={noticePosts.slice(0, 6)}
+              title="공지사항"
+              icon={Megaphone}
+            />
             <GallerySection posts={galleryPosts} attachmentsByPost={attachmentsByPost} />
             <BoardNoticeSection
               boardSlug="conference"

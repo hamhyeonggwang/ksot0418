@@ -181,7 +181,7 @@ export const staticPages: Record<StaticPageSlug, StaticPageConfig> = {
       title: "커뮤니티",
       icon: MessageSquare,
       items: [
-        { label: "공지사항", href: "/board/notice", icon: Megaphone },
+        { label: "공지사항", href: "/community#board-notice", icon: Megaphone },
         { label: "학회 갤러리", href: "/community#gallery", icon: Image },
         { label: "학술대회 공지", href: "/community#board-conference", icon: CalendarDays },
       ],

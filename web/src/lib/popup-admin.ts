@@ -2,6 +2,7 @@
 
 import { createClient } from "@/lib/supabase/client";
 import type { PopupMediaType } from "@/lib/popup-types";
+import { safeStorageFileName } from "@/lib/storage-key";
 
 export type PopupInput = {
   title: string;
@@ -18,7 +19,7 @@ function mediaTypeFor(file: File): PopupMediaType {
 
 export async function createPopup(input: PopupInput, file: File) {
   const supabase = createClient();
-  const path = `${crypto.randomUUID()}-${file.name}`;
+  const path = `${crypto.randomUUID()}-${safeStorageFileName(file.name)}`;
 
   const { error: uploadErr } = await supabase.storage.from("popup").upload(path, file);
   if (uploadErr) return { data: null, error: uploadErr.message };
@@ -49,7 +50,7 @@ export async function updatePopup(
   let mediaType: PopupMediaType | undefined;
 
   if (newFile) {
-    const path = `${crypto.randomUUID()}-${newFile.name}`;
+    const path = `${crypto.randomUUID()}-${safeStorageFileName(newFile.name)}`;
     const { error: uploadErr } = await supabase.storage.from("popup").upload(path, newFile);
     if (uploadErr) return { error: uploadErr.message };
 

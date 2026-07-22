@@ -2,6 +2,7 @@
 
 import { createClient } from "@/lib/supabase/client";
 import type { BoardSlug } from "@/lib/board-types";
+import { safeStorageFileName } from "@/lib/storage-key";
 
 export type PostInput = {
   board: BoardSlug;
@@ -53,7 +54,7 @@ export async function deletePost(id: string) {
 
 export async function uploadAttachment(postId: string, file: File) {
   const supabase = createClient();
-  const path = `${postId}/${Date.now()}-${file.name}`;
+  const path = `${postId}/${Date.now()}-${safeStorageFileName(file.name)}`;
 
   const { error: uploadErr } = await supabase.storage.from("board").upload(path, file);
   if (uploadErr) return { error: uploadErr.message };

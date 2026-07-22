@@ -1,6 +1,7 @@
 "use client";
 
 import { createClient } from "@/lib/supabase/client";
+import { safeStorageFileName } from "@/lib/storage-key";
 
 export type IssueInput = {
   volume: number;
@@ -75,7 +76,7 @@ export async function deleteArticle(id: string) {
 /** PDF를 journal 버킷 `{folder}/{timestamp}-{filename}` 경로에 업로드하고 storage_path를 반환 */
 export async function uploadJournalPdf(folder: string, file: File) {
   const supabase = createClient();
-  const path = `${folder}/${Date.now()}-${file.name}`;
+  const path = `${folder}/${Date.now()}-${safeStorageFileName(file.name)}`;
   const { error } = await supabase.storage.from("journal").upload(path, file);
   if (error) return { path: null as string | null, error: error.message };
   return { path, error: null as string | null };

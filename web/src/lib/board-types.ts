@@ -47,6 +47,13 @@ export type PostAttachment = {
   created_at: string;
 };
 
+const IMAGE_EXTENSIONS = ["jpg", "jpeg", "png", "gif", "webp", "avif", "svg"];
+
+export function isImageFile(fileName: string): boolean {
+  const ext = fileName.split(".").pop()?.toLowerCase();
+  return !!ext && IMAGE_EXTENSIONS.includes(ext);
+}
+
 export function attachmentUrl(path: string): string {
   const base = process.env.NEXT_PUBLIC_SUPABASE_URL;
   if (!base) return "#";

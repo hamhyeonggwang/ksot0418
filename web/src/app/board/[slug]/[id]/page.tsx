@@ -13,6 +13,7 @@ import {
   formatDate,
   formatBytes,
   attachmentUrl,
+  isImageFile,
 } from "@/lib/board-types";
 import { getCurrentAdmin } from "@/lib/admin";
 
@@ -36,6 +37,8 @@ export default async function BoardDetailPage({ params }: Props) {
   if (!post || post.board !== slug) notFound();
 
   const [attachments, admin] = await Promise.all([getAttachments(id), getCurrentAdmin()]);
+  const imageAttachments =
+    slug !== "gallery" ? attachments.filter((a) => isImageFile(a.file_name)) : [];
 
   if (post.is_published) {
     await incrementViewCount(id);
@@ -90,6 +93,23 @@ export default async function BoardDetailPage({ params }: Props) {
                   sizes="(min-width: 640px) 50vw, 100vw"
                   className="object-cover"
                 />
+              </a>
+            ))}
+          </div>
+        )}
+
+        {imageAttachments.length > 0 && (
+          <div className="mt-6 flex flex-col gap-4">
+            {imageAttachments.map((a) => (
+              <a
+                key={a.id}
+                href={attachmentUrl(a.storage_path)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block overflow-hidden rounded-2xl border border-[#1A2B4C]/8 bg-[#1A2B4C]/5"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element -- 관리자가 첨부한 임의 비율 이미지를 자연 비율 그대로 표시 */}
+                <img src={attachmentUrl(a.storage_path)} alt={a.file_name} className="h-auto w-full object-contain" />
               </a>
             ))}
           </div>

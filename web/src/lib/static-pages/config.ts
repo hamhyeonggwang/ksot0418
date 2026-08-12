@@ -7,7 +7,6 @@ import {
   FileUp,
   FileText,
   Flag,
-  Globe,
   GraduationCap,
   Handshake,
   History,
@@ -60,7 +59,6 @@ export const staticPages: Record<StaticPageSlug, StaticPageConfig> = {
       meta: [
         { icon: Calendar, text: "창립: 1993년" },
         { icon: Flag, text: "창립 34주년" },
-        { icon: Globe, text: "WFOT 정회원" },
       ],
     },
     sidebar: {

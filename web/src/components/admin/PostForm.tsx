@@ -2,11 +2,13 @@
 
 import { useState, type FormEvent, type ChangeEvent } from "react";
 import { useRouter } from "next/navigation";
-import { Eye, Pencil, Upload, Trash2 } from "lucide-react";
+import { Eye, Pencil, Upload, Trash2, Star } from "lucide-react";
 import {
   BOARD_SLUGS,
   BOARD_LABELS,
   formatBytes,
+  attachmentUrl,
+  isImageFile,
   type BoardSlug,
   type Post,
   type PostAttachment,
@@ -16,6 +18,7 @@ import {
   updatePost,
   uploadAttachment,
   deleteAttachment,
+  setCoverAttachment,
   type PostInput,
 } from "@/lib/board-admin";
 import { MarkdownBody } from "@/components/board/MarkdownBody";
@@ -100,6 +103,21 @@ export function PostForm({ initialPost, initialAttachments = [] }: Props) {
     setUploading(false);
     setUploadProgress(null);
     if (failed.length > 0) alert(`업로드 실패 ${failed.length}건\n${failed.join("\n")}`);
+    router.refresh();
+  }
+
+  async function handleSetCover(attachment: PostAttachment) {
+    const first = attachments[0];
+    if (!first || first.id === attachment.id) return;
+    const { createdAt, error } = await setCoverAttachment(attachment.id, first.created_at);
+    if (error) {
+      alert(`대표사진 지정 실패: ${error}`);
+      return;
+    }
+    setAttachments((prev) => [
+      { ...attachment, created_at: createdAt },
+      ...prev.filter((a) => a.id !== attachment.id),
+    ]);
     router.refresh();
   }
 
@@ -263,12 +281,40 @@ export function PostForm({ initialPost, initialAttachments = [] }: Props) {
           <div className="border-t border-[#1A2B4C]/8 pt-5">
             <label className="text-sm font-medium text-[#1A2B4C]">첨부파일</label>
             <ul className="mt-2 space-y-2">
-              {attachments.map((a) => (
+              {attachments.map((a, i) => (
                 <li
                   key={a.id}
-                  className="flex items-center gap-2 rounded-lg border border-[#1A2B4C]/8 px-3 py-2 text-sm"
+                  className={`flex items-center gap-2 rounded-lg border px-3 py-2 text-sm ${
+                    board === "gallery" && i === 0
+                      ? "border-[#2DD4BF] bg-[#2DD4BF]/5"
+                      : "border-[#1A2B4C]/8"
+                  }`}
                 >
+                  {board === "gallery" && isImageFile(a.file_name) && (
+                    // eslint-disable-next-line @next/next/no-img-element -- 관리자 미리보기용 작은 썸네일
+                    <img
+                      src={attachmentUrl(a.storage_path)}
+                      alt=""
+                      className="h-12 w-12 shrink-0 rounded-md object-cover"
+                    />
+                  )}
                   <span className="flex-1 truncate text-[#1A2B4C]">{a.file_name}</span>
+                  {board === "gallery" &&
+                    (i === 0 ? (
+                      <span className="inline-flex shrink-0 items-center gap-1 rounded-full bg-[#2DD4BF] px-2 py-0.5 text-[11px] font-bold text-[#1A2B4C]">
+                        <Star className="h-3 w-3 fill-current" />
+                        대표
+                      </span>
+                    ) : (
+                      <button
+                        type="button"
+                        onClick={() => handleSetCover(a)}
+                        className="inline-flex shrink-0 items-center gap-1 rounded-full border border-[#1A2B4C]/12 px-2 py-0.5 text-[11px] font-semibold text-[#1A2B4C] hover:border-[#2DD4BF]"
+                      >
+                        <Star className="h-3 w-3" />
+                        대표로 지정
+                      </button>
+                    ))}
                   <span className="text-xs text-muted">{formatBytes(a.size_bytes)}</span>
                   <button
                     type="button"
@@ -299,7 +345,7 @@ export function PostForm({ initialPost, initialAttachments = [] }: Props) {
             </label>
             {board === "gallery" && (
               <p className="mt-2 text-xs text-muted">
-                목록에는 첫 번째로 추가한 사진이 대표 이미지로 표시됩니다.
+                목록에는 &lsquo;대표&rsquo; 표시된 사진이 썸네일로 쓰입니다. 다른 사진의 &lsquo;대표로 지정&rsquo;을 눌러 바꿀 수 있습니다.
               </p>
             )}
           </div>

@@ -28,7 +28,7 @@ export const html = `<!-- 논문투고 안내 -->
             <i class="fa-solid fa-calendar-days"></i>
             <div class="info-box-content">
               <h5>발행 일정</h5>
-              <p>연 6회 발행하는 것을 원칙으로 하고, 논문의 원고는 상시 접수로 한다.</p>
+              <p>년 4회 발행하는 것을 원칙으로 하고, 논문의 원고는 상시 접수로 한다.</p>
             </div>
           </div>
         </div>

@@ -32,8 +32,8 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href={legacyHref(LEGACY.conferenceGallery)} className="hover:text-white">
-                  학술대회 갤러리
+                <Link href={legacyHref(LEGACY.gallery)} className="hover:text-white">
+                  학회 갤러리
                 </Link>
               </li>
               <li>

@@ -51,7 +51,7 @@ const nextConfig: NextConfig = {
         destination: "/guide",
         permanent: true,
       },
-      /** 2026 학술대회 종료 — 외부 행사 사이트 대신 학술대회 갤러리(사진 게시판)로 연결 */
+      /** 2026 학술대회 종료 — 외부 행사 사이트 대신 학회 갤러리(사진 게시판)로 연결 */
       {
         source: "/pages/conference.html",
         destination: "/board/gallery",

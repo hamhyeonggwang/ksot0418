@@ -16,8 +16,8 @@ export const LEGACY = {
   journalSearch: "/journal#archive",
   submission: "/submission",
   education: "/education",
-  /** 2026 학술대회 종료 후 외부 행사 사이트 대신 내부 사진 게시판으로 연결 */
-  conferenceGallery: "/board/gallery",
+  /** 학회 갤러리(사진 게시판) — 2026 학술대회 종료 후 외부 행사 사이트 대신 연결 */
+  gallery: "/board/gallery",
   community: "/community",
   notice: "/board/notice",
   member: "/member",

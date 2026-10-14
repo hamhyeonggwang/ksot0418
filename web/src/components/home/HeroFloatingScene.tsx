@@ -51,10 +51,10 @@ const CARDS: FloatCard[] = [
   },
   {
     id: "conference",
-    title: "학술대회 갤러리",
+    title: "학회 갤러리",
     subtitle: "행사 현장 사진",
     icon: ImageIcon,
-    href: LEGACY.conferenceGallery,
+    href: LEGACY.gallery,
     floatDelay: 0.36,
   },
   {

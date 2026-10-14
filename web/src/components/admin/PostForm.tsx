@@ -41,6 +41,7 @@ export function PostForm({ initialPost, initialAttachments = [] }: Props) {
   const [attachments, setAttachments] = useState(initialAttachments);
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   async function handleSubmit(e: FormEvent) {
@@ -80,17 +81,25 @@ export function PostForm({ initialPost, initialAttachments = [] }: Props) {
     }
   }
 
+  // 여러 장 선택 가능 — 선택 순서대로 순차 업로드해 첫 사진이 대표 이미지가 되도록 유지
   async function handleFileChange(e: ChangeEvent<HTMLInputElement>) {
-    const file = e.target.files?.[0];
-    if (!file || !initialPost) return;
-    setUploading(true);
-    const { error } = await uploadAttachment(initialPost.id, file);
-    setUploading(false);
+    const files = Array.from(e.target.files ?? []);
     e.target.value = "";
-    if (error) {
-      alert(`업로드 실패: ${error}`);
-      return;
+    if (files.length === 0 || !initialPost) return;
+    setUploading(true);
+    const failed: string[] = [];
+    for (const [i, file] of files.entries()) {
+      setUploadProgress(`${i + 1}/${files.length}`);
+      const { data, error } = await uploadAttachment(initialPost.id, file);
+      if (error || !data) {
+        failed.push(`${file.name}: ${error ?? "알 수 없는 오류"}`);
+        continue;
+      }
+      setAttachments((prev) => [...prev, data]);
     }
+    setUploading(false);
+    setUploadProgress(null);
+    if (failed.length > 0) alert(`업로드 실패 ${failed.length}건\n${failed.join("\n")}`);
     router.refresh();
   }
 
@@ -274,10 +283,15 @@ export function PostForm({ initialPost, initialAttachments = [] }: Props) {
             </ul>
             <label className="mt-3 inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-[#1A2B4C]/12 bg-white px-3 py-1.5 text-xs font-semibold text-[#1A2B4C] transition hover:border-[#2DD4BF]/40">
               <Upload className="h-3.5 w-3.5" />
-              {uploading ? "업로드 중…" : board === "gallery" ? "사진 추가" : "파일 추가"}
+              {uploading
+                ? `업로드 중… ${uploadProgress ?? ""}`
+                : board === "gallery"
+                  ? "사진 추가 (여러 장 선택 가능)"
+                  : "파일 추가"}
               <input
                 type="file"
                 accept={board === "gallery" ? "image/*" : undefined}
+                multiple
                 className="hidden"
                 onChange={handleFileChange}
                 disabled={uploading}

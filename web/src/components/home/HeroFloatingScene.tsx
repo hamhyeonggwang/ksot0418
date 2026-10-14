@@ -6,7 +6,7 @@ import {
   Landmark,
   Send,
   BookOpen,
-  Calendar,
+  Image as ImageIcon,
   FolderOpen,
   Mail,
   type LucideIcon,
@@ -51,10 +51,10 @@ const CARDS: FloatCard[] = [
   },
   {
     id: "conference",
-    title: "학술대회신청",
-    subtitle: "2026.9.19 사전등록",
-    icon: Calendar,
-    href: LEGACY.conferenceRegister,
+    title: "학술대회 갤러리",
+    subtitle: "행사 현장 사진",
+    icon: ImageIcon,
+    href: LEGACY.conferenceGallery,
     floatDelay: 0.36,
   },
   {

@@ -7,7 +7,7 @@ import { LEGACY, legacyHref, isExternalHref } from "@/lib/constants";
 
 /** UX: 3-click rule — explicit paths for primary personas */
 const paths = [
-  { persona: "임상 치료사", actions: ["보수교육 신청", "학회지 열람", "학술대회 등록"], links: [LEGACY.education, LEGACY.journal, LEGACY.conferenceRegister] },
+  { persona: "임상 치료사", actions: ["보수교육 신청", "학회지 열람", "학술대회 갤러리"], links: [LEGACY.education, LEGACY.journal, LEGACY.conferenceGallery] },
   { persona: "학생·대학원생", actions: ["논문 검색", "투고 안내", "커뮤니티"], links: [LEGACY.journalSearch, LEGACY.submission, LEGACY.community] },
   { persona: "연구자·교수", actions: ["온라인 투고", "편집 규정", "최신 호"], links: [LEGACY.submission, `${LEGACY.submission}#policy`, LEGACY.journal] },
 ];

@@ -1,7 +1,7 @@
 "use client";
 
 import { createClient } from "@/lib/supabase/client";
-import type { BoardSlug } from "@/lib/board-types";
+import type { BoardSlug, PostAttachment } from "@/lib/board-types";
 import { safeStorageFileName } from "@/lib/storage-key";
 
 export type PostInput = {
@@ -59,14 +59,32 @@ export async function uploadAttachment(postId: string, file: File) {
   const { error: uploadErr } = await supabase.storage.from("board").upload(path, file);
   if (uploadErr) return { error: uploadErr.message };
 
-  const { error } = await supabase.from("post_attachments").insert({
-    post_id: postId,
-    file_name: file.name,
-    storage_path: path,
-    size_bytes: file.size,
-  });
+  const { data, error } = await supabase
+    .from("post_attachments")
+    .insert({
+      post_id: postId,
+      file_name: file.name,
+      storage_path: path,
+      size_bytes: file.size,
+    })
+    .select()
+    .single();
 
-  return { error: error?.message ?? null };
+  return { data: (data as PostAttachment | null) ?? null, error: error?.message ?? null };
+}
+
+/**
+ * 대표사진 지정 — 목록 썸네일은 created_at 오름차순 첫 첨부를 쓰므로,
+ * 지정한 첨부의 created_at을 현재 첫 첨부보다 1초 앞으로 당긴다 (스키마 변경 없음).
+ */
+export async function setCoverAttachment(attachmentId: string, currentFirstCreatedAt: string) {
+  const supabase = createClient();
+  const createdAt = new Date(new Date(currentFirstCreatedAt).getTime() - 1000).toISOString();
+  const { error } = await supabase
+    .from("post_attachments")
+    .update({ created_at: createdAt })
+    .eq("id", attachmentId);
+  return { createdAt, error: error?.message ?? null };
 }
 
 export async function deleteAttachment(attachmentId: string, storagePath: string) {

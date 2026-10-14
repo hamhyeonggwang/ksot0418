@@ -8,11 +8,6 @@ export const COLORS = {
   white: "#FFFFFF",
 } as const;
 
-/** 학회지·홈과 분리 운영되는 외부 사이트 (PRD §4.6) */
-export const EXTERNAL = {
-  conferenceSite: "https://ksot0919.vercel.app/index.html",
-} as const;
-
 /** Deploy: set NEXT_PUBLIC_LEGACY_BASE="" when static pages are served from same origin */
 export const LEGACY = {
   base: process.env.NEXT_PUBLIC_LEGACY_BASE ?? "",
@@ -21,9 +16,8 @@ export const LEGACY = {
   journalSearch: "/journal#archive",
   submission: "/submission",
   education: "/education",
-  /** 학술대회는 별도 사이트에서 운영 — 새 탭으로 이동 (isExternalHref로 판별) */
-  conference: EXTERNAL.conferenceSite,
-  conferenceRegister: `${EXTERNAL.conferenceSite}#register`,
+  /** 2026 학술대회 종료 후 외부 행사 사이트 대신 내부 사진 게시판으로 연결 */
+  conferenceGallery: "/board/gallery",
   community: "/community",
   notice: "/board/notice",
   member: "/member",

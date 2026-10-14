@@ -18,9 +18,9 @@ export const heroCTAs = [
     primary: true,
   },
   {
-    label: "학술대회",
-    sub: "2026.9.19 대전",
-    href: LEGACY.conferenceRegister,
+    label: "학술대회 갤러리",
+    sub: "행사 현장 사진",
+    href: LEGACY.conferenceGallery,
     icon: "calendar" as const,
   },
   {
@@ -64,7 +64,7 @@ export const latestEducation = [
     title: "2026 학술대회 본행사 보수교육",
     place: "대전",
     credits: "4학점",
-    href: LEGACY.conference,
+    href: LEGACY.conferenceGallery,
     status: "open" as const,
   },
   {
@@ -72,7 +72,7 @@ export const latestEducation = [
     title: "발달장애인 지원사업 이해와 실천 (온라인)",
     place: "Zoom",
     credits: "4학점",
-    href: LEGACY.conference,
+    href: LEGACY.conferenceGallery,
     status: "open" as const,
   },
   {
@@ -90,7 +90,7 @@ export const announcements = [
     type: "학술대회",
     title: "2026 대한작업치료학회 학술대회 안내",
     date: "2026.05.01",
-    href: LEGACY.conference,
+    href: LEGACY.conferenceGallery,
   },
   {
     type: "학회지",
@@ -151,7 +151,7 @@ export const researchAreas: ResearchArea[] = [
     description: "AI 워크플로·디지털 헬스",
     icon: Sparkles,
     gradient: "from-cyan-500/20 to-[#2DD4BF]/20",
-    href: LEGACY.conference,
+    href: LEGACY.conferenceGallery,
   },
   {
     id: "participation",
@@ -180,8 +180,8 @@ export const conferenceHighlights = {
   date: "2026.9.19 (토)",
   place: "대전보건대학교 대강당",
   countdown: "2026-09-19T08:00:00",
-  href: LEGACY.conference,
-  registerHref: LEGACY.conferenceRegister,
+  href: LEGACY.conferenceGallery,
+  registerHref: LEGACY.conferenceGallery,
   speakers: [
     { name: "홍영일 박사", role: "특별초청강연 · AI와 돌봄" },
     { name: "이혜진 교수", role: "보수교육 · AI 시대 OT 역량" },
@@ -248,7 +248,7 @@ export const navLinks = [
   { label: "논문투고", href: LEGACY.submission },
   { label: "교육·연수", href: LEGACY.education },
   { label: "커뮤니티", href: LEGACY.community },
-  { label: "학술대회", href: LEGACY.conference, highlight: true },
+  { label: "학술대회 갤러리", href: LEGACY.conferenceGallery, highlight: true },
 ];
 
 export const platformStats = [
